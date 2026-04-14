@@ -132,6 +132,10 @@
   .review-panel .brand-block{display:flex;align-items:center;gap:12px}
   .ta-bug{width:34px;height:34px;border-radius:50%;background:#00AA6C;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:0;flex:none;font-family:'Inter',sans-serif}
   .ta-bug::before{content:"Ta"}
+  .google-bug{width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,0.1);display:inline-flex;align-items:center;justify-content:center;flex:none;position:relative;overflow:hidden}
+  .google-bug::before{content:"G";font-family:'Inter',sans-serif;font-weight:700;font-size:18px;background:linear-gradient(135deg,#4285F4 0%,#4285F4 30%,#EA4335 45%,#FBBC05 65%,#34A853 85%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:0}
+  .review-panel[data-carousel="google"]{border-top-color:#4285F4}
+  .review-panel + .review-panel{margin-top:20px}
   .review-panel .brand-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.2}
   .review-panel .brand-name small{display:block;font-weight:400;color:rgba(26,21,16,0.6);font-size:12px;letter-spacing:0.04em;margin-top:2px}
   .review-panel .rating-block{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(26,21,16,0.72)}
@@ -316,7 +320,7 @@
   <div class="container">
     <div class="headline-brag">Five-star tour companies get 100% five-star reviews!</div>
     <h2 class="section-title">What guests are saying</h2>
-    <p class="section-sub">Real reviews straight from TripAdvisor. No cherry-picking.</p>
+    <p class="section-sub">Real reviews straight from TripAdvisor and Google. No cherry-picking.</p>
 
     <div class="review-panel" data-carousel="ta" data-interval="10000" data-offset="0" aria-label="TripAdvisor reviews for Sand and Stars Touring">
       <div class="panel-head">
@@ -342,8 +346,33 @@
       </div>
     </div>
 
+    <div class="review-panel" data-carousel="google" data-interval="10000" data-offset="5000" aria-label="Google reviews for Sand and Stars Touring">
+      <div class="panel-head">
+        <div class="brand-block">
+          <span class="google-bug" aria-hidden="true"></span>
+          <span class="brand-name">Google<small>Sand &amp; Stars Touring · Moab, UT</small></span>
+        </div>
+        <div class="rating-block">
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <span><span class="score">5.0</span> · 5 reviews</span>
+        </div>
+        <a class="see-all" href="https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-see-all">See all on Google →</a>
+      </div>
+
+      <div class="review-viewport" aria-live="polite" aria-atomic="true"></div>
+
+      <div class="review-controls">
+        <div class="review-nav">
+          <button type="button" class="prev" aria-label="Previous review">‹</button>
+          <button type="button" class="next" aria-label="Next review">›</button>
+        </div>
+        <div class="review-dots" role="tablist" aria-label="Review selector"></div>
+      </div>
+    </div>
+
     <div class="write-review-cta">
       <a href="https://www.tripadvisor.com/UserReviewEdit-g60724-d23631134-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-write-review">Write a review on TripAdvisor</a>
+      <a href="https://search.google.com/local/writereview?placeid=ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-write-review" style="margin-left:12px">Write a review on Google</a>
     </div>
   </div>
 </section>
@@ -365,6 +394,25 @@
     {"author":"Lau0529","location":"Houston, Texas","title":"Moab and the surroundings in one perfect package","rating":5,"relative":"May 2024","companion":"Couples","text":"Our first trip to Moab and we had decided to navigate on our own. However after reading about the National Parks, we started researching companies and came across this one and so glad we did. We booked two half days and one full day and saw everything and more. We had Amanda all three days and she was beyond amazing — interesting and so knowledgeable. She was patient and helpful through some hiking trails and really assessed our level of confidence."},
     {"author":"Louise S","location":"","title":"Five Stars All The Way!","rating":5,"relative":"May 2024","companion":"Couples","text":"Sand & Stars Touring totally customized 3 days of tours for us. Canyonlands (with catered lunch), Arches, Locals' Secrets and a dinner under the stars. It was magical! Amanda was our guide all 3 days and we hiked, laughed, learned much, and laughed some more. Owners Mike & John were so communicative and made great suggestions. We will be back in Moab again and will ONLY work with S&S Touring!"},
     {"author":"Susan J","location":"","title":"Arches National Park — Amazing time!","rating":5,"relative":"Oct 2023","companion":"","text":"A big thank you to John and Sand & Stars Touring for an amazing tour of Arches National Park! John knows Arches so well and we learned so much on our tour. He sized us up (as we are both in our sixties) and figured out the best places for us to take some short hikes and explore the arches. A little bit of scooting and scrambling too of which I was so proud of myself at the end. With John's knowledge of Arches, he was able to take us to areas of the park that were not overrun with many other tourists. In addition, John put together a beautiful photo album of our experience from that day, so we did not have to worry about taking pictures ourselves. Highly recommend!"}
+  ]
+}
+</script>
+
+<script id="reviews-google-data" type="application/json">
+{
+  "source": "google",
+  "business": "Sand and Stars Touring",
+  "listingUri": "https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY",
+  "writeReviewUri": "https://search.google.com/local/writereview?placeid=ChIJ7wKY8yKu0msRKL3MvmzxDvY",
+  "rating": 5.0,
+  "count": 5,
+  "fetchedAt": "2026-04-14",
+  "reviews": [
+    {"author":"Xoshil Morales","location":"Local Guide · 12 reviews · 6 photos","title":"","rating":5,"relative":"3 years ago","companion":"","text":"The best tour company in Moab. Mike works hard at ensuring all aspects of the trip get covered and offers great options and insights. He knows the area well and provided us everything we needed to make our trip special. Will use this company again. Thank you so much for the great memories."},
+    {"author":"Yvonne Wong","location":"7 reviews · 8 photos","title":"","rating":5,"relative":"a year ago","companion":"","text":"I recently had the most incredible adventure tour with Sands & Stars and I can't recommend them enough! From the moment I was picked up at the airport, I felt like a VIP. John and his team went above and beyond to ensure that my experience was not only enjoyable but also tailored to my desires. Every aspect of the trip was meticulously planned. I was impressed by how they catered the itinerary to match my skill level, making it both exciting and accessible. Moab is truly a Mecca for extreme sports, and thanks to Sands & Stars, I got to experience it all without feeling overwhelmed. The guides were not only knowledgeable but also incredibly friendly, making every moment fun and engaging. They took the time to understand my preferences and interests, ensuring that each activity was perfectly suited to me. Whether it was hiking, climbing, star gazing or exploring the stunning landscapes, I felt completely cared for throughout. The attention to detail was astounding — from the delicious snacks/lunch provided during our adventures to the cold towels sprayed with peppermint (they even knew I only drink water or Gatorade in the trip). It was clear that Sands & Stars genuinely cares about their clients and wants everyone to have the best experience possible. If anyone is looking for an unforgettable adventure in Moab, look no further. This was my first time in the area, and it certainly won't be my last, all thanks to the amazing team that made it such a memorable experience!"},
+    {"author":"James Stein","location":"Local Guide · 159 reviews · 293 photos","title":"","rating":5,"relative":"3 years ago","companion":"","text":"This is the touring company you want to work with if you are travelling to the Moab area. I cannot rave enough about them. My wife and I spent 3 full days visiting and chose their \"bespoke\" service which allowed us to customize our trip and be accompanied and helped by one of their expert guides, in this case, John, who was outstanding: friendly, helpful, flexible, enthusiastic, and a great teacher. Yes, we went to Arches and Canyonlands like everyone does, but the real joy came from (i) the local secrets — the extra places/sidebar sites that John took us to for lunch breaks and/or for quick extra evening or morning hikes, and (ii) a special day where we took a sunrise flight in the morning to Hanksville, then hiked in Little Wild Horse Canyon (a gorgeous slot canyon), after which we made a nice stop in Goblin Valley. We also appreciated the guided ride to Durango, CO, to continue our trip afterwards. All of this was made possible by great pre-trip communication from Mike who offered wonderful ideas for what to do after getting to know us, our interests, priorities, and budget. I'd add that John used his skills to coax me, gently, into challenging myself — crossing wet streams, scrambling over rocks, and climbing to moderate heights — by teaching me how to use my poles more effectively and how to trust my feet. We always felt well-taken care of and safe. We plan to use them again to plan and lead us on our next trip across the rest of Utah."},
+    {"author":"Jessica Belfry","location":"Local Guide · 66 reviews · 8 photos","title":"","rating":5,"relative":"3 years ago","companion":"","text":"Such an amazing way to experience Arches! Hannah is an amazing guide that we instantly connected with."},
+    {"author":"Kraig Kaufman","location":"1 review","title":"","rating":5,"relative":"2 years ago","companion":"","text":"The adventures with Sand and Stars Touring were amazing!!! The staff were friendly and made the experience great. Mike was very knowledgeable of the area and all of its history! Definitely a 10 out of 10."}
   ]
 }
 </script>
