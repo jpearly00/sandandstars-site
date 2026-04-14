@@ -1,0 +1,10 @@
+# Cloudflare Pages headers
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/tour_pics/*
+  Cache-Control: public, max-age=604800, immutable

@@ -1,0 +1,3 @@
+# Cloudflare Pages routing
+# Block garage from public — return 404 for anything under /_garage/
+/_garage/*   /404   404
