@@ -31,7 +31,8 @@
   "address":{"@type":"PostalAddress","addressLocality":"Moab","addressRegion":"UT","addressCountry":"US"},
   "geo":{"@type":"GeoCoordinates","latitude":38.5733,"longitude":-109.5498},
   "areaServed":[{"@type":"Place","name":"Arches National Park"},{"@type":"Place","name":"Canyonlands National Park"},{"@type":"Place","name":"Dead Horse Point State Park"}],
-  "sameAs":["https://www.sandandstars.com/"]
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"39","bestRating":"5","worstRating":"1"},
+  "sameAs":["https://www.sandandstars.com/","https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html"]
 }
 </script>
 <style>
@@ -123,13 +124,49 @@
   .tour-card .card-cta:hover{gap:10px;color:var(--ember)}
   .popular-tag{position:absolute;top:16px;right:16px;background:var(--ember);color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:var(--pill);z-index:2}
 
-  /* Testimonials */
+  /* Testimonials — real reviews carousel */
   .testimonials{background:var(--sand)}
-  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
-  .quote{background:#fff;padding:32px 28px;border-radius:var(--radius);border-left:3px solid var(--ember);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-  .quote p{font-size:16px;line-height:1.65;color:rgba(26,21,16,0.85);margin-bottom:16px;font-style:italic}
-  .quote cite{font-style:normal;font-size:14px;color:var(--canyon);font-weight:600}
-  .stars{color:var(--ember);font-size:14px;letter-spacing:0.1em;margin-bottom:10px}
+  .testimonials .headline-brag{color:var(--canyon);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-size:13px;margin-bottom:6px}
+  .review-panel{background:#fff;border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,0.06);max-width:780px;margin:32px auto 0;padding:28px 28px 20px;border-top:3px solid #00AA6C}
+  .review-panel .panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line-ink)}
+  .review-panel .brand-block{display:flex;align-items:center;gap:12px}
+  .ta-bug{width:34px;height:34px;border-radius:50%;background:#00AA6C;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:0;flex:none;font-family:'Inter',sans-serif}
+  .ta-bug::before{content:"Ta"}
+  .review-panel .brand-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.2}
+  .review-panel .brand-name small{display:block;font-weight:400;color:rgba(26,21,16,0.6);font-size:12px;letter-spacing:0.04em;margin-top:2px}
+  .review-panel .rating-block{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(26,21,16,0.72)}
+  .review-panel .rating-block .stars{color:var(--ember);font-size:16px;letter-spacing:0.08em;margin:0}
+  .review-panel .rating-block .score{font-weight:700;color:var(--ink)}
+  .review-panel .see-all{color:var(--canyon);font-weight:600;font-size:13px;white-space:nowrap}
+  .review-viewport{position:relative;min-height:240px;margin:20px 0 12px}
+  .review-card{position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;padding:4px 2px}
+  .review-card.is-active{opacity:1;transform:translateY(0);position:relative;pointer-events:auto}
+  .review-card .rc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+  .review-card .rc-stars{color:var(--ember);letter-spacing:0.08em;font-size:14px}
+  .review-card .rc-date{font-size:12px;color:rgba(26,21,16,0.55);letter-spacing:0.04em;text-transform:uppercase}
+  .review-card .rc-title{font-family:'Fraunces',serif;font-size:20px;line-height:1.25;color:var(--ink);margin:6px 0 10px}
+  .review-card .rc-text{font-size:15px;line-height:1.6;color:rgba(26,21,16,0.82);margin-bottom:14px}
+  .review-card .rc-byline{font-size:13px;color:var(--canyon);font-weight:600;letter-spacing:0.02em}
+  .review-card .rc-byline span.sep{color:rgba(26,21,16,0.3);margin:0 8px;font-weight:400}
+  .review-card .rc-byline span.ctx{color:rgba(26,21,16,0.55);font-weight:400}
+  .review-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line-ink)}
+  .review-nav{display:flex;gap:8px}
+  .review-nav button{background:var(--paper);color:var(--ink);border:1px solid var(--line-ink);width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:background .15s,color .15s,border-color .15s}
+  .review-nav button:hover,.review-nav button:focus-visible{background:var(--ember);color:var(--ink);border-color:var(--ember);outline:none}
+  .review-dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;flex:1}
+  .review-dots button{width:8px;height:8px;padding:0;border-radius:50%;background:rgba(26,21,16,0.22);transition:background .2s,transform .2s}
+  .review-dots button.is-active{background:var(--canyon);transform:scale(1.35)}
+  .review-dots button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+  .write-review-cta{text-align:center;margin-top:24px}
+  .write-review-cta a{display:inline-block;background:transparent;color:var(--canyon);border:1.5px solid var(--canyon);padding:12px 26px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:background .15s,color .15s}
+  .write-review-cta a:hover{background:var(--canyon);color:var(--paper)}
+  @media (max-width:640px){
+    .review-panel{padding:22px 18px 16px;margin-top:24px}
+    .review-panel .panel-head{gap:10px}
+    .review-panel .see-all{order:3;width:100%;text-align:right}
+    .review-card .rc-title{font-size:18px}
+    .review-card .rc-text{font-size:14.5px}
+  }
 
   /* Feature strip */
   .features{background:var(--slate);color:var(--paper)}
@@ -275,30 +312,62 @@
   </div>
 </section>
 
-<section class="testimonials">
+<section class="testimonials" id="reviews">
   <div class="container">
-    <div class="eyebrow">Kind Words</div>
+    <div class="headline-brag">Five-star tour companies get 100% five-star reviews!</div>
     <h2 class="section-title">What guests are saying</h2>
-    <p class="section-sub">Consistent 5-star reviews across TripAdvisor, Google, and direct referrals.</p>
-    <div class="quotes">
-      <blockquote class="quote">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p>"Our guide read the day perfectly — we hit Delicate Arch before the crowd, found a quiet picnic spot, and were back at the hotel by 1 PM. Best tour of our entire trip."</p>
-        <cite>— Sarah M., Austin TX</cite>
-      </blockquote>
-      <blockquote class="quote">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p>"Booking was simple, the guide was wonderful with our kids, and we saw more of Arches than we would have in two days on our own. Worth every dollar."</p>
-        <cite>— The Patel family, NJ</cite>
-      </blockquote>
-      <blockquote class="quote">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p>"I've been to Moab six times. This was the first time I saw things I'd never seen. That alone is the review."</p>
-        <cite>— Kevin R., Denver CO</cite>
-      </blockquote>
+    <p class="section-sub">Real reviews straight from TripAdvisor. No cherry-picking.</p>
+
+    <div class="review-panel" data-carousel="ta" data-interval="10000" data-offset="0" aria-label="TripAdvisor reviews for Sand and Stars Touring">
+      <div class="panel-head">
+        <div class="brand-block">
+          <span class="ta-bug" aria-hidden="true"></span>
+          <span class="brand-name">TripAdvisor<small>Sand &amp; Stars Touring · Moab, UT</small></span>
+        </div>
+        <div class="rating-block">
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <span><span class="score">5.0</span> · 39 reviews</span>
+        </div>
+        <a class="see-all" href="https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-see-all">See all on TripAdvisor →</a>
+      </div>
+
+      <div class="review-viewport" aria-live="polite" aria-atomic="true"></div>
+
+      <div class="review-controls">
+        <div class="review-nav">
+          <button type="button" class="prev" aria-label="Previous review">‹</button>
+          <button type="button" class="next" aria-label="Next review">›</button>
+        </div>
+        <div class="review-dots" role="tablist" aria-label="Review selector"></div>
+      </div>
+    </div>
+
+    <div class="write-review-cta">
+      <a href="https://www.tripadvisor.com/UserReviewEdit-g60724-d23631134-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-write-review">Write a review on TripAdvisor</a>
     </div>
   </div>
 </section>
+
+<script id="reviews-ta-data" type="application/json">
+{
+  "source": "tripadvisor",
+  "listingUri": "https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html",
+  "rating": 5.0,
+  "count": 39,
+  "reviews": [
+    {"author":"Mieneke M","location":"Burlington, Vermont","title":"Mighty and Memorable Moab Tours","rating":5,"relative":"Apr 2025","companion":"Friends","text":"This is the most incredible way to see Moab when you are short on time and not a hiker. We were fortunate to enjoy two days of touring with Sand and Stars. Two very different flavors of Moab's beauty and natural wonders. Our tour guides were articulate and extremely knowledgeable. On the second day, the internal communication was so good that our tour guide Chris arrived with the correct coffee drink for each of us. Our vehicle was comfortable and a variety of drinks/snacks were continuously offered. Within hours of completion of our tour a file of photos were sent to us from Sand and Stars. Thank you so much for making Moab a memorable experience."},
+    {"author":"Mike-Robin H","location":"","title":"Great Company","rating":5,"relative":"Jan 2025","companion":"Friends","text":"Mike from Sand and Stars was great, he set up our whole trip. Mike even recommended other providers for excursions their company did not offer. Could not ask for more."},
+    {"author":"Luis S","location":"","title":"Unforgettable experience","rating":5,"relative":"Nov 2024","companion":"Friends","text":"My nephew and I had an awesome experience touring Arches National Park. It was our first visit to Moab, and John made it truly unforgettable. He was not only resourceful and welcoming but also extremely knowledgeable about the park. It's so clear he knows and is passionate about what he's doing! One of the highlights was that John speaks Spanish, which was a huge bonus for my nephew, who was visiting from Mexico and often struggles with English. This made the experience so much more enjoyable and accessible for him. I would wholeheartedly recommend Sand and Stars touring services to anyone looking for an excellent guided tour. Thank you so much, John!"},
+    {"author":"Adventure595541","location":"","title":"The Company to travel with — Sand & Stars","rating":5,"relative":"Aug 2024","companion":"Couples","text":"My wife & I spent 2 enjoyable full days with Dave & Chris, our guides. The arches were spectacular and the additional knowledge gained, time saved, and sheer ease to visit this impressive and massive place. We had fantastic hikes, and visited spots that were frequented by very few! We visited a wonderful dinosaur area, as well as petroglyphs. Dead Horse State park was a fantastic finish to our trip! I highly recommend this company — they took care of everything. They earned it!"},
+    {"author":"COGDI","location":"Denver, Colorado","title":"Highlight of our trip — could not have done without","rating":5,"relative":"Jul 2024","companion":"","text":"We had a family reunion of 10, wildly different in physical abilities. We went stargazing, to Arches and to Canyonlands. Everyone got to see great things and the guides (John and David) were well informed and very accommodating. What they didn't provide they could make knowledgeable recommendations on, including restaurants and retail. The photo album is priceless!"},
+    {"author":"jody r","location":"","title":"Exceeded our expectations!","rating":5,"relative":"Jul 2024","companion":"","text":"Just back from 2 full days organized by John and we were beyond thrilled. John was super responsive by phone, text and email so it was very easy to plan and coordinate. Ed, our guide for the 2 days, was outstanding! He is an expert on all the trails and roads as well as an expert rock climber. He saw our skill level and was able to adapt what we did each day based on the heat, and how challenged we wanted to be. We had two very fit 17-year-old boys and they were extremely happy. Perhaps one of our favorite trips and destinations ever!"},
+    {"author":"Jo","location":"Florida","title":"Outstanding tour of Moab!","rating":5,"relative":"May 2024","companion":"Friends","text":"Amanda was an outstanding tour guide! We had never been to Moab before and Amanda introduced us to the magic that is Moab. Our safety was always her primary concern. Amanda is fun, friendly, full of useful information and also ridiculous fun facts! Great experience!"},
+    {"author":"Lau0529","location":"Houston, Texas","title":"Moab and the surroundings in one perfect package","rating":5,"relative":"May 2024","companion":"Couples","text":"Our first trip to Moab and we had decided to navigate on our own. However after reading about the National Parks, we started researching companies and came across this one and so glad we did. We booked two half days and one full day and saw everything and more. We had Amanda all three days and she was beyond amazing — interesting and so knowledgeable. She was patient and helpful through some hiking trails and really assessed our level of confidence."},
+    {"author":"Louise S","location":"","title":"Five Stars All The Way!","rating":5,"relative":"May 2024","companion":"Couples","text":"Sand & Stars Touring totally customized 3 days of tours for us. Canyonlands (with catered lunch), Arches, Locals' Secrets and a dinner under the stars. It was magical! Amanda was our guide all 3 days and we hiked, laughed, learned much, and laughed some more. Owners Mike & John were so communicative and made great suggestions. We will be back in Moab again and will ONLY work with S&S Touring!"},
+    {"author":"Susan J","location":"","title":"Arches National Park — Amazing time!","rating":5,"relative":"Oct 2023","companion":"","text":"A big thank you to John and Sand & Stars Touring for an amazing tour of Arches National Park! John knows Arches so well and we learned so much on our tour. He sized us up (as we are both in our sixties) and figured out the best places for us to take some short hikes and explore the arches. A little bit of scooting and scrambling too of which I was so proud of myself at the end. With John's knowledge of Arches, he was able to take us to areas of the park that were not overrun with many other tourists. In addition, John put together a beautiful photo album of our experience from that day, so we did not have to worry about taking pictures ourselves. Highly recommend!"}
+  ]
+}
+</script>
 
 <section class="cta-band">
   <h2>Ready to build your day?</h2>
@@ -348,6 +417,60 @@
     var name=el.getAttribute('data-analytics');
     if(window.dataLayer){window.dataLayer.push({event:'cta_click',cta_name:name,page:location.pathname})}
   });
+
+  // Reviews carousel — data-driven rotation (prev/next + dots + auto-rotate, pause on hover/focus)
+  (function(){
+    function escHTML(s){return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+    function renderCard(r){
+      var stars='★★★★★'.slice(0,r.rating)+'☆☆☆☆☆'.slice(0,5-r.rating);
+      var byline='<span>'+escHTML(r.author)+'</span>';
+      if(r.location){byline+='<span class="sep">·</span><span class="ctx">'+escHTML(r.location)+'</span>'}
+      if(r.companion){byline+='<span class="sep">·</span><span class="ctx">'+escHTML(r.companion)+'</span>'}
+      return '<article class="review-card" role="group">'
+        +'<div class="rc-head"><span class="rc-stars" aria-label="'+r.rating+' out of 5 stars">'+stars+'</span>'
+        +'<span class="rc-date">'+escHTML(r.relative||'')+'</span></div>'
+        +(r.title?'<h3 class="rc-title">'+escHTML(r.title)+'</h3>':'')
+        +'<p class="rc-text">'+escHTML(r.text)+'</p>'
+        +'<div class="rc-byline">'+byline+'</div>'
+        +'</article>';
+    }
+    function mount(panel){
+      var kind=panel.getAttribute('data-carousel');
+      var dataEl=document.getElementById('reviews-'+kind+'-data');
+      if(!dataEl)return;
+      var data;try{data=JSON.parse(dataEl.textContent)}catch(e){return}
+      var reviews=(data&&data.reviews)||[];if(!reviews.length)return;
+      var viewport=panel.querySelector('.review-viewport');
+      var dotsWrap=panel.querySelector('.review-dots');
+      var prev=panel.querySelector('.prev');
+      var next=panel.querySelector('.next');
+      viewport.innerHTML=reviews.map(renderCard).join('');
+      dotsWrap.innerHTML=reviews.map(function(_,i){return '<button type="button" role="tab" aria-label="Review '+(i+1)+' of '+reviews.length+'" data-idx="'+i+'"></button>'}).join('');
+      var cards=viewport.querySelectorAll('.review-card');
+      var dots=dotsWrap.querySelectorAll('button');
+      var idx=0,paused=false,timer=null;
+      var interval=parseInt(panel.getAttribute('data-interval')||'10000',10);
+      var offset=parseInt(panel.getAttribute('data-offset')||'0',10);
+      function show(n){
+        idx=(n+reviews.length)%reviews.length;
+        cards.forEach(function(c,i){c.classList.toggle('is-active',i===idx)});
+        dots.forEach(function(d,i){d.classList.toggle('is-active',i===idx);d.setAttribute('aria-selected',i===idx?'true':'false')});
+      }
+      function advance(){if(!paused)show(idx+1)}
+      function start(){stop();timer=setInterval(advance,interval)}
+      function stop(){if(timer){clearInterval(timer);timer=null}}
+      prev.addEventListener('click',function(){show(idx-1);start()});
+      next.addEventListener('click',function(){show(idx+1);start()});
+      dotsWrap.addEventListener('click',function(e){var b=e.target.closest('button[data-idx]');if(!b)return;show(parseInt(b.getAttribute('data-idx'),10));start()});
+      panel.addEventListener('mouseenter',function(){paused=true});
+      panel.addEventListener('mouseleave',function(){paused=false});
+      panel.addEventListener('focusin',function(){paused=true});
+      panel.addEventListener('focusout',function(){paused=false});
+      show(0);
+      setTimeout(start,Math.max(0,offset));
+    }
+    document.querySelectorAll('[data-carousel]').forEach(mount);
+  })();
 </script>
 </body>
 </html>
