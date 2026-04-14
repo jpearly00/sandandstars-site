@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lost in the Desert — Sand &amp; Stars Touring</title>
+<meta name="description" content="That page doesn't exist. Let's get you back to booking a private Moab tour.">
+<meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--slate:#1e293b;--slate-deep:#0f1a22;--ember:#e89866;--canyon:#c2703e;--paper:#f5f0eb;--ink:#1a1510;--muted:rgba(245,240,235,0.72);--pill:24px;--radius-sm:8px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:absolute;inset:0;background-image:url("tour_pics/mill.jpg"),url("../tour_pics/mill.jpg");background-size:cover;background-position:center;opacity:0.28;z-index:0}
+  body::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,34,0.5) 0%,rgba(15,26,34,0.75) 100%);z-index:1}
+  .wrap{position:relative;z-index:2;max-width:720px;margin:auto;padding:60px 28px;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:center}
+  .code{font-family:'Fraunces',serif;font-size:clamp(90px,18vw,180px);line-height:0.9;color:var(--ember);font-weight:500;letter-spacing:-0.03em;margin-bottom:12px}
+  h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,46px);font-weight:400;margin-bottom:16px;color:var(--paper);letter-spacing:-0.015em}
+  h1 em{color:var(--ember);font-style:italic}
+  p{color:var(--muted);font-size:clamp(15px,2vw,18px);margin-bottom:32px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.65}
+  .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--ember);color:var(--ink);padding:14px 28px;border-radius:var(--pill);font-weight:600;font-size:15px;text-decoration:none;transition:background .15s}
+  .btn-primary:hover{background:var(--canyon);color:var(--paper)}
+  .btn-ghost{border:1.5px solid rgba(245,240,235,0.4);color:var(--paper);padding:13px 26px;border-radius:var(--pill);font-weight:500;font-size:15px;text-decoration:none;transition:border-color .15s}
+  .btn-ghost:hover{border-color:var(--ember)}
+  .linkset{margin-top:40px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;font-size:14px}
+  .linkset a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s,color .15s}
+  .linkset a:hover{color:var(--ember);border-bottom-color:var(--ember)}
+  .foot{position:relative;z-index:2;color:rgba(245,240,235,0.4);font-size:12.5px;text-align:center;padding:20px;border-top:1px solid rgba(245,240,235,0.1)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="code">404</div>
+  <h1>Looks like you took <em>a wrong turn.</em></h1>
+  <p>That page doesn't exist anymore, or never did. Happens to the best of us out here. Let's get you back on a real road.</p>
+  <div class="ctas">
+    <a href="/fancy/" class="btn-primary">Back to Home</a>
+    <a href="/fancy/tours.html" class="btn-ghost">See All Tours</a>
+  </div>
+  <div class="linkset">
+    <a href="/fancy/about.html">About</a>
+    <a href="/fancy/faq.html">FAQ</a>
+    <a href="/fancy/contact.html">Contact</a>
+    <a href="/">Book a Tour</a>
+  </div>
+</main>
+<div class="foot">&copy; <span id="year">2026</span> Sand &amp; Stars Touring · Moab, Utah</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
