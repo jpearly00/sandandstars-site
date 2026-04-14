@@ -2455,6 +2455,10 @@ const tourData={
   night:{name:'Nighthike',sub:'Moonlight Walk',teaser:'On full-moon weeks, the desert lights itself. Walk a familiar trail by moonlight — cooler, quieter.',longDesc:'On full-moon weeks, the desert lights itself and offers a completely different experience. Walk a familiar trail by moonlight, where cooler temperatures make evening walking comfortable. The landscape, lit by lunar glow, becomes unrecognizable from its daytime self. Wildlife emerges at night, and the sounds and smells of the desert change. This unique experience combines adventure, solitude, and the tranquility of walking beneath the stars and moon in a landscape transformed by darkness.'}
 };
 
+// Aliases/entries for cards whose date-click uses a tourId not defined above (BUG-260414)
+tourData['arches-alt']=tourData.arches;
+tourData.archescombo={name:'Arches + Best of Moab Custom Combo',sub:'Arches + Best of Moab Combo',teaser:'Arches in the morning, rock art + dino tracks + Dead Horse in the afternoon.',longDesc:'The best of both worlds in a single full day. Arches National Park in the morning, a picnic lunch in transition, then rock art, dino tracks, 4x4 roads, and Dead Horse Point in the afternoon.'};
+
 function openDetailModal(tourId){
   const d=tourData[tourId];
   if(!d)return;
@@ -2998,6 +3002,7 @@ function renderAddedSection(){
 function openDateModal(tourId){
   dateModalTourId=tourId;
   const d=tourData[tourId];
+  if(!d){console.warn('openDateModal: no tourData entry for',tourId);return;}
   document.getElementById('dateModalTourName').textContent=d.sub;
   // Reset time options to defaults (Night Hike replaces via selectDate)
   const opts=document.getElementById('timeOptions');
