@@ -39,6 +39,14 @@
   .mark{font-family:'Fraunces',serif;font-size:24px;font-style:italic;letter-spacing:0.04em}
   .mark b{font-weight:500;font-style:normal;letter-spacing:0.14em;text-transform:uppercase;font-size:15px;margin-right:4px}
   .top-links{display:flex;gap:32px;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(238,242,244,0.7)}
+  /* LAYOUT-1: hamburger + nav drawer (mobile only) */
+  .hamburger{display:none;background:none;border:0;color:var(--paper);font-size:24px;padding:8px 10px;cursor:pointer;line-height:1}
+  .nav-drawer{position:fixed;top:0;right:-100%;width:min(280px,78vw);height:100vh;background:var(--slate-deeper,#0f1a22);z-index:200;transition:right .28s ease;padding:72px 28px 28px;box-shadow:-8px 0 32px rgba(0,0,0,0.5)}
+  .nav-drawer.open{right:0}
+  .nav-drawer a{display:block;padding:14px 0;font-size:15px;letter-spacing:0.22em;text-transform:uppercase;color:var(--paper);border-bottom:1px solid rgba(238,242,244,0.08);text-decoration:none}
+  .nav-drawer-close{position:absolute;top:18px;right:20px;background:none;border:0;color:var(--paper);font-size:28px;cursor:pointer;line-height:1}
+  .nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:199;opacity:0;pointer-events:none;transition:opacity .2s}
+  .nav-backdrop.open{opacity:1;pointer-events:auto}
 
   /* PAGE */
   .wrap{position:relative;z-index:2;max-width:1280px;margin:40px auto 140px;padding:0 56px}
@@ -182,6 +190,13 @@
 
   /* SUG-1: scroll-margin-top so bottom-rover-aware scrollIntoView lands targets nicely */
   .tour, .arches-alt-section{scroll-margin-top:24px}
+
+  /* SUG-4: smooth transition on alt-style list swap */
+  .arches-alt-styles{transition:opacity .22s ease}
+  .arches-alt-styles[data-transitioning="1"]{opacity:0.35}
+
+  /* SUG-5: dvh-aware modals so content isn't hidden behind system UI on mobile */
+  .modal-inner, .co-inner, .arches-booking-inner, .detail-modal-inner, .date-modal-inner{max-height:calc(100dvh - 40px);overflow-y:auto}
 
   /* =============== ITINERARY ROVER (horizontal sticky header) =============== */
   .rover{position:sticky;top:0;left:0;right:0;z-index:40;height:160px;padding:16px calc(max(24px, (100% - 1280px)/2 + 24px));background:rgba(15,26,34,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line2);display:flex;align-items:stretch;gap:18px;justify-content:center}
@@ -556,15 +571,21 @@
     .tour-visual.in ~ .tour-detail .desc,
     .tour-visual.in ~ .tour-detail .control-strip{opacity:1}
 
-    /* Reset arches-alt-section for mobile */
-    .arches-alt-section{grid-template-columns:1.3fr 1fr !important}
-    .arches-alt-section .tour-visual{position:relative !important;right:auto;top:auto;width:auto}
+    /* BUG-4: Reset arches-alt-section for mid-breakpoint (769–960px) */
+    .arches-alt-section{grid-template-columns:1.3fr 1fr !important;grid-template-areas:"image controls" "sub sub" "title title" "desc desc" !important}
+    .arches-alt-section .tour-visual{position:relative !important;right:auto !important;top:auto !important;width:auto !important;max-width:240px;grid-area:image}
+    .arches-alt-section .tour-detail>.sub,
+    .arches-alt-section .tour-detail>h3,
+    .arches-alt-section .tour-detail>.desc{margin-right:0}
     .arches-alt-section .tour-detail>.sub,
     .arches-alt-section .tour-detail>h3,
     .arches-alt-section .tour-detail>.desc{margin-right:0}
 
     .top{padding:14px 16px}
-    .top-links{gap:16px;font-size:11px;flex-wrap:wrap;justify-content:center}
+    /* LAYOUT-1: hide inline nav, show hamburger */
+    .top-links{display:none}
+    .hamburger{display:inline-block}
+    .top{justify-content:space-between}
     .mark{font-size:20px}
     .wrap{padding:0 16px}
     /* BUG-1 FIX: rover → bottom-pinned bar on mobile */
@@ -628,7 +649,9 @@
     #archesAltDurRow{padding-left:0 !important}
     .duration-group{height:36px}
     .duration-group .dc{height:36px;font-size:13px;padding:0 16px 0 10px}
-    .which-to-pick-btn{font-size:11px;padding:6px 14px}
+    /* UX-4: demote to subtle inline link on mobile */
+    .which-to-pick-btn{background:none !important;border:0 !important;color:var(--ember) !important;font-size:12px !important;letter-spacing:0.04em !important;text-transform:none !important;padding:8px 0 !important;margin:8px 0 0 0 !important;display:block;text-align:right;font-weight:500 !important}
+    .which-to-pick-btn::after{content:" \2192"}
   }
 
   /* ===== SMALL MOBILE: ≤480px — maximum compression ===== */
@@ -681,14 +704,24 @@
     <a href="#">Contact</a>
     <!-- Admin gear removed (BUG-5) — re-add via ?admin=1 JS check if needed -->
   </nav>
+  <button class="hamburger" aria-label="Open menu" onclick="document.getElementById('navDrawer').classList.add('open');document.getElementById('navBackdrop').classList.add('open')">&#9776;</button>
 </header>
+
+<!-- LAYOUT-1: Mobile nav drawer -->
+<div class="nav-backdrop" id="navBackdrop" onclick="document.getElementById('navDrawer').classList.remove('open');this.classList.remove('open')"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <button class="nav-drawer-close" aria-label="Close menu" onclick="document.getElementById('navDrawer').classList.remove('open');document.getElementById('navBackdrop').classList.remove('open')">&times;</button>
+  <a href="#">The Experience</a>
+  <a href="#">Tours</a>
+  <a href="#">Contact</a>
+</nav>
 
 <!-- ITINERARY ROVER — sticky horizontal header -->
 <aside class="rover" id="rover">
   <div class="rh-stack">
     <div class="rh">Your Itinerary</div>
     <button class="edit-btn" onclick="openModal('checkoutModal')">Edit</button>
-    <button class="edit-btn copy-itin-btn" onclick="copyDraftItin()" style="margin-top:6px">Copy Draft Itin</button>
+    <button class="edit-btn copy-itin-btn" onclick="copyDraftItin()" style="margin-top:6px">Share Trip</button>
   </div>
 
   <div class="journey-path" id="path">
@@ -1755,6 +1788,7 @@
       <div class="ab-price-display">
         <span class="ab-price" id="abPrice">$575</span>
         <small>estimate</small>
+        <div id="abPriceContext" style="font-size:11px;letter-spacing:0.08em;color:rgba(238,242,244,0.55);margin-top:4px">2 guests &middot; 4 hrs</div>
       </div>
       <div class="ab-action-btns">
         <button class="add-btn ab-add" id="abAddBtn" onclick="addArchesVariant()">Add to Trip</button>
@@ -2578,6 +2612,14 @@ function updateAbPrice(){
   if(people>2&&people<=4) price=tier.base34;
   else if(people>4) price=tier.base34+(people-4)*tier.extra;
   document.getElementById('abPrice').textContent='$'+price.toLocaleString();
+  // UX-3: micro-label context
+  const ctx=document.getElementById('abPriceContext');
+  if(ctx){
+    const kids=parseInt((document.getElementById('abKids')||{}).value)||0;
+    const total=people+kids;
+    const label=total+' guest'+(total===1?'':'s')+' · '+v.hours+' hrs';
+    ctx.textContent=label;
+  }
 }
 
 // Content overlap map: tours whose content overlaps
@@ -3250,7 +3292,12 @@ function updateCostPreview(tourId){
   const el=document.querySelector(`.tour[data-tour="${tourId}"] .cost-preview`);
   if(!el)return;
   const price=getTourPrice(tourId);
-  el.innerHTML='$'+price.toLocaleString()+'<small>estimate</small>';
+  // UX-3: include N guests · M hrs micro-label
+  const tourEl=document.querySelector(`.tour[data-tour="${tourId}"]`);
+  const people=parseInt((tourEl&&tourEl.querySelector('.p-val')||{}).value)||2;
+  const hours=parseInt(tourEl&&tourEl.dataset.hours)||(tourDefaults[tourId]&&tourDefaults[tourId].rec)||4;
+  const ctx=people+' guest'+(people===1?'':'s')+' · '+hours+' hrs';
+  el.innerHTML='$'+price.toLocaleString()+'<small>estimate</small><span style="display:block;font-size:10px;letter-spacing:0.08em;color:rgba(238,242,244,0.45);margin-top:2px;font-family:Inter,sans-serif;text-transform:none;font-weight:400">'+ctx+'</span>';
 }
 
 /* ===== DURATION RECOMMENDATION LABEL ===== */
