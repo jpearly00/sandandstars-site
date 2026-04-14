@@ -52,13 +52,13 @@
   .brand{font-family:'Fraunces',serif;font-size:22px;letter-spacing:0.04em;color:var(--paper)}
   .brand b{font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:14px;margin-right:6px}
   .brand i{font-style:italic;font-weight:400}
-  nav ul{list-style:none;display:flex;gap:28px}
+  nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
   nav a{color:var(--paper);font-size:14px;font-weight:500;letter-spacing:0.03em;padding:6px 2px;border-bottom:2px solid transparent;transition:border-color .2s,color .15s}
   nav a:hover,nav a.active{color:var(--ember);border-bottom-color:var(--ember)}
   .nav-cta{background:var(--ember);color:var(--ink);padding:10px 20px;border-radius:var(--pill);font-weight:600;font-size:14px;transition:background .15s}
   .nav-cta:hover{background:var(--canyon);color:var(--paper)}
   .hamburger{display:none;background:none;color:var(--paper);font-size:24px;padding:6px 10px;border-radius:var(--radius-sm)}
-  @media (max-width:768px){
+  @media (max-width:900px){
     nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--slate-deep);padding:12px 0;border-top:1px solid var(--line)}
     nav ul.open{display:flex}
     nav li{width:100%}
@@ -147,6 +147,9 @@
       <ul id="navmenu">
         <li><a href="./">Home</a></li>
         <li><a href="tours.html" class="active">Tours</a></li>
+        <li><a href="bespoke.html">Bespoke</a></li>
+        <li><a href="planning.html">Planning</a></li>
+        <li><a href="stories.html">Stories</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -352,10 +355,15 @@
       <h4>Explore</h4>
       <a href="./">Home</a>
       <a href="tours.html">Tours</a>
+      <a href="bespoke.html">Bespoke</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="stories.html">Stories</a>
       <a href="about.html">About</a>
     </div>
     <div>
       <h4>Help</h4>
+      <a href="planning.html">Trip Planning</a>
+      <a href="pricing.html">Pricing</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
       <a href="/">Book a Tour</a>
