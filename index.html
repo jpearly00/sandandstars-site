@@ -180,6 +180,9 @@
   /* duration recommendation label */
   .dur-recommendation{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);text-align:center;min-height:16px;line-height:1.3;margin-bottom:2px;font-weight:400;transition:opacity .2s}
 
+  /* SUG-1: scroll-margin-top so bottom-rover-aware scrollIntoView lands targets nicely */
+  .tour, .arches-alt-section{scroll-margin-top:24px}
+
   /* =============== ITINERARY ROVER (horizontal sticky header) =============== */
   .rover{position:sticky;top:0;left:0;right:0;z-index:40;height:160px;padding:16px calc(max(24px, (100% - 1280px)/2 + 24px));background:rgba(15,26,34,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line2);display:flex;align-items:stretch;gap:18px;justify-content:center}
   .rover .rh-stack{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start;min-width:140px}
@@ -564,7 +567,13 @@
     .top-links{gap:16px;font-size:11px;flex-wrap:wrap;justify-content:center}
     .mark{font-size:20px}
     .wrap{padding:0 16px}
-    .rover{width:180px;top:12px;right:12px;padding:16px 12px}
+    /* BUG-1 FIX: rover → bottom-pinned bar on mobile */
+    .rover{position:fixed;top:auto;bottom:0;left:0;right:0;width:auto;height:auto;min-height:64px;max-height:40vh;padding:10px 14px;flex-direction:row;align-items:center;gap:10px;overflow:visible;border-top:1px solid var(--line2);border-bottom:none;box-shadow:0 -4px 20px rgba(0,0,0,0.35)}
+    .rover .rh-stack{min-width:0;flex-direction:row;align-items:center;gap:10px}
+    .rover .rh{font-size:10px;margin-bottom:0;letter-spacing:0.16em}
+    .rover .rh-stack .edit-btn{width:auto;padding:6px 10px;font-size:10px;letter-spacing:0.14em}
+    .journey-path{padding:4px;gap:0;min-height:48px}
+    body{padding-bottom:76px}
 
     /* Profile circle: fill more of the column */
     .profile{width:min(200px,90%);height:auto;aspect-ratio:1/1}
@@ -591,8 +600,16 @@
     .tour.reverse{grid-template-columns:1fr !important;grid-template-areas:"image" "sub" "title" "desc" "controls" !important}
     .tour-visual{grid-area:image;max-width:200px;margin:16px auto 0 !important}
     .control-strip{grid-area:controls;width:100%}
-    .rover{width:160px;padding:12px 10px;font-size:11px}
+    /* BUG-1 continued: tighter at 768px */
+    .rover{padding:8px 12px;font-size:11px}
     .rover .rh-stack{min-width:0}
+    /* LAYOUT-2: touch targets ≥44px */
+    .duration-group{height:44px}
+    .duration-group .dc{height:44px;min-height:44px;min-width:44px}
+    /* LAYOUT-3: tour style radio rows */
+    .alt-style-row{min-height:48px;display:flex;align-items:center}
+    /* LAYOUT-4: date stepper buttons */
+    .date-stepper button,.step-btn{min-width:44px;min-height:44px}
     .modal-inner{padding:32px 24px}
     .co-inner{padding:32px 24px}
     .arches-booking-inner{padding:28px 20px}
@@ -623,10 +640,10 @@
     .tour{margin-bottom:24px}
     .tour-visual{max-width:160px}
     .profile{width:min(160px,80%)}
-    .rover{width:140px;top:8px;right:8px;padding:12px 8px;height:auto;max-height:50vh;overflow-y:auto}
-    .rover .rh{font-size:12px;letter-spacing:0.1em}
-    .edit-btn{font-size:10px;padding:5px 10px}
-    .journey-path{padding:6px;gap:0}
+    /* BUG-1 final: ≤480px bottom bar already sized by 960px override, just tighten type */
+    .rover .rh{font-size:10px;letter-spacing:0.08em}
+    .edit-btn{font-size:10px;padding:5px 10px;min-height:36px}
+    .journey-path{padding:4px;gap:0;min-height:48px}
     .modal-inner{padding:24px 16px;width:min(560px,96vw)}
     .co-inner{padding:24px 16px;width:min(680px,96vw)}
     .arches-booking-inner{padding:20px 14px;width:min(780px,96vw)}
@@ -636,8 +653,9 @@
     .add-btn{font-size:11px;padding:10px 14px;letter-spacing:0.12em}
     .alt-style-name{font-size:14px}
     .alt-style-tag{font-size:9px;letter-spacing:0.06em}
-    .duration-group{height:32px}
-    .duration-group .dc{height:32px;font-size:12px;padding:0 12px 0 8px}
+    /* LAYOUT-2: keep 44px floor even at ≤480px — overriding prior 32px */
+    .duration-group{height:44px}
+    .duration-group .dc{height:44px;min-height:44px;font-size:12px;padding:0 12px 0 8px}
     .duration-group .dc:nth-child(5){padding-right:16px}
     .bb-title-box{font-size:18px;padding:4px 10px}
     .ctrl-label{font-size:13px}
@@ -784,7 +802,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">i.</div>
-        <img class="tour-img" src="tour_pics/sm/arches.jpg" alt="arches">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/arches.jpg" alt="arches">
       </div>
     </div>
     <div class="tour-detail">
@@ -822,7 +840,7 @@
         </div>
         <button class="add-btn" onclick="addTour(this,'arches','Arches National Park',575,'6:15 AM')">Quick Add to Trip</button>
       </div>
-      <button class="see-all-btn" onclick="openArchesBookingModal()">See All Arches Tours &amp; Add</button>
+      <button class="see-all-btn" onclick="document.querySelector('.arches-alt-section').scrollIntoView({behavior:'smooth',block:'start'})">See All Arches Tours &amp; Add</button>
     </div>
   </article>
 
@@ -831,7 +849,7 @@
     <div class="tour-visual" style="cursor:pointer">
       <div class="profile">
         <div class="ring"></div>
-        <img class="tour-img" id="archesAltImg" src="tour_pics/sm/arches.jpg" alt="arches variant">
+        <img class="tour-img" loading="lazy" id="archesAltImg" src="tour_pics/sm/arches.jpg" alt="arches variant">
         <div class="alt-ph-img" id="archesAltPH" style="display:none;position:absolute;inset:0;background:var(--slate-dark);border-radius:50%;align-items:center;justify-content:center;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(238,242,244,0.35)">PH IMG</div>
       </div>
     </div>
@@ -965,7 +983,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">iv.</div>
-        <img class="tour-img" src="tour_pics/sm/deadhorse.jpg" alt="deadhorse">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/deadhorse.jpg" alt="deadhorse">
       </div>
     </div>
     <div class="tour-detail">
@@ -1012,7 +1030,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">ii.</div>
-        <img class="tour-img" src="tour_pics/sm/isky.jpg" alt="isky">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/isky.jpg" alt="isky">
       </div>
     </div>
     <div class="tour-detail">
@@ -1059,7 +1077,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">iii.</div>
-        <img class="tour-img" src="tour_pics/sm/mill.jpg" alt="mill">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/mill.jpeg" alt="mill">
       </div>
     </div>
     <div class="tour-detail">
@@ -1106,7 +1124,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">v.</div>
-        <img class="tour-img" src="tour_pics/sm/arches.jpg" alt="archescombo">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/archescombo.jpg" alt="archescombo">
       </div>
     </div>
     <div class="tour-detail">
@@ -1158,7 +1176,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">v.</div>
-        <img class="tour-img" src="tour_pics/sm/castle.jpg" alt="castle">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/castle.jpg" alt="castle">
       </div>
     </div>
     <div class="tour-detail">
@@ -1205,7 +1223,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">vi.</div>
-        <img class="tour-img" src="tour_pics/sm/rockart.jpg" alt="rockart">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/rockart.jpg" alt="rockart">
       </div>
     </div>
     <div class="tour-detail">
@@ -1252,7 +1270,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">vii.</div>
-        <img class="tour-img" src="tour_pics/sm/dino.jpg" alt="dino">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/dino.jpg" alt="dino">
       </div>
     </div>
     <div class="tour-detail">
@@ -1297,7 +1315,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">viii.</div>
-        <img class="tour-img" src="tour_pics/sm/localgems.jpg" alt="localgems">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/localgems.jpg" alt="localgems">
       </div>
     </div>
     <div class="tour-detail">
@@ -1344,7 +1362,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">ix.</div>
-        <img class="tour-img" src="tour_pics/sm/needles.jpg" alt="needles">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/needles.jpg" alt="needles">
       </div>
     </div>
     <div class="tour-detail">
@@ -1389,7 +1407,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">x.</div>
-        <img class="tour-img" src="tour_pics/sm/maze.jpg" alt="maze">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/maze.jpg" alt="maze">
       </div>
     </div>
     <div class="tour-detail">
@@ -1434,7 +1452,7 @@
       <div class="profile">
         <div class="ring"></div>
         <div class="badge">xi.</div>
-        <img class="tour-img" src="tour_pics/sm/night.jpg" alt="night">
+        <img class="tour-img" loading="lazy" src="tour_pics/sm/night.jpg" alt="night">
       </div>
     </div>
     <div class="tour-detail">
@@ -1596,7 +1614,7 @@
   <div class="modal-inner arches-booking-inner">
     <button class="x" onclick="closeModal('archesBookingModal')">×</button>
     <div class="ab-header">
-      <div class="ab-tour-img"><img class="tour-img" src="tour_pics/sm/arches.jpg" alt="Arches National Park" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+      <div class="ab-tour-img"><img class="tour-img" loading="lazy" src="tour_pics/sm/arches.jpg" alt="Arches National Park" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
       <div class="ab-header-text">
         <h2 id="abTitle">Highlights | Half Day Tour</h2>
         <p class="ab-subtitle" id="abSubtitle">Recommended · Availability Now Showing</p>
