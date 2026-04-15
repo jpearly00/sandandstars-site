@@ -333,7 +333,7 @@
         </div>
         <div class="rating-block">
           <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <span><span class="score">5.0</span> · 39 reviews</span>
+          <span><span class="score">100%</span> 5 stars</span>
         </div>
         <a class="see-all" href="https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-see-all">See all on TripAdvisor →</a>
       </div>
@@ -357,7 +357,7 @@
         </div>
         <div class="rating-block">
           <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <span><span class="score">5.0</span> · 5 reviews</span>
+          <span><span class="score">100%</span> 5 stars</span>
         </div>
         <a class="see-all" href="https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-see-all">See all on Google →</a>
       </div>
@@ -495,7 +495,10 @@
       var dataEl=document.getElementById('reviews-'+kind+'-data');
       if(!dataEl)return;
       var data;try{data=JSON.parse(dataEl.textContent)}catch(e){return}
-      var reviews=(data&&data.reviews)||[];if(!reviews.length)return;
+      var reviews=(data&&data.reviews)||[];
+      // Credibility filter: hide reviewers with only 1 total review (matches "1 review" or "1 review · ...")
+      reviews=reviews.filter(function(r){return !(r.location && /^1 review(\s|$|·)/i.test(r.location.trim()))});
+      if(!reviews.length)return;
       var viewport=panel.querySelector('.review-viewport');
       var dotsWrap=panel.querySelector('.review-dots');
       var prev=panel.querySelector('.prev');
