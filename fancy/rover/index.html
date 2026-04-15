@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rover — Phase 0 Scaffold · Sand &amp; Stars Touring</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="css/rover.css">
+</head>
+<body>
+  <div class="rover-shell">
+
+    <header class="rover-topbar">
+      <h1>Rover · Phase 0</h1>
+      <div class="meta" id="rover-meta">initializing…</div>
+    </header>
+
+    <section class="rover-panel" aria-labelledby="hd-about">
+      <h2 id="hd-about">About this page</h2>
+      <p style="margin:0;color:var(--muted);font-size:13px;">
+        Scaffolding shell for the Rover booking UI (top-bar itinerary builder on
+        <code style="color:var(--ember)">book.sandandstars.com</code>). No production UI here yet — this page
+        only verifies the Phase 0 modules load cleanly, the availability reader wires to its fixture
+        or falls back to the one-tour-per-day default, and the dev test palette is reachable via
+        <code style="color:var(--ember)">?palette=1</code>.
+      </p>
+    </section>
+
+    <section class="rover-panel" aria-labelledby="hd-status">
+      <h2 id="hd-status">Module status</h2>
+      <dl class="rover-kv" id="rover-status">
+        <dt>RoverDefaultInventory</dt><dd id="st-inv">—</dd>
+        <dt>RoverDynamicFieldReader</dt><dd id="st-dfr">—</dd>
+        <dt>RoverAnalytics</dt><dd id="st-ana">—</dd>
+        <dt>RoverAvailReader</dt><dd id="st-avr">—</dd>
+        <dt>RoverContestDetector</dt><dd id="st-cd">—</dd>
+        <dt>avail source</dt><dd id="st-src">—</dd>
+        <dt>sample day (2026-05-04)</dt><dd id="st-day">—</dd>
+      </dl>
+    </section>
+
+    <section class="rover-panel" aria-labelledby="hd-empty">
+      <h2 id="hd-empty">W-R07 empty state (placeholder)</h2>
+      <div class="rover-empty">
+        <strong>No tours picked yet</strong>
+        <span>When the real UI lands, this is where the &ldquo;add a tour to begin&rdquo; prompt will go.</span>
+      </div>
+    </section>
+
+    <footer class="rover-footer">
+      Rover scaffold · Phase 0 · <span id="rover-build">build unknown</span>
+      &nbsp;·&nbsp; <a href="?palette=1">Enable test palette</a>
+    </footer>
+  </div>
+
+  <!-- Phase 0 modules. Order matters: analytics → dynamic-field-reader → default-inventory → avail-reader → contest-detector → test-palette -->
+  <script src="js/analytics.js"></script>
+  <script src="js/dynamic-field-reader.js"></script>
+  <script src="js/default-inventory.js"></script>
+  <script src="js/avail-reader.js"></script>
+  <script src="js/contest-detector.js"></script>
+  <script src="js/test-palette.js"></script>
+
+  <script>
+    (function () {
+      function set(id, txt, ok) {
+        var n = document.getElementById(id);
+        if (!n) return;
+        n.textContent = txt;
+        n.style.color = ok ? 'var(--ok)' : 'var(--err)';
+      }
+
+      set('st-inv', window.RoverDefaultInventory ? 'loaded' : 'MISSING', !!window.RoverDefaultInventory);
+      set('st-dfr', window.RoverDynamicFieldReader ? 'loaded' : 'MISSING', !!window.RoverDynamicFieldReader);
+      set('st-ana', window.RoverAnalytics ? 'loaded (session=' + window.RoverAnalytics.session() + ')' : 'MISSING', !!window.RoverAnalytics);
+      set('st-cd',  window.RoverContestDetector ? 'loaded' : 'MISSING', !!window.RoverContestDetector);
+
+      document.getElementById('rover-meta').textContent = 'scaffold build 260415';
+      document.getElementById('rover-build').textContent = 'build 260415 · Phase 0';
+
+      if (window.RoverAvailReader) {
+        window.RoverAvailReader.init().then(function (api) {
+          set('st-avr', 'ready', true);
+          set('st-src', api.source(), true);
+          var d = api.getDay('2026-05-04');
+          set('st-day', 'offered=' + d.slots_offered + ' booked=' + d.slots_booked + ' cart=' + d.slots_in_cart + ' avail=' + d.slots_available + (d.blackout ? ' (blackout)' : ''), true);
+        }).catch(function (e) {
+          set('st-avr', 'error: ' + e.message, false);
+        });
+      } else {
+        set('st-avr', 'MISSING', false);
+      }
+    })();
+  </script>
+</body>
+</html>

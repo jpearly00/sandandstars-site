@@ -1,0 +1,66 @@
+{
+  "_comment": "Phase 0 test fixture for contest-detector pairwise ±3-day algorithm. Used by test-palette.js scenario buttons.",
+  "version": "mock-v1",
+  "scenarios": {
+    "solo": {
+      "label": "Solo shopper (no contest)",
+      "expected_contested": false,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-02"] }
+      ]
+    },
+    "adjacent_monday_thursday": {
+      "label": "Monday-Thursday shopper (verbatim John example)",
+      "expected_contested": true,
+      "expected_pairs": 1,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-04", "2026-05-07"] },
+        { "cart_id": "peer_a", "days": ["2026-05-06"] }
+      ]
+    },
+    "sunday_looking_back_thursday": {
+      "label": "Sunday arrival → Thursday tour (verbatim John example)",
+      "expected_contested": true,
+      "expected_pairs": 1,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-03"] },
+        { "cart_id": "peer_a", "days": ["2026-04-30"] }
+      ]
+    },
+    "distant_no_contest": {
+      "label": "Two shoppers, >3 days apart (no contest)",
+      "expected_contested": false,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-02"] },
+        { "cart_id": "peer_a", "days": ["2026-05-20"] }
+      ]
+    },
+    "three_way_overlap": {
+      "label": "Three concurrent shoppers on adjacent days",
+      "expected_contested": true,
+      "expected_pairs": 3,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-12"] },
+        { "cart_id": "peer_a", "days": ["2026-05-13"] },
+        { "cart_id": "peer_b", "days": ["2026-05-14"] }
+      ]
+    },
+    "multi_day_trip_edge": {
+      "label": "Multi-day trip: one cart holds 3 days, peer holds day 4 apart",
+      "expected_contested": false,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-02", "2026-05-03", "2026-05-04"] },
+        { "cart_id": "peer_a", "days": ["2026-05-08"] }
+      ]
+    },
+    "multi_day_trip_contest": {
+      "label": "Multi-day trip contest (peer at edge of ±3 window)",
+      "expected_contested": true,
+      "expected_pairs": 1,
+      "carts": [
+        { "cart_id": "self", "days": ["2026-05-02", "2026-05-03", "2026-05-04"] },
+        { "cart_id": "peer_a", "days": ["2026-05-07"] }
+      ]
+    }
+  }
+}
