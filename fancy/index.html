@@ -208,6 +208,75 @@
     section{padding:56px 20px}
     .hero-inner{padding:32px 18px}
   }
+
+  /* ── V2 Arches Lead — ported from booking root arches-alt design ── */
+  .arches-lead{background:linear-gradient(180deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);padding:72px 24px 80px;position:relative}
+  .arches-lead .lead-inner{max-width:1180px;margin:0 auto}
+  .arches-lead .lead-head{text-align:center;margin-bottom:36px}
+  .arches-lead .lead-eyebrow{color:var(--ember);font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+  .arches-lead .lead-title{color:var(--paper);font-family:'Fraunces',serif;font-size:clamp(28px,4vw,42px);font-weight:400;letter-spacing:-0.015em;margin-bottom:12px}
+  .arches-lead .lead-sub{color:var(--muted);font-size:16px;max-width:620px;margin:0 auto}
+
+  .arches-lead .tour{display:grid;grid-template-columns:1fr 280px;gap:0;align-items:center;position:relative;min-height:160px;background:rgba(15,26,34,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(245,240,235,0.06);border-radius:var(--radius);overflow:visible;margin-top:32px}
+  .arches-lead .tour-visual{display:flex;justify-content:center;align-items:center;position:relative;align-self:center;padding:18px;order:2}
+  .arches-lead .tour-detail{padding:30px 34px;display:flex;flex-direction:column;justify-content:center;order:1}
+  .arches-lead .profile{width:240px;height:240px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,var(--slate-deep) 0%,var(--ink) 100%);position:relative;box-shadow:inset 0 0 0 1px rgba(245,240,235,0.08),0 8px 32px rgba(0,0,0,0.4);overflow:hidden}
+  .arches-lead .profile .tour-img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;filter:saturate(0.95) contrast(1.05)}
+  .arches-lead .profile::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at center,transparent 55%,rgba(15,26,34,0.45) 100%);pointer-events:none}
+
+  .arches-lead .al-sub{font-size:clamp(20px,3vw,30px);letter-spacing:0.12em;color:var(--ember);text-transform:uppercase;font-weight:500;margin-bottom:10px}
+  .arches-lead h3.al-title-row{font-family:'Fraunces',serif;font-weight:300;color:var(--paper);margin-bottom:10px;line-height:1.15;letter-spacing:-0.01em;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:clamp(22px,3vw,30px)}
+  .arches-lead .bb-title-box{border:1.5px solid var(--ember);padding:6px 14px;display:inline-block;transition:all .3s;color:var(--paper);font-family:'Fraunces',serif;font-weight:400}
+  .arches-lead .pop-tag{font-family:inherit;font-size:14px;letter-spacing:0.04em;text-transform:none;color:var(--ember);font-weight:500;white-space:nowrap}
+  .arches-lead .al-desc{font-size:16px;color:rgba(245,240,235,0.78);margin-bottom:18px;line-height:1.55}
+
+  .arches-lead .dur-row{display:flex;align-items:flex-end;gap:14px;margin:8px 0 14px 0;flex-wrap:wrap}
+  .arches-lead .ctrl-labeled{display:flex;flex-direction:column;align-items:flex-start}
+  .arches-lead .ctrl-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,235,0.55);margin-bottom:6px;font-weight:600}
+  .arches-lead .duration-group{display:flex;flex-direction:row;align-items:center;gap:0;height:42px}
+  .arches-lead .duration-group .dc{margin:0;border:none;padding:0 21px 0 13px;height:42px;display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:15px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;clip-path:polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%);margin-right:-10px;position:relative;font-family:inherit;font-weight:500}
+  .arches-lead .duration-group .dc:nth-child(1){background:rgba(52,78,94,0.95);z-index:3}
+  .arches-lead .duration-group .dc:nth-child(2){background:rgba(72,100,116,0.95);z-index:2}
+  .arches-lead .duration-group .dc:nth-child(3){background:rgba(92,118,132,0.95);z-index:1;padding-right:24px}
+  .arches-lead .duration-group .dc:hover{filter:brightness(1.2)}
+  .arches-lead .duration-group .dc.on{background:var(--ember);color:var(--ink);z-index:4}
+
+  .arches-lead .alt-styles{margin-top:6px}
+  .arches-lead .alt-dur-group{margin-bottom:8px}
+  .arches-lead .alt-dur-label{font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,235,0.5);padding:10px 18px 4px;font-weight:600}
+  .arches-lead .alt-style-row{display:flex;align-items:center;gap:12px;padding:11px 18px;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none;color:var(--paper)}
+  .arches-lead .alt-style-row:hover{background:rgba(232,152,102,0.08);border-left-color:var(--ember)}
+  .arches-lead .alt-style-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(245,240,235,0.3);flex-shrink:0;transition:all .15s}
+  .arches-lead .alt-style-row:hover .alt-style-dot{border-color:var(--ember);background:var(--ember)}
+  .arches-lead .alt-style-name{font-size:16px;color:var(--paper);font-weight:400;letter-spacing:0.02em;flex:1}
+  .arches-lead .alt-style-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,240,235,0.45);font-weight:500;margin-left:auto}
+  .arches-lead .alt-style-tag.rec{color:var(--ember)}
+  .arches-lead .alt-style-tag.note{color:#d4a55c;font-weight:600}
+  .arches-lead .alt-style-row .arrow{color:var(--ember);font-size:14px;opacity:0;transition:opacity .15s,transform .15s;margin-left:8px}
+  .arches-lead .alt-style-row:hover .arrow{opacity:1;transform:translateX(3px)}
+
+  .arches-lead .lead-foot{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .arches-lead .lead-foot a{padding:13px 28px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:all .15s}
+  .arches-lead .lead-foot .all-tours{background:var(--ember);color:var(--ink)}
+  .arches-lead .lead-foot .all-tours:hover{background:var(--canyon);color:var(--paper)}
+  .arches-lead .lead-foot .plan-trip{border:1.5px solid rgba(232,152,102,0.45);color:var(--ember)}
+  .arches-lead .lead-foot .plan-trip:hover{background:rgba(232,152,102,0.10);color:var(--paper);border-color:var(--ember)}
+
+  @media (max-width:820px){
+    .arches-lead .tour{grid-template-columns:1fr}
+    .arches-lead .tour-visual{order:1;padding:24px 18px 0}
+    .arches-lead .tour-detail{order:2;padding:20px 22px 26px}
+    .arches-lead h3.al-title-row{justify-content:flex-start}
+    .arches-lead .profile{width:200px;height:200px}
+    .arches-lead .alt-style-name{font-size:15px}
+    .arches-lead .alt-style-tag{font-size:10px}
+  }
+  @media (max-width:480px){
+    .arches-lead .alt-style-row{padding:10px 14px;flex-wrap:wrap}
+    .arches-lead .alt-style-tag{margin-left:26px;width:100%}
+    .arches-lead .duration-group .dc{font-size:13px;padding:0 16px 0 10px}
+    .arches-lead .bb-title-box{font-size:18px;padding:4px 10px}
+  }
 </style>
 </head>
 <body>
@@ -246,48 +315,140 @@
   </div>
 </section>
 
-<section class="text-center">
-  <div class="container">
-    <div class="eyebrow">Most Booked</div>
-    <h2 class="section-title">Start with a classic</h2>
-    <p class="section-sub">Three of our most-loved Arches itineraries. Each one private, each one tuned to the weather, your pace, and what you actually want to see.</p>
-    <div class="tours-grid">
-
-      <article class="tour-card">
-        <span class="popular-tag">Most Popular</span>
-        <img src="../tour_pics/arches.jpg" alt="Delicate Arch silhouette at sunrise in Arches National Park" width="800" height="600" loading="lazy">
-        <div class="body">
-          <div class="meta">4 hr · Arches National Park</div>
-          <h3>Highlights · Half Day</h3>
-          <p>The iconic Windows, Balanced Rock, and a bonus gem or two. Perfect first taste of Arches — 90% of first-time visitors choose this.</p>
-          <a href="/" class="card-cta" data-analytics="card-highlights">Pick this tour &rarr;</a>
-        </div>
-      </article>
-
-      <article class="tour-card">
-        <img src="../tour_pics/deadhorse.jpg" alt="Dead Horse Point overlook of the Colorado River gooseneck at dusk" width="800" height="600" loading="lazy">
-        <div class="body">
-          <div class="meta">6 hr · Arches + Dead Horse</div>
-          <h3>Arches + Dead Horse Point</h3>
-          <p>Best of two parks in one day. Classic Arches morning, then the wide overlooks and copper-river canyon of Dead Horse Point.</p>
-          <a href="/" class="card-cta" data-analytics="card-deadhorse">Pick this tour &rarr;</a>
-        </div>
-      </article>
-
-      <article class="tour-card">
-        <img src="../tour_pics/archescombo.jpg" alt="Slickrock trail into Arches backcountry at golden hour" width="800" height="600" loading="lazy">
-        <div class="body">
-          <div class="meta">8 hr · Arches + Canyonlands</div>
-          <h3>Arches + Canyonlands · Full Day</h3>
-          <p>The big one. Two national parks, a full arc of desert landscapes, and enough time for a real hike or two if you want it.</p>
-          <a href="/" class="card-cta" data-analytics="card-combo8">Pick this tour &rarr;</a>
-        </div>
-      </article>
-
+<section class="arches-lead" aria-label="Arches National Park lead tour">
+  <div class="lead-inner">
+    <div class="lead-head">
+      <div class="lead-eyebrow">Most Booked · The Lead Tour</div>
+      <h2 class="lead-title">Start with Arches.</h2>
+      <p class="lead-sub">Pick a duration to see the touring styles available at that length. Every tour is private — just your group and a local guide. Up to 8 travelers.</p>
     </div>
-    <div style="margin-top:40px"><a href="tours.html" class="btn-ghost" style="color:var(--canyon);border-color:var(--canyon)" data-analytics="tours-all">See all 9 tour options &rarr;</a></div>
+
+    <article class="tour" data-tour="arches-alt">
+      <div class="tour-visual">
+        <div class="profile">
+          <img class="tour-img" loading="lazy" src="../tour_pics/arches.jpg" alt="Delicate Arch silhouette at sunrise in Arches National Park">
+        </div>
+      </div>
+      <div class="tour-detail">
+        <div class="al-sub">Arches National Park</div>
+        <h3 class="al-title-row"><span class="bb-title-box" id="alTitle">Highlights | Half Day Tour</span> <span class="pop-tag">Most Popular!</span></h3>
+        <p class="al-desc" id="alDesc">Select a duration to see available touring styles, then pick the one that suits you best.</p>
+
+        <div class="dur-row">
+          <div class="ctrl-labeled">
+            <span class="ctrl-label">Tour Length</span>
+            <div class="duration-group" id="alDurGroup">
+              <button class="dc on" data-hrs="4" type="button">4 hr</button>
+              <button class="dc" data-hrs="6" type="button">6 hr</button>
+              <button class="dc" data-hrs="8" type="button">8 hr</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="alt-styles" id="alStyles">
+          <!-- Half Day (4hr) -->
+          <div class="alt-dur-group" data-dur="4">
+            <div class="alt-dur-label">Half Day Tour (~4 hrs)</div>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=highlights4" data-analytics="lead-highlights4">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Highlights | Half Day Tour</span>
+              <span class="alt-style-tag rec">Recommended</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=delicate4" data-analytics="lead-delicate4">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Delicate Arch | Half Day Tour</span>
+              <span class="alt-style-tag note">Sunrise / Night Only</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+          <!-- Extended Half Day (6hr) -->
+          <div class="alt-dur-group" data-dur="6" style="display:none">
+            <div class="alt-dur-label">Extended Half Day Tour (~6 hrs)</div>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=devils6" data-analytics="lead-devils6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Devil's Garden | Extended Half Day</span>
+              <span class="alt-style-tag">7+ mi loop</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=combo6" data-analytics="lead-combo6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Custom Combo | Extended Half Day</span>
+              <span class="alt-style-tag">Arches + Rock Art / Dino</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=hike6" data-analytics="lead-hike6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Hike Lovers | Extended Half Day</span>
+              <span class="alt-style-tag">2–3 hikes + highlights</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=deadhorse6" data-analytics="lead-deadhorse6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Arches + Dead Horse | Extended Half Day</span>
+              <span class="alt-style-tag">Two destinations</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+          <!-- Full Day (8hr) -->
+          <div class="alt-dur-group" data-dur="8" style="display:none">
+            <div class="alt-dur-label">Full Day Tour (~8 hrs)</div>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=combo8" data-analytics="lead-combo8">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Custom Combo | Full Day Tour</span>
+              <span class="alt-style-tag">Arches + Best of Moab</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=mega8" data-analytics="lead-mega8">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">All You Can Arches | Full Day</span>
+              <span class="alt-style-tag">Max energy · rare pick</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="/?tour=arches&amp;variant=canyonlands8" data-analytics="lead-canyonlands8">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Arches + Canyonlands | Full Day</span>
+              <span class="alt-style-tag">Two parks · scenic driving</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="lead-foot">
+      <a href="tours.html" class="all-tours" data-analytics="lead-all-tours">See all 12 tours &rarr;</a>
+      <a href="planning.html" class="plan-trip" data-analytics="lead-plan-trip">Plan your trip &rarr;</a>
+    </div>
   </div>
 </section>
+
+<script>
+  // V2 Arches lead — duration toggle (single-select for cleaner UX on marketing page)
+  (function(){
+    var grp=document.getElementById('alDurGroup');
+    if(!grp)return;
+    var titles={4:'Highlights | Half Day Tour',6:'Custom Combo | Extended Half Day',8:'Custom Combo | Full Day Tour'};
+    var descs={
+      4:'Half-day touring options. The iconic Windows, Balanced Rock, Delicate Arch — pick a route.',
+      6:'Extended half-day options. More miles, more arches, or pair Arches with a second destination.',
+      8:'Full-day options. Two parks in a day or a deep dive on a single one — your call.'
+    };
+    grp.addEventListener('click',function(e){
+      var b=e.target.closest('.dc');if(!b)return;
+      grp.querySelectorAll('.dc').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      var h=b.getAttribute('data-hrs');
+      document.querySelectorAll('#alStyles .alt-dur-group').forEach(function(g){
+        g.style.display=(g.getAttribute('data-dur')===h)?'':'none';
+      });
+      var t=document.getElementById('alTitle');var d=document.getElementById('alDesc');
+      if(t&&titles[h])t.textContent=titles[h];
+      if(d&&descs[h])d.textContent=descs[h];
+      if(window.dataLayer){window.dataLayer.push({event:'lead_dur_toggle',dur_hours:h})}
+    });
+  })();
+</script>
 
 <section class="features">
   <div class="container text-center">
