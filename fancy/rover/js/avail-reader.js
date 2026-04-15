@@ -24,7 +24,8 @@
 (function (global) {
   'use strict';
 
-  const DEFAULT_FIXTURE_URL = '/rover/fixtures/avail-governance-mock.json';
+  // Relative to the page loading this module (typically /rover/ or /fancy/rover/)
+  const DEFAULT_FIXTURE_URL = 'fixtures/avail-governance-mock.json';
 
   let state = {
     ready: false,

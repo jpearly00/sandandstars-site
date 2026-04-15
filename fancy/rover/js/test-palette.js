@@ -26,7 +26,8 @@
   'use strict';
 
   const PALETTE_PARAM = 'palette';
-  const FIXTURE_URL = '/rover/fixtures/mock-carts.json';
+  // Relative to the page loading this module
+  const FIXTURE_URL = 'fixtures/mock-carts.json';
 
   function qsFlag(name) {
     try {
