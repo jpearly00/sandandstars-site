@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Pricing. Sand &amp; Stars Touring</title>
-<meta name="description" content="Private tour pricing for Sand & Stars Touring. Half-day, full-day, and bespoke multi-day expeditions. Quoted personally, everything included.">
+<meta name="description" content="Sand & Stars Touring pricelist. Half-day, extended half-day, and full-day private tours. Bespoke multi-day quoted per trip. Everything included.">
 <link rel="canonical" href="https://book.sandandstars.com/fancy/pricing.html">
 <meta property="og:title" content="Pricing. Sand &amp; Stars Touring">
-<meta property="og:description" content="Private tour pricing for Sand & Stars Touring. Half-day, full-day, and bespoke multi-day expeditions. Quoted personally, everything included.">
+<meta property="og:description" content="Sand & Stars Touring pricelist. Half-day, extended half-day, and full-day private tours. Bespoke multi-day quoted per trip. Everything included.">
 <meta property="og:image" content="https://book.sandandstars.com/fancy/assets/og.jpg">
 <meta property="og:url" content="https://book.sandandstars.com/fancy/pricing.html">
 <meta property="og:type" content="website">
@@ -63,9 +63,6 @@
   .prose p{font-size:16.5px;line-height:1.75;color:rgba(26,21,16,0.82);margin-bottom:18px}
   .prose ul{margin:12px 0 20px 24px;color:rgba(26,21,16,0.82)}
   .prose ul li{margin-bottom:8px;line-height:1.7}
-  .pullquote{border-left:3px solid var(--ember);padding:8px 0 8px 24px;margin:36px 0;font-family:'Fraunces',serif;font-size:22px;line-height:1.45;color:var(--ink);font-style:italic}
-  .placeholder-note{background:var(--sand);border-left:3px solid var(--canyon);padding:18px 22px;margin:24px 0;font-size:14.5px;color:rgba(26,21,16,0.75);border-radius:var(--radius-sm);font-style:italic}
-  .placeholder-note strong{font-style:normal;color:var(--canyon);font-weight:600;letter-spacing:0.08em;font-size:12px;text-transform:uppercase;display:block;margin-bottom:6px}
   .dark-band{background:var(--slate);color:var(--paper)}
   .dark-band h2{color:var(--paper)}.dark-band .eyebrow{color:var(--ember)}
   .dark-band .prose p{color:var(--muted)}
@@ -73,11 +70,30 @@
   .card{padding:24px;background:var(--paper);border-radius:var(--radius);border:1px solid rgba(26,21,16,0.08)}
   .card h3{font-size:20px;font-weight:500;margin-bottom:10px}
   .card p{font-size:15px;line-height:1.65;color:rgba(26,21,16,0.75)}
-  .card .num{display:inline-block;font-family:'Fraunces',serif;color:var(--canyon);font-size:14px;font-weight:600;letter-spacing:0.12em;margin-bottom:14px}
   .dark-band .card{background:transparent;border-color:rgba(245,240,235,0.08)}
   .dark-band .card h3{color:var(--paper)}
   .dark-band .card p{color:var(--muted)}
   .sand-band{background:var(--sand)}
+  .pricelist{display:grid;grid-template-columns:1fr;gap:22px;margin:8px 0 4px}
+  .tier-card{background:var(--paper);border-radius:var(--radius);padding:28px 26px;border:1px solid rgba(26,21,16,0.10)}
+  .tier-card .tour-name{font-size:clamp(22px,3vw,28px);font-weight:400;margin-bottom:4px}
+  .tier-card .tour-name em{font-style:italic;color:var(--canyon)}
+  .tier-card .tour-dur{color:rgba(26,21,16,0.62);font-size:13.5px;margin-bottom:20px;letter-spacing:0.03em;text-transform:uppercase;font-weight:600}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .tier{background:var(--sand);border-radius:var(--radius-sm);padding:18px 14px;text-align:center}
+  .tier .group{font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--canyon);margin-bottom:8px}
+  .tier .price{font-family:'Fraunces',serif;font-size:24px;color:var(--ink);line-height:1.15}
+  .tier .price small{font-family:'Inter',sans-serif;font-size:12px;color:rgba(26,21,16,0.62);font-weight:500;letter-spacing:0.02em;display:block;margin-top:4px}
+  @media (max-width:640px){
+    .tier-grid{grid-template-columns:1fr;gap:8px}
+    .tier{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:14px 16px}
+    .tier .group{margin-bottom:0}
+    .tier .price{font-size:20px}
+    .tier .price small{display:inline;margin-top:0;margin-left:6px}
+  }
+  .price-note{font-size:14.5px;color:rgba(26,21,16,0.70);margin:26px auto 0;font-style:italic;text-align:center;max-width:640px}
+  .price-addon{background:var(--paper);border-left:3px solid var(--canyon);padding:16px 20px;margin:24px auto 0;font-size:15px;color:rgba(26,21,16,0.80);border-radius:var(--radius-sm);max-width:640px}
+  .price-addon strong{color:var(--canyon);font-weight:600}
   .mighty5-ribbon{background:var(--slate);color:var(--paper);padding:36px 24px;text-align:center}
   .mighty5-ribbon .inner{max-width:820px;margin:0 auto}
   .mighty5-ribbon .eyebrow{color:var(--ember);font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
@@ -131,69 +147,86 @@
 <section class="page-hero">
   <div class="page-hero-inner">
     <div class="eyebrow">Pricing</div>
-    <h1>Honest pricing, <em>personally quoted.</em></h1>
-    <p>Private tours priced per person, quoted per trip. Here is how it works and what is always included.</p>
-  </div>
-</section>
-
-<section>
-  <div class="container prose">
-    <p class="lead">Our tours are private by default, priced per person, and shaped to the group and the day. Rather than publish a dense matrix of numbers, we quote each trip so the price reflects what it actually is. Not what a generic booking engine guesses it should be.</p>
-    <p>Here's the honest version of how pricing works, what's included, and roughly what to expect.</p>
+    <h1>Our <em>pricelist.</em></h1>
   </div>
 </section>
 
 <section class="sand-band">
-  <div class="container prose">
-    <div class="eyebrow">The Short Version</div>
-    <h2 class="section-title">Three tour formats, personalized pricing</h2>
-    <p>We run <strong>Half-Day Tours</strong> (roughly 4-5 hours), <strong>Full-Day Tours</strong> (roughly 8-10 hours), and <strong>Bespoke Expeditions</strong> (multi-day, fully custom, including the Mighty 5 and wider Grand Circle).</p>
-    <p>Each format has a base per-person rate. That rate goes down as group size grows, because our costs don't scale one-for-one with headcount. A group of six pays less per person than a group of two.</p>
-    <p>Peak-season dates (March-May, September-October) run slightly higher than shoulder and off-season. Special one-off dates. Sunrise-to-sunset Arches, photography-focused itineraries, multi-park combos. Are quoted case by case.</p>
+  <div class="container">
+    <div class="pricelist">
+
+      <div class="tier-card">
+        <h3 class="tour-name">Half-Day Tour</h3>
+        <div class="tour-dur">Roughly 4 hours</div>
+        <div class="tier-grid">
+          <div class="tier"><div class="group">1-2 Guests</div><div class="price">$575</div></div>
+          <div class="tier"><div class="group">3-4 Guests</div><div class="price">$675</div></div>
+          <div class="tier"><div class="group">5+ Guests</div><div class="price">$675<small>+ $100 per guest over 4</small></div></div>
+        </div>
+      </div>
+
+      <div class="tier-card">
+        <h3 class="tour-name">Extended Half-Day</h3>
+        <div class="tour-dur">Roughly 6 hours</div>
+        <div class="tier-grid">
+          <div class="tier"><div class="group">1-2 Guests</div><div class="price">$850</div></div>
+          <div class="tier"><div class="group">3-4 Guests</div><div class="price">$975</div></div>
+          <div class="tier"><div class="group">5+ Guests</div><div class="price">$975<small>+ $125 per guest over 4</small></div></div>
+        </div>
+      </div>
+
+      <div class="tier-card">
+        <h3 class="tour-name">Full-Day Tour</h3>
+        <div class="tour-dur">Roughly 8-10 hours, lunch included</div>
+        <div class="tier-grid">
+          <div class="tier"><div class="group">1-2 Guests</div><div class="price">$1,125</div></div>
+          <div class="tier"><div class="group">3-4 Guests</div><div class="price">$1,275</div></div>
+          <div class="tier"><div class="group">5+ Guests</div><div class="price">$1,275<small>+ $150 per guest over 4</small></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="price-note">Tier price is the total for your group. What you see here is what you pay.</p>
+
+    <div class="price-addon">
+      <strong>Picnic lunch add-on</strong> for half-day and extended half-day: $30 per guest, pre-order. Already included on full-day tours.
+    </div>
+
   </div>
 </section>
 
 <section>
   <div class="container-wide">
     <div class="eyebrow" style="text-align:center">What's Always Included</div>
-    <h2 class="section-title" style="text-align:center">The price is the price</h2>
+    <h2 class="section-title" style="text-align:center">Everything in the tier price</h2>
     <div class="grid-3">
-      <div class="card"><h3>Door-to-door transport</h3><p>We pick you up and drop you off at your lodging in the Moab area. No meeting points, no parking lots.</p></div>
-      <div class="card"><h3>Park entry &amp; permit fees</h3><p>Arches, Canyonlands, Dead Horse Point, BLM. All covered. You don't pay anything at the gate.</p></div>
-      <div class="card"><h3>Snacks &amp; cold drinks</h3><p>Water, sparkling water, sodas, real snacks. Picnic lunch included on every full-day tour.</p></div>
-      <div class="card"><h3>Digital photo album</h3><p>Your guide captures the day. You get a shareable gallery after the tour. No phone juggling, no bad selfies.</p></div>
+      <div class="card"><h3>Door-to-door transport</h3><p>We pick you up and drop you off at your lodging in the Moab area.</p></div>
+      <div class="card"><h3>Park entry &amp; permit fees</h3><p>Arches, Canyonlands, Dead Horse Point, BLM. All covered at the gate.</p></div>
+      <div class="card"><h3>Snacks &amp; cold drinks</h3><p>Water, sparkling water, sodas, real snacks. Full-day tours include a picnic lunch.</p></div>
+      <div class="card"><h3>Digital photo album</h3><p>Your guide captures the day. You get a shareable gallery after the tour.</p></div>
       <div class="card"><h3>Local expert guide</h3><p>Our guides live in Moab year-round and carry current Wilderness First Aid certifications.</p></div>
-      <div class="card"><h3>All the gear</h3><p>Optical binoculars, trekking poles if you want them, first aid, shade canopy. Nothing to buy or bring beyond your own clothes.</p></div>
+      <div class="card"><h3>All the gear</h3><p>Optical binoculars, trekking poles if you want them, first aid, shade canopy. Show up in your own clothes.</p></div>
     </div>
   </div>
 </section>
 
 <section class="dark-band">
   <div class="container prose">
-    <div class="eyebrow">What Affects Your Quote</div>
-    <h2 class="section-title">Why we don't publish a price list</h2>
-    <p>Group size, season, tour length, pickup location, whether the day is a straight park tour or a bespoke build with specific destinations. These all move the number. Two couples booking the same Arches half-day at the same rate doesn't make sense if one is doing 9am-1pm and the other is doing sunrise-to-late-morning with a photography focus.</p>
-    <p>Rather than force everyone into the same box so we can post a tidy table, we quote each tour personally. Send dates, group size, and roughly what's catching your eye, and we come back with a quote and a plan. The quote is flat. What you're quoted is what you pay. No checkout-time fees, no fuel surcharges, no tip line assumed into the total.</p>
-    <p>If you want a rough order-of-magnitude before you reach out, ask. We'll give you a range on the spot.</p>
+    <div class="eyebrow">Bespoke &amp; Multi-Day</div>
+    <h2 class="section-title">Quoted per trip</h2>
+    <p>Our Bespoke Expeditions are custom multi-day itineraries. A two-day Arches and Canyonlands combo, a five-day Mighty 5 loop through Zion, Bryce, Capitol Reef, Arches, and Canyonlands, or a full Grand Circle expedition that adds the Grand Canyon and northern Arizona.</p>
+    <p>Bespoke pricing is quoted per trip. Logistics, lodging coordination, meals, permits, guides, photography. Ballpark: <strong>$2,000 and up per day</strong>, depending on scope and group size. Send what you're dreaming up and we'll come back with a proposal and a flat number.</p>
+    <p>See the <a href="bespoke.html">Bespoke page</a> for the full scope, or <a href="contact.html">send a note</a> and we'll design it.</p>
   </div>
 </section>
 
 <section class="sand-band">
   <div class="container prose">
-    <div class="eyebrow">Bespoke &amp; Multi-Day</div>
-    <h2 class="section-title">The full-expedition tier</h2>
-    <p>Our Bespoke Expeditions are the most flexible and most personal tier. Multi-day itineraries. Sometimes a two-day Arches and Canyonlands combo, sometimes a five-day Mighty 5 loop through Zion, Bryce, Capitol Reef, Arches, and Canyonlands, sometimes a Grand Circle expedition that adds the Grand Canyon and northern Arizona.</p>
-    <p>Bespoke pricing is quoted per trip, not per day. These are the bookings we put the most planning into. Logistics, lodging coordination, meals, permits, guides, photography. So the only thing left for the guest is to show up. Highest-ticket bookings, deepest planning.</p>
-    <p>If that's the kind of trip in front of you, see the <a href="bespoke.html">Bespoke page</a> for the full scope, or <a href="contact.html">send a note about what you're dreaming up</a> and we'll come back with a proposal.</p>
-  </div>
-</section>
-
-<section>
-  <div class="container prose">
     <div class="eyebrow">Booking &amp; Payment</div>
     <h2 class="section-title">How it works</h2>
-    <p>Once your quote is confirmed, a deposit holds the date. The balance is due a few days before the tour. We accept cards, ACH, and wire for larger bookings. You'll receive a clear invoice and confirmation, not a vague email with a link.</p>
-    <p>Cancellation terms are on the invoice and are among the friendlier ones in the industry. We know trips get rearranged. Weather days are never penalized; we reschedule or refund in full.</p>
+    <p>Once your tour is confirmed, a deposit holds the date. The balance is due a few days before the tour. We accept cards, ACH, and wire for larger bookings. You receive a clear invoice and confirmation.</p>
+    <p>Cancellation terms are on the invoice and are among the friendlier ones in the industry. Weather days are rescheduled or refunded in full.</p>
   </div>
 </section>
 
@@ -208,9 +241,9 @@
 </section>
 
 <section class="cta-band">
-  <h2>Ready for a real quote?</h2>
-  <p>Send dates, group size, and anything you want flagged. We come back with a plan and a number, usually same day.</p>
-  <a href="contact.html" class="btn-primary" data-analytics="pricing-ctaband">Request A Quote</a>
+  <h2>Ready to book?</h2>
+  <p>Send dates, group size, and anything you want flagged. We come back with a plan, usually same day.</p>
+  <a href="contact.html" class="btn-primary" data-analytics="pricing-ctaband">Request A Tour</a>
 </section>
 </main>
 
