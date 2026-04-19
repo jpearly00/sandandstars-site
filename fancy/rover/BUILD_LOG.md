@@ -17,6 +17,14 @@ TYPE enum: ADD | MOD | DEL | FIX | TEST | BUILD | REVERT
 
 ---
 
+## 2026-04-15 17:32 MST — FIX — Relative fixture URLs (fancy/ prefix safe)
+- FILE(S):
+  - `fancy/rover/js/avail-reader.js`
+  - `fancy/rover/js/test-palette.js`
+- WHAT: Swapped absolute `/rover/fixtures/...` URLs to relative `fixtures/...`
+- WHY: GitHub Pages serves live site at `https://book.sandandstars.com/fancy/rover/` (repo root = site root). Absolute paths resolved outside the `/fancy/` subtree and 404'd. Relative paths work at both `/fancy/rover/` (current) and `/rover/` (future apex cutover).
+- STATUS: SHIPPED (commit 96666d1)
+
 ## 2026-04-15 17:26 MST — ADD — Phase 0 scaffold initialized
 - FILE(S):
   - `fancy/rover/index.html` (new)
