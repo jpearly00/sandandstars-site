@@ -1,0 +1,29 @@
+Sand & Stars gallery images — downloaded from sandandstars.com Wix media
+Source: https://static.wixstatic.com/media/{wix-id}
+
+g01.jpg  <-  109211_0209140ce99046ebb05c197cec6f72bf~mv2.jpg
+g02.jpg  <-  109211_0cff91ad07a24febb7c610870aa8328a~mv2.jpg
+g03.jpg  <-  109211_210aa41999d344ed875fbf33cbade02f~mv2.jpeg
+g04.jpg  <-  109211_2f15db3eb9a445b696419e37fe1da390~mv2.jpg
+g05.jpg  <-  109211_3a8fa4cc4b284c4eb8ef2908e3123df3~mv2.jpeg
+g06.jpg  <-  109211_426370d559d64f0ca62c202577a88299~mv2.jpg
+g07.jpg  <-  109211_4a8452a6ac664f3594901f918b965850~mv2.jpeg
+g08.jpg  <-  109211_584e53f446344e35957f29baf536fc5f~mv2.jpg
+g09.jpg  <-  109211_649013b00ebf415ab0a1fa4cc41c78bf~mv2.jpg
+g10.jpg  <-  109211_73c89bef4030452baee8220ca7c29e53~mv2.jpg
+g11.jpg  <-  109211_7a0e2b380279437da4e05027a9348c21~mv2.jpg
+g12.jpg  <-  109211_83b3907681c74b7bbe191985cdd83d16~mv2.jpeg
+g13.jpg  <-  109211_96444a1584874dbd922cc4c1575593ab~mv2.jpg
+g14.jpg  <-  109211_9b36af6b6ad148e4abc28172e05f97fe~mv2.jpg
+g15.jpg  <-  109211_b4214ae15abd418c88a05d431438dc5c~mv2.jpeg
+g16.jpg  <-  109211_bf8b60dac3084542919f1724f8b0c88b~mv2.jpeg
+g17.jpg  <-  109211_cc2a553234d24092b3f918aff206b82c~mv2.jpg
+g18.jpg  <-  109211_cec61a33076a4415925806f38bba45b3~mv2.jpg
+g19.jpg  <-  109211_d0878521f3c4469991d73717fd73604a~mv2.jpeg
+g20.jpg  <-  109211_ecef55a9dfed4165945d813644114666~mv2.jpg
+g21.jpg  <-  109211_fefe9438023a40979325ddbc1980267f~mv2.jpg
+g22.jpg  <-  33229d_69b1bc6dd3b14c8394b2b1ad85add3c6~mv2.jpg
+g23.jpg  <-  33229d_73bdb4b8f38848b99c827dd17308986f~mv2.jpg
+g24.jpg  <-  33229d_86f6f7b5f86740afb6aafa02f3bfe4fb~mv2.jpg
+g25.jpg  <-  33229d_9ca34473b7ee4a98acd501b71f647483~mv2.jpg
+g26.jpg  <-  33229d_ed38a0b1f99b48e7a5a4bc147dbdd893~mv2.jpg
