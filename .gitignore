@@ -8,3 +8,5 @@ Thumbs.db
 node_modules/
 .env
 .env.local
+.fuse_hidden*
+_tour_pics_ss_legacy/

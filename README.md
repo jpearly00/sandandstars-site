@@ -48,7 +48,7 @@ arches, archescombo, castle, deadhorse, dino, isky, localgems, maze, mill, needl
 
 ## Known follow-ups
 
-- Mobile audit: BUG-1 rover, BUG-4 Arches Alt image grid, LAYOUT-1 hamburger nav, LAYOUT-2/3/4 touch targets, UX-1 through UX-5, SUG-1 through SUG-5. See `WORK/SST/LANES/LN_SS_SITE/WORKSETS/WSET_MOBILE_AUDIT_260411/HANDOFF_Mobile_Audit_v2_Browse.md`.
+- Mobile audit: BUG-1 rover, BUG-4 Arches Alt image grid, LAYOUT-1 hamburger nav, LAYOUT-2/3/4 touch targets, UX-1 through UX-5, SUG-1 through SUG-5. See `WORK/SS/LANES/LN_SS_SITE/WORKSETS/WSET_MOBILE_AUDIT_260411/HANDOFF_Mobile_Audit_v2_Browse.md`.
 - Wire Tour Hub GAS JSON endpoint for live pricing/availability.
 - Source real archescombo.jpg.
 - Phase 2: `booking.html`, `tours.html`, `about.html`, `contact.html`.

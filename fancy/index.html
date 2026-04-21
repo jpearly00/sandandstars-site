@@ -90,7 +90,7 @@
 
   /* Hero */
   .hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;color:var(--paper);background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background-image:url("../tour_pics/arches.jpg");background-size:cover;background-position:center;opacity:0.45;filter:saturate(1.05)}
+  .hero::before{content:"";position:absolute;inset:0;background-image:url("../tour_pics/arches.jpg");background-size:cover;background-position:center 28%;opacity:0.45;filter:saturate(1.05)}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,34,0.35) 0%,rgba(15,26,34,0.65) 100%)}
   .hero-inner{position:relative;z-index:2;max-width:900px;padding:48px 24px;text-align:center}
   .hero h1{color:var(--paper);font-size:clamp(44px,8vw,84px);line-height:0.98;margin-bottom:24px;font-weight:400}
@@ -134,7 +134,7 @@
   .ta-bug::before{content:"Ta"}
   .google-bug{width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,0.1);display:inline-flex;align-items:center;justify-content:center;flex:none;position:relative;overflow:hidden}
   .google-bug::before{content:"G";font-family:'Inter',sans-serif;font-weight:700;font-size:18px;background:linear-gradient(135deg,#4285F4 0%,#4285F4 30%,#EA4335 45%,#FBBC05 65%,#34A853 85%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:0}
-  .review-panel[data-carousel="google"]{border-top-color:#4285F4}
+  .review-panel[data-carousel="google"],.review-panel[data-source="google"]{border-top-color:#4285F4}
   .review-panel + .review-panel{margin-top:20px}
   .review-panel .brand-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.2}
   .review-panel .brand-name small{display:block;font-weight:400;color:rgba(26,21,16,0.6);font-size:12px;letter-spacing:0.04em;margin-top:2px}
@@ -142,6 +142,14 @@
   .review-panel .rating-block .stars{color:var(--ember);font-size:16px;letter-spacing:0.08em;margin:0}
   .review-panel .rating-block .score{font-weight:700;color:var(--ink)}
   .review-panel .see-all{color:var(--canyon);font-weight:600;font-size:13px;white-space:nowrap}
+  .see-all-group{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .see-all-group .see-all{display:inline-flex;align-items:center;gap:6px}
+  .rc-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,21,16,0.6);white-space:nowrap}
+  .rc-source .rc-source-dot{width:14px;height:14px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;font-size:8px;font-weight:800;font-family:'Inter',sans-serif}
+  .rc-source.rc-source-ta .rc-source-dot{background:#00AA6C;color:#fff}
+  .rc-source.rc-source-ta .rc-source-dot::before{content:"Ta"}
+  .rc-source.rc-source-google .rc-source-dot{background:#fff;border:1px solid rgba(0,0,0,0.12);position:relative;overflow:hidden}
+  .rc-source.rc-source-google .rc-source-dot::before{content:"G";font-family:'Inter',sans-serif;font-weight:800;font-size:9px;background:linear-gradient(135deg,#4285F4 0%,#4285F4 30%,#EA4335 45%,#FBBC05 65%,#34A853 85%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:0}
   .review-viewport{position:relative;min-height:240px;margin:20px 0 12px}
   .review-card{position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;padding:4px 2px}
   .review-card.is-active{opacity:1;transform:translateY(0);position:relative;pointer-events:auto}
@@ -161,8 +169,10 @@
   .review-dots button{width:8px;height:8px;padding:0;border-radius:50%;background:rgba(26,21,16,0.22);transition:background .2s,transform .2s}
   .review-dots button.is-active{background:var(--canyon);transform:scale(1.35)}
   .review-dots button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
-  .write-review-cta{text-align:center;margin-top:24px}
-  .write-review-cta a{display:inline-block;background:transparent;color:var(--canyon);border:1.5px solid var(--canyon);padding:12px 26px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:background .15s,color .15s}
+  .write-review-cta{text-align:center;margin-top:24px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0}
+  .write-review-cta .wr-lead{color:var(--muted);font-size:14px;margin-right:14px;font-weight:500}
+  .write-review-cta .wr-sep{color:rgba(26,21,16,0.3);margin:0 10px;display:inline-block;font-weight:400}
+  .write-review-cta a{display:inline-block;background:transparent;color:var(--canyon);border:1.5px solid var(--canyon);padding:11px 22px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:background .15s,color .15s}
   .write-review-cta a:hover{background:var(--canyon);color:var(--paper)}
   @media (max-width:640px){
     .review-panel{padding:22px 18px 16px;margin-top:24px}
@@ -170,6 +180,11 @@
     .review-panel .see-all{order:3;width:100%;text-align:right}
     .review-card .rc-title{font-size:18px}
     .review-card .rc-text{font-size:14.5px}
+    .see-all-group{order:3;width:100%;justify-content:flex-start;gap:10px}
+    .see-all-group .see-all{font-size:12px}
+    .write-review-cta{flex-direction:column;gap:10px}
+    .write-review-cta .wr-lead{margin-right:0}
+    .write-review-cta .wr-sep{display:none}
   }
 
   /* Feature strip */
@@ -291,7 +306,6 @@
         <li><a href="tours.html">Tours</a></li>
         <li><a href="bespoke.html">Bespoke</a></li>
         <li><a href="planning.html">Planning</a></li>
-        <li><a href="stories.html">Stories</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -306,8 +320,8 @@
 
 <section class="hero" aria-label="Hero">
   <div class="hero-inner">
-    <h1>Bespoke days in <em>Moab's canyon country.</em></h1>
-    <p class="sub">Private touring out of Arches, Canyonlands, and Dead Horse Point — built around your group, your dates, and what you actually want to see. Ground transport, snacks, lunch, park fees, and a digital photo album all included.</p>
+    <h1>For the best desert days, <em>and memories to last…</em></h1>
+    <p class="sub">Arches and Canyonlands National Parks, plus fantastic tours throughout Moab's backyard…</p>
     <div class="hero-ctas">
       <a href="/" class="btn-primary" data-analytics="hero-book">Plan a Day</a>
       <a href="tours.html" class="btn-ghost" data-analytics="hero-explore">See the 12 Tours</a>
@@ -485,41 +499,17 @@
     <h2 class="section-title">What guests are saying.</h2>
     <p class="section-sub">Real reviews pulled live from Google and TripAdvisor.</p>
 
-    <div class="review-panel" data-carousel="ta" data-interval="10000" data-offset="0" aria-label="TripAdvisor reviews for Sand and Stars Touring">
+    <div class="review-panel review-panel-combined" data-interval="10000" aria-label="Guest reviews from TripAdvisor and Google">
       <div class="panel-head">
         <div class="brand-block">
-          <span class="ta-bug" aria-hidden="true"></span>
-          <span class="brand-name">TripAdvisor<small>Sand &amp; Stars Touring · Moab, UT</small></span>
+          <span class="source-bug ta-bug" aria-label="TripAdvisor"></span>
+          <span class="source-bug google-bug" aria-label="Google"></span>
+          <span class="brand-name">Sand &amp; Stars Touring<small>Moab, UT · 44 reviews · 5.0 ★</small></span>
         </div>
-        <div class="rating-block">
-          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <span><span class="score">100%</span> 5 stars</span>
+        <div class="see-all-group">
+          <a class="see-all" href="https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="reviews-see-all-ta">All on TripAdvisor →</a>
+          <a class="see-all" href="https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="reviews-see-all-google">All on Google →</a>
         </div>
-        <a class="see-all" href="https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-see-all">See all on TripAdvisor →</a>
-      </div>
-
-      <div class="review-viewport" aria-live="polite" aria-atomic="true"></div>
-
-      <div class="review-controls">
-        <div class="review-nav">
-          <button type="button" class="prev" aria-label="Previous review">‹</button>
-          <button type="button" class="next" aria-label="Next review">›</button>
-        </div>
-        <div class="review-dots" role="tablist" aria-label="Review selector"></div>
-      </div>
-    </div>
-
-    <div class="review-panel" data-carousel="google" data-interval="10000" data-offset="5000" aria-label="Google reviews for Sand and Stars Touring">
-      <div class="panel-head">
-        <div class="brand-block">
-          <span class="google-bug" aria-hidden="true"></span>
-          <span class="brand-name">Google<small>Sand &amp; Stars Touring · Moab, UT</small></span>
-        </div>
-        <div class="rating-block">
-          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <span><span class="score">100%</span> 5 stars</span>
-        </div>
-        <a class="see-all" href="https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-see-all">See all on Google →</a>
       </div>
 
       <div class="review-viewport" aria-live="polite" aria-atomic="true"></div>
@@ -534,8 +524,10 @@
     </div>
 
     <div class="write-review-cta">
-      <a href="https://www.tripadvisor.com/UserReviewEdit-g60724-d23631134-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-write-review">Write a review on TripAdvisor</a>
-      <a href="https://search.google.com/local/writereview?placeid=ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-write-review" style="margin-left:12px">Write a review on Google</a>
+      <span class="wr-lead">Had a great trip with us?</span>
+      <a href="https://www.tripadvisor.com/UserReviewEdit-g60724-d23631134-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-write-review">Write on TripAdvisor</a>
+      <span class="wr-sep">·</span>
+      <a href="https://search.google.com/local/writereview?placeid=ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-write-review">Write on Google</a>
     </div>
   </div>
 </section>
@@ -602,7 +594,7 @@
       <a href="tours.html">Tours</a>
       <a href="bespoke.html">Bespoke</a>
       <a href="gallery.html">Gallery</a>
-      <a href="stories.html">Stories</a>
+      
       <a href="about.html">About</a>
     </div>
     <div>
@@ -634,7 +626,8 @@
     if(window.dataLayer){window.dataLayer.push({event:'cta_click',cta_name:name,page:location.pathname})}
   });
 
-  // Reviews carousel — data-driven rotation (prev/next + dots + auto-rotate, pause on hover/focus)
+  // Reviews carousel — unified feed: merges TripAdvisor + Google, interleaves proportionally,
+  // tags each card with its source bug. Prev/next + dots + auto-rotate, pause on hover/focus.
   (function(){
     function escHTML(s){return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
     function renderCard(r){
@@ -642,35 +635,54 @@
       var byline='<span>'+escHTML(r.author)+'</span>';
       if(r.location){byline+='<span class="sep">·</span><span class="ctx">'+escHTML(r.location)+'</span>'}
       if(r.companion){byline+='<span class="sep">·</span><span class="ctx">'+escHTML(r.companion)+'</span>'}
-      return '<article class="review-card" role="group">'
+      var srcKey=r.__source==='google'?'google':'ta';
+      var srcLabel=srcKey==='google'?'Google':'TripAdvisor';
+      var srcBadge='<span class="rc-source rc-source-'+srcKey+'" aria-label="Review from '+srcLabel+'">'
+        +'<span class="rc-source-dot" aria-hidden="true"></span>'+srcLabel+'</span>';
+      return '<article class="review-card" role="group" data-source="'+srcKey+'">'
         +'<div class="rc-head"><span class="rc-stars" aria-label="'+r.rating+' out of 5 stars">'+stars+'</span>'
+        +srcBadge
         +'<span class="rc-date">'+escHTML(r.relative||'')+'</span></div>'
         +(r.title?'<h3 class="rc-title">'+escHTML(r.title)+'</h3>':'')
         +'<p class="rc-text">'+escHTML(r.text)+'</p>'
         +'<div class="rc-byline">'+byline+'</div>'
         +'</article>';
     }
-    function mount(panel){
-      var kind=panel.getAttribute('data-carousel');
-      var dataEl=document.getElementById('reviews-'+kind+'-data');
-      if(!dataEl)return;
-      var data;try{data=JSON.parse(dataEl.textContent)}catch(e){return}
-      var reviews=(data&&data.reviews)||[];
-      // Credibility filter: hide reviewers with only 1 total review (matches "1 review" or "1 review · ...")
-      reviews=reviews.filter(function(r){return !(r.location && /^1 review(\s|$|·)/i.test(r.location.trim()))});
-      if(!reviews.length)return;
+    function filterReviews(data){
+      var r=(data&&data.reviews)||[];
+      return r.filter(function(rv){return !(rv.location && /^1 review(\s|$|·)/i.test(rv.location.trim()))});
+    }
+    function tag(list,key){return list.map(function(rv){var c={};for(var k in rv){c[k]=rv[k]}c.__source=key;return c})}
+    // Proportional interleave: preserves within-source order, spaces reviews so the
+    // smaller source is distributed evenly across the larger one.
+    function interleave(a,b){
+      var out=[],i=0,j=0,la=a.length,lb=b.length,total=la+lb;
+      if(!total)return out;
+      for(var n=0;n<total;n++){
+        // target fraction of a's consumed so far
+        var targetA=(n+1)*la/total;
+        if(i<la && (j>=lb || (i+1)<=targetA)){out.push(a[i++])}
+        else if(j<lb){out.push(b[j++])}
+        else if(i<la){out.push(a[i++])}
+      }
+      return out;
+    }
+    function mountCombined(panel){
+      var taEl=document.getElementById('reviews-ta-data');
+      var gEl=document.getElementById('reviews-google-data');
+      if(!taEl||!gEl)return;
+      var ta,google;
+      try{ta=JSON.parse(taEl.textContent)}catch(e){return}
+      try{google=JSON.parse(gEl.textContent)}catch(e){return}
       var viewport=panel.querySelector('.review-viewport');
       var dotsWrap=panel.querySelector('.review-dots');
       var prev=panel.querySelector('.prev');
       var next=panel.querySelector('.next');
-      viewport.innerHTML=reviews.map(renderCard).join('');
-      dotsWrap.innerHTML=reviews.map(function(_,i){return '<button type="button" role="tab" aria-label="Review '+(i+1)+' of '+reviews.length+'" data-idx="'+i+'"></button>'}).join('');
-      var cards=viewport.querySelectorAll('.review-card');
-      var dots=dotsWrap.querySelectorAll('button');
       var idx=0,paused=false,timer=null;
       var interval=parseInt(panel.getAttribute('data-interval')||'10000',10);
-      var offset=parseInt(panel.getAttribute('data-offset')||'0',10);
+      var cards,dots,reviews;
       function show(n){
+        if(!reviews||!reviews.length)return;
         idx=(n+reviews.length)%reviews.length;
         cards.forEach(function(c,i){c.classList.toggle('is-active',i===idx)});
         dots.forEach(function(d,i){d.classList.toggle('is-active',i===idx);d.setAttribute('aria-selected',i===idx?'true':'false')});
@@ -678,6 +690,15 @@
       function advance(){if(!paused)show(idx+1)}
       function start(){stop();timer=setInterval(advance,interval)}
       function stop(){if(timer){clearInterval(timer);timer=null}}
+      var taList=tag(filterReviews(ta),'ta');
+      var gList=tag(filterReviews(google),'google');
+      // Larger source first so fractional distribution keeps pairs spaced evenly.
+      reviews=taList.length>=gList.length?interleave(taList,gList):interleave(gList,taList);
+      if(!reviews.length){viewport.innerHTML='<p style="text-align:center;padding:40px 20px;color:var(--muted)">No reviews to display.</p>';return}
+      viewport.innerHTML=reviews.map(renderCard).join('');
+      dotsWrap.innerHTML=reviews.map(function(r,i){return '<button type="button" role="tab" aria-label="Review '+(i+1)+' of '+reviews.length+' ('+(r.__source==='google'?'Google':'TripAdvisor')+')" data-idx="'+i+'"></button>'}).join('');
+      cards=viewport.querySelectorAll('.review-card');
+      dots=dotsWrap.querySelectorAll('button');
       prev.addEventListener('click',function(){show(idx-1);start()});
       next.addEventListener('click',function(){show(idx+1);start()});
       dotsWrap.addEventListener('click',function(e){var b=e.target.closest('button[data-idx]');if(!b)return;show(parseInt(b.getAttribute('data-idx'),10));start()});
@@ -686,9 +707,9 @@
       panel.addEventListener('focusin',function(){paused=true});
       panel.addEventListener('focusout',function(){paused=false});
       show(0);
-      setTimeout(start,Math.max(0,offset));
+      setTimeout(start,0);
     }
-    document.querySelectorAll('[data-carousel]').forEach(mount);
+    document.querySelectorAll('.review-panel-combined').forEach(mountCombined);
   })();
 </script>
 </body>
