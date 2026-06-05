@@ -115,7 +115,7 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
-    <a href="https://book.sandandstars.com/" class="nav-cta">Book a Tour</a>
+    <a href="book.html" class="nav-cta">Book a Tour</a>
     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="var m=document.getElementById('navmenu');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'))">&#9776;</button>
   </div>
 </header>
@@ -162,7 +162,7 @@
 
       <div class="channel">
         <div class="label">Ready to Book?</div>
-        <div class="value"><a href="https://book.sandandstars.com/" data-analytics="contact-book-link">Skip the form &rarr;</a></div>
+        <div class="value"><a href="book.html" data-analytics="contact-book-link">Skip the form &rarr;</a></div>
         <div class="note">See pricing, pick a date, lock it in. About 60 seconds.</div>
       </div>
     </div>
@@ -222,7 +222,7 @@
         <button type="submit" class="submit-btn" data-analytics="contact-submit">Send Request</button>
         <p class="form-note">Send Request. Usually a reply from our team within a few hours.</p>
       </form>
-      <div id="cf-success" class="success-msg">Thanks. Your request is in. We'll reply by email shortly.</div>
+      <div id="cf-success" class="success-msg">Your email is opening with the details filled in. Just hit send. Prefer to skip it? Text or call us at (435) 260-8260. We reply fast.</div>
     </div>
   </div>
 </section>
@@ -248,7 +248,7 @@
       <p><a href="tel:+14352608260">(435) 260-8260</a></p>
     </div>
     <div><h4>Explore</h4><a href="./">Home</a><a href="tours.html">Tours</a><a href="bespoke.html">Bespoke</a><a href="gallery.html">Gallery</a><a href="about.html">About</a></div>
-    <div><h4>Help</h4><a href="planning.html">Trip Planning</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="https://book.sandandstars.com/">Book a Tour</a></div>
+    <div><h4>Help</h4><a href="planning.html">Trip Planning</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="book.html">Book a Tour</a></div>
     <div><h4>Based In</h4><p style="color:var(--muted)">Moab, Utah<br>Gateway to Arches &amp;<br>Canyonlands</p></div>
   </div>
   <div class="foot-bottom">
@@ -262,10 +262,20 @@
     ev.preventDefault();
     var f=ev.target, name=f.name.value.trim(), email=f.email.value.trim(), msg=f.message.value.trim();
     if(!name||!email||!msg){alert('Please fill in name, email, and your message.');return false;}
-    // PLACEHOLDER: wire to GAS endpoint / tours@ inbox forward
     if(window.dataLayer){window.dataLayer.push({event:'contact_submit',group_size:f.group_size.value,length:f.length.value})}
+    // Interim delivery while self-booking/backend is in maintenance: build a prefilled
+    // email to tours@ so the lead actually reaches us (no silent loss). Phone/text fallback shown.
+    var subj=encodeURIComponent('Tour inquiry — '+name);
+    var body=encodeURIComponent(
+      'Name: '+name+'\n'+
+      'Email: '+email+'\n'+
+      'Phone: '+((f.phone&&f.phone.value.trim())||'—')+'\n'+
+      'Group size: '+((f.group_size&&f.group_size.value)||'—')+'\n'+
+      'Preferred date: '+((f.date&&f.date.value)||'—')+'\n'+
+      'Tour length: '+((f.length&&f.length.value)||'—')+'\n\n'+
+      msg);
+    window.location.href='mailto:tours@sandandstars.com?subject='+subj+'&body='+body;
     document.getElementById('cf-success').classList.add('show');
-    f.reset();
     document.getElementById('cf-success').scrollIntoView({behavior:'smooth',block:'center'});
     return false;
   }
