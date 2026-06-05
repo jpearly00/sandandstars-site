@@ -1,26 +1,717 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Sand & Stars Touring</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,follow">
-<link rel="canonical" href="https://book.sandandstars.com/fancy/">
-<meta http-equiv="refresh" content="0; url=/fancy/">
-<script>location.replace('/fancy/' + (location.search || '') + (location.hash || ''));</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Private Moab Tours — Sand &amp; Stars Touring</title>
+<meta name="description" content="Bespoke private tours of Arches, Canyonlands, Dead Horse Point and the deserts around Moab, Utah. Small groups, local guides, unforgettable days.">
+<link rel="canonical" href="https://sandandstars.com/">
+<meta property="og:title" content="Private Moab Tours — Sand &amp; Stars Touring">
+<meta property="og:description" content="Bespoke private desert tours from Moab, Utah. Arches, Canyonlands, Dead Horse Point — tailored to your group, led by locals.">
+<meta property="og:image" content="https://sandandstars.com/assets/og.jpg">
+<meta property="og:url" content="https://sandandstars.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) — GA4 sandandstars.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "@id":"https://sandandstars.com/#business",
+  "name":"Sand & Stars Touring",
+  "image":"https://sandandstars.com/assets/og.jpg",
+  "url":"https://sandandstars.com/",
+  "telephone":"+14352608260",
+  "email":"tours@sandandstars.com",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","addressLocality":"Moab","addressRegion":"UT","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":38.5733,"longitude":-109.5498},
+  "areaServed":[{"@type":"Place","name":"Arches National Park"},{"@type":"Place","name":"Canyonlands National Park"},{"@type":"Place","name":"Dead Horse Point State Park"}],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"39","bestRating":"5","worstRating":"1"},
+  "sameAs":["https://www.sandandstars.com/","https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html"]
+}
+</script>
 <style>
-  html,body{margin:0;padding:0;background:#5c7888;color:#eef2f4;font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:300;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center}
-  .wrap{padding:2rem;max-width:480px}
-  h1{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:2rem;margin:0 0 1rem;letter-spacing:-0.02em}
-  p{margin:0 0 1.5rem;line-height:1.6;opacity:0.85}
-  a{color:#e89866;text-decoration:underline;text-underline-offset:3px}
+  :root{
+    --slate:#1e293b;
+    --slate-deep:#0f1a22;
+    --ember:#e89866;
+    --canyon:#c2703e;
+    --paper:#f5f0eb;
+    --sand:#efe6d9;
+    --ink:#1a1510;
+    --muted:rgba(245,240,235,0.72);
+    --line:rgba(245,240,235,0.14);
+    --line-ink:rgba(26,21,16,0.12);
+    --radius:12px;
+    --radius-sm:8px;
+    --pill:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  h1,h2,h3,h4,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.015em;line-height:1.1;color:var(--ink)}
+  a{color:var(--canyon);text-decoration:none;transition:color .15s}
+  a:hover{color:var(--ember)}
+  button{font-family:inherit;cursor:pointer;border:none}
+
+  /* Skip to content (a11y) */
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:var(--radius-sm);z-index:999}
+  .skip:focus{left:12px;top:12px}
+
+  /* Nav */
+  header.nav{position:sticky;top:0;background:var(--slate);color:var(--paper);z-index:100;border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{font-family:'Fraunces',serif;font-size:22px;letter-spacing:0.04em;color:var(--paper)}
+  .brand b{font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:14px;margin-right:6px}
+  .brand i{font-style:italic;font-weight:400}
+  nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+  nav a{color:var(--paper);font-size:14px;font-weight:500;letter-spacing:0.03em;padding:6px 2px;border-bottom:2px solid transparent;transition:border-color .2s,color .15s}
+  nav a:hover,nav a.active{color:var(--ember);border-bottom-color:var(--ember)}
+  .nav-cta{background:var(--ember);color:var(--ink);padding:10px 20px;border-radius:var(--pill);font-weight:600;font-size:14px;transition:background .15s}
+  .nav-cta:hover{background:var(--canyon);color:var(--paper)}
+  .hamburger{display:none;background:none;color:var(--paper);font-size:24px;padding:6px 10px;border-radius:var(--radius-sm)}
+  @media (max-width:900px){
+    nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--slate-deep);padding:12px 0;border-top:1px solid var(--line)}
+    nav ul.open{display:flex}
+    nav li{width:100%}
+    nav a{display:block;padding:14px 24px;border-bottom:none;border-left:3px solid transparent}
+    nav a:hover,nav a.active{border-left-color:var(--ember);background:rgba(232,152,102,0.08)}
+    .hamburger{display:block}
+    .nav-cta{display:none}
+    .brand{font-size:18px}
+  }
+
+  /* Hero */
+  .hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;color:var(--paper);background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background-image:url("tour_pics/arches.jpg");background-size:cover;background-position:center 28%;opacity:0.45;filter:saturate(1.05)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,34,0.35) 0%,rgba(15,26,34,0.65) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:900px;padding:48px 24px;text-align:center}
+  .hero h1{color:var(--paper);font-size:clamp(44px,8vw,84px);line-height:0.98;margin-bottom:24px;font-weight:400}
+  .hero h1 em{color:var(--ember);font-style:italic;font-weight:500}
+  .hero p.sub{font-size:clamp(17px,2.3vw,21px);color:var(--muted);margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--ember);color:var(--ink);padding:16px 34px;border-radius:var(--pill);font-weight:600;font-size:16px;letter-spacing:0.02em;transition:background .15s,transform .1s}
+  .btn-primary:hover{background:var(--canyon);color:var(--paper);transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid rgba(245,240,235,0.4);color:var(--paper);padding:15px 32px;border-radius:var(--pill);font-weight:500;font-size:16px;transition:border-color .15s,background .15s}
+  .btn-ghost:hover{border-color:var(--ember);background:rgba(232,152,102,0.12);color:var(--paper)}
+
+  /* Section rhythm */
+  section{padding:80px 24px}
+  .container{max-width:1200px;margin:0 auto}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--canyon);margin-bottom:12px}
+  .section-title{font-size:clamp(32px,4.5vw,48px);margin-bottom:16px}
+  .section-sub{font-size:17px;color:rgba(26,21,16,0.7);max-width:640px;margin-bottom:56px}
+  .text-center{text-align:center}
+  .text-center .section-sub{margin-left:auto;margin-right:auto}
+
+  /* Tours grid */
+  .tours-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+  .tour-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.06);transition:transform .2s,box-shadow .2s;position:relative;display:flex;flex-direction:column}
+  .tour-card:hover{transform:translateY(-4px);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 20px 40px rgba(0,0,0,0.10)}
+  .tour-card img{aspect-ratio:4/3;object-fit:cover;width:100%}
+  .tour-card .body{padding:24px;flex:1;display:flex;flex-direction:column}
+  .tour-card h3{font-size:24px;font-weight:500;margin-bottom:8px;line-height:1.15}
+  .tour-card .meta{font-size:13px;color:var(--canyon);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px}
+  .tour-card p{font-size:15px;color:rgba(26,21,16,0.72);margin-bottom:20px;flex:1}
+  .tour-card .card-cta{color:var(--canyon);font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px;transition:gap .15s}
+  .tour-card .card-cta:hover{gap:10px;color:var(--ember)}
+  .popular-tag{position:absolute;top:16px;right:16px;background:var(--ember);color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:var(--pill);z-index:2}
+
+  /* Testimonials — real reviews carousel */
+  .testimonials{background:var(--sand)}
+  .testimonials .headline-brag{color:var(--canyon);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-size:13px;margin-bottom:6px}
+  .review-panel{background:#fff;border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,0.06);max-width:780px;margin:32px auto 0;padding:28px 28px 20px;border-top:3px solid #00AA6C}
+  .review-panel .panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line-ink)}
+  .review-panel .brand-block{display:flex;align-items:center;gap:12px}
+  .ta-bug{width:34px;height:34px;border-radius:50%;background:#00AA6C;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:0;flex:none;font-family:'Inter',sans-serif}
+  .ta-bug::before{content:"Ta"}
+  .google-bug{width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,0.1);display:inline-flex;align-items:center;justify-content:center;flex:none;position:relative;overflow:hidden}
+  .google-bug::before{content:"G";font-family:'Inter',sans-serif;font-weight:700;font-size:18px;background:linear-gradient(135deg,#4285F4 0%,#4285F4 30%,#EA4335 45%,#FBBC05 65%,#34A853 85%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:0}
+  .review-panel[data-carousel="google"],.review-panel[data-source="google"]{border-top-color:#4285F4}
+  .review-panel + .review-panel{margin-top:20px}
+  .review-panel .brand-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.2}
+  .review-panel .brand-name small{display:block;font-weight:400;color:rgba(26,21,16,0.6);font-size:12px;letter-spacing:0.04em;margin-top:2px}
+  .review-panel .rating-block{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(26,21,16,0.72)}
+  .review-panel .rating-block .stars{color:var(--ember);font-size:16px;letter-spacing:0.08em;margin:0}
+  .review-panel .rating-block .score{font-weight:700;color:var(--ink)}
+  .review-panel .see-all{color:var(--canyon);font-weight:600;font-size:13px;white-space:nowrap}
+  .see-all-group{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .see-all-group .see-all{display:inline-flex;align-items:center;gap:6px}
+  .rc-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,21,16,0.6);white-space:nowrap}
+  .rc-source .rc-source-dot{width:14px;height:14px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;font-size:8px;font-weight:800;font-family:'Inter',sans-serif}
+  .rc-source.rc-source-ta .rc-source-dot{background:#00AA6C;color:#fff}
+  .rc-source.rc-source-ta .rc-source-dot::before{content:"Ta"}
+  .rc-source.rc-source-google .rc-source-dot{background:#fff;border:1px solid rgba(0,0,0,0.12);position:relative;overflow:hidden}
+  .rc-source.rc-source-google .rc-source-dot::before{content:"G";font-family:'Inter',sans-serif;font-weight:800;font-size:9px;background:linear-gradient(135deg,#4285F4 0%,#4285F4 30%,#EA4335 45%,#FBBC05 65%,#34A853 85%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:0}
+  .review-viewport{position:relative;min-height:240px;margin:20px 0 12px}
+  .review-card{position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;padding:4px 2px}
+  .review-card.is-active{opacity:1;transform:translateY(0);position:relative;pointer-events:auto}
+  .review-card .rc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+  .review-card .rc-stars{color:var(--ember);letter-spacing:0.08em;font-size:14px}
+  .review-card .rc-date{font-size:12px;color:rgba(26,21,16,0.55);letter-spacing:0.04em;text-transform:uppercase}
+  .review-card .rc-title{font-family:'Fraunces',serif;font-size:20px;line-height:1.25;color:var(--ink);margin:6px 0 10px}
+  .review-card .rc-text{font-size:15px;line-height:1.6;color:rgba(26,21,16,0.82);margin-bottom:14px}
+  .review-card .rc-byline{font-size:13px;color:var(--canyon);font-weight:600;letter-spacing:0.02em}
+  .review-card .rc-byline span.sep{color:rgba(26,21,16,0.3);margin:0 8px;font-weight:400}
+  .review-card .rc-byline span.ctx{color:rgba(26,21,16,0.55);font-weight:400}
+  .review-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line-ink)}
+  .review-nav{display:flex;gap:8px}
+  .review-nav button{background:var(--paper);color:var(--ink);border:1px solid var(--line-ink);width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:background .15s,color .15s,border-color .15s}
+  .review-nav button:hover,.review-nav button:focus-visible{background:var(--ember);color:var(--ink);border-color:var(--ember);outline:none}
+  .review-dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;flex:1}
+  .review-dots button{width:8px;height:8px;padding:0;border-radius:50%;background:rgba(26,21,16,0.22);transition:background .2s,transform .2s}
+  .review-dots button.is-active{background:var(--canyon);transform:scale(1.35)}
+  .review-dots button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+  .write-review-cta{text-align:center;margin-top:24px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0}
+  .write-review-cta .wr-lead{color:var(--muted);font-size:14px;margin-right:14px;font-weight:500}
+  .write-review-cta .wr-sep{color:rgba(26,21,16,0.3);margin:0 10px;display:inline-block;font-weight:400}
+  .write-review-cta a{display:inline-block;background:transparent;color:var(--canyon);border:1.5px solid var(--canyon);padding:11px 22px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:background .15s,color .15s}
+  .write-review-cta a:hover{background:var(--canyon);color:var(--paper)}
+  @media (max-width:640px){
+    .review-panel{padding:22px 18px 16px;margin-top:24px}
+    .review-panel .panel-head{gap:10px}
+    .review-panel .see-all{order:3;width:100%;text-align:right}
+    .review-card .rc-title{font-size:18px}
+    .review-card .rc-text{font-size:14.5px}
+    .see-all-group{order:3;width:100%;justify-content:flex-start;gap:10px}
+    .see-all-group .see-all{font-size:12px}
+    .write-review-cta{flex-direction:column;gap:10px}
+    .write-review-cta .wr-lead{margin-right:0}
+    .write-review-cta .wr-sep{display:none}
+  }
+
+  /* Feature strip */
+  .features{background:var(--slate);color:var(--paper)}
+  .features .section-title{color:var(--paper)}
+  .features .section-sub{color:var(--muted)}
+  .features .eyebrow{color:var(--ember)}
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:12px}
+  .feature{padding:24px 20px}
+  .feature h3{color:var(--paper);font-size:22px;margin-bottom:8px;font-weight:500}
+  .feature p{color:var(--muted);font-size:15px;line-height:1.6}
+  .feature .icon{width:44px;height:44px;border-radius:50%;background:rgba(232,152,102,0.15);color:var(--ember);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:22px;margin-bottom:16px}
+
+  /* CTA band */
+  .cta-band{background:var(--ember);color:var(--ink);padding:64px 24px;text-align:center}
+  .cta-band h2{font-size:clamp(30px,4vw,44px);margin-bottom:12px;color:var(--ink)}
+  .cta-band p{font-size:17px;margin-bottom:24px;color:rgba(26,21,16,0.75)}
+  .cta-band .btn-primary{background:var(--ink);color:var(--paper);padding:16px 34px;border-radius:var(--pill);font-weight:600;display:inline-block}
+  .cta-band .btn-primary:hover{background:var(--slate-deep);color:var(--paper)}
+
+  /* Footer */
+  footer{background:var(--slate-deep);color:var(--muted);padding:48px 24px 24px;font-size:14px}
+  .foot-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+  .foot-grid h4{color:var(--paper);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px}
+  .foot-grid a{color:var(--muted);display:block;padding:4px 0}
+  .foot-grid a:hover{color:var(--ember)}
+  .foot-grid .brand{font-size:20px;margin-bottom:12px;display:block}
+  .foot-brand-desc{margin-bottom:16px;max-width:320px}
+  .foot-bottom{max-width:1200px;margin:24px auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(245,240,235,0.5);font-size:13px}
+  @media (max-width:768px){
+    .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
+    .foot-grid .brand-col{grid-column:1/-1}
+  }
+  @media (max-width:480px){
+    .foot-grid{grid-template-columns:1fr}
+    section{padding:56px 20px}
+    .hero-inner{padding:32px 18px}
+  }
+
+  /* ── V2 Arches Lead — ported from booking root arches-alt design ── */
+  .arches-lead{background:linear-gradient(180deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);padding:72px 24px 80px;position:relative}
+  .arches-lead .lead-inner{max-width:1180px;margin:0 auto}
+  .arches-lead .lead-head{text-align:center;margin-bottom:36px}
+  .arches-lead .lead-eyebrow{color:var(--ember);font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+  .arches-lead .lead-title{color:var(--paper);font-family:'Fraunces',serif;font-size:clamp(28px,4vw,42px);font-weight:400;letter-spacing:-0.015em;margin-bottom:12px}
+  .arches-lead .lead-sub{color:var(--muted);font-size:16px;max-width:620px;margin:0 auto}
+
+  .arches-lead .tour{display:grid;grid-template-columns:1fr 280px;gap:0;align-items:center;position:relative;min-height:160px;background:rgba(15,26,34,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(245,240,235,0.06);border-radius:var(--radius);overflow:visible;margin-top:32px}
+  .arches-lead .tour-visual{display:flex;justify-content:center;align-items:center;position:relative;align-self:center;padding:18px;order:2}
+  .arches-lead .tour-detail{padding:30px 34px;display:flex;flex-direction:column;justify-content:center;order:1}
+  .arches-lead .profile{width:240px;height:240px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,var(--slate-deep) 0%,var(--ink) 100%);position:relative;box-shadow:inset 0 0 0 1px rgba(245,240,235,0.08),0 8px 32px rgba(0,0,0,0.4);overflow:hidden}
+  .arches-lead .profile .tour-img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;filter:saturate(0.95) contrast(1.05)}
+  .arches-lead .profile::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at center,transparent 55%,rgba(15,26,34,0.45) 100%);pointer-events:none}
+
+  .arches-lead .al-sub{font-size:clamp(20px,3vw,30px);letter-spacing:0.12em;color:var(--ember);text-transform:uppercase;font-weight:500;margin-bottom:10px}
+  .arches-lead h3.al-title-row{font-family:'Fraunces',serif;font-weight:300;color:var(--paper);margin-bottom:10px;line-height:1.15;letter-spacing:-0.01em;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:clamp(22px,3vw,30px)}
+  .arches-lead .bb-title-box{border:1.5px solid var(--ember);padding:6px 14px;display:inline-block;transition:all .3s;color:var(--paper);font-family:'Fraunces',serif;font-weight:400}
+  .arches-lead .pop-tag{font-family:inherit;font-size:14px;letter-spacing:0.04em;text-transform:none;color:var(--ember);font-weight:500;white-space:nowrap}
+  .arches-lead .al-desc{font-size:16px;color:rgba(245,240,235,0.78);margin-bottom:18px;line-height:1.55}
+
+  .arches-lead .dur-row{display:flex;align-items:flex-end;gap:14px;margin:8px 0 14px 0;flex-wrap:wrap}
+  .arches-lead .ctrl-labeled{display:flex;flex-direction:column;align-items:flex-start}
+  .arches-lead .ctrl-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,235,0.55);margin-bottom:6px;font-weight:600}
+  .arches-lead .duration-group{display:flex;flex-direction:row;align-items:center;gap:0;height:42px}
+  .arches-lead .duration-group .dc{margin:0;border:none;padding:0 21px 0 13px;height:42px;display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:15px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;clip-path:polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%);margin-right:-10px;position:relative;font-family:inherit;font-weight:500}
+  .arches-lead .duration-group .dc:nth-child(1){background:rgba(52,78,94,0.95);z-index:3}
+  .arches-lead .duration-group .dc:nth-child(2){background:rgba(72,100,116,0.95);z-index:2}
+  .arches-lead .duration-group .dc:nth-child(3){background:rgba(92,118,132,0.95);z-index:1;padding-right:24px}
+  .arches-lead .duration-group .dc:hover{filter:brightness(1.2)}
+  .arches-lead .duration-group .dc.on{background:var(--ember);color:var(--ink);z-index:4}
+
+  .arches-lead .alt-styles{margin-top:6px}
+  .arches-lead .alt-dur-group{margin-bottom:8px}
+  .arches-lead .alt-dur-label{font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,235,0.5);padding:10px 18px 4px;font-weight:600}
+  .arches-lead .alt-style-row{display:flex;align-items:center;gap:12px;padding:11px 18px;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none;color:var(--paper)}
+  .arches-lead .alt-style-row:hover{background:rgba(232,152,102,0.08);border-left-color:var(--ember)}
+  .arches-lead .alt-style-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(245,240,235,0.3);flex-shrink:0;transition:all .15s}
+  .arches-lead .alt-style-row:hover .alt-style-dot{border-color:var(--ember);background:var(--ember)}
+  .arches-lead .alt-style-name{font-size:16px;color:var(--paper);font-weight:400;letter-spacing:0.02em;flex:1}
+  .arches-lead .alt-style-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,240,235,0.45);font-weight:500;margin-left:auto}
+  .arches-lead .alt-style-tag.rec{color:var(--ember)}
+  .arches-lead .alt-style-tag.note{color:#d4a55c;font-weight:600}
+  .arches-lead .alt-style-row .arrow{color:var(--ember);font-size:14px;opacity:0;transition:opacity .15s,transform .15s;margin-left:8px}
+  .arches-lead .alt-style-row:hover .arrow{opacity:1;transform:translateX(3px)}
+
+  .arches-lead .lead-foot{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .arches-lead .lead-foot a{padding:13px 28px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:all .15s}
+  .arches-lead .lead-foot .all-tours{background:var(--ember);color:var(--ink)}
+  .arches-lead .lead-foot .all-tours:hover{background:var(--canyon);color:var(--paper)}
+  .arches-lead .lead-foot .plan-trip{border:1.5px solid rgba(232,152,102,0.45);color:var(--ember)}
+  .arches-lead .lead-foot .plan-trip:hover{background:rgba(232,152,102,0.10);color:var(--paper);border-color:var(--ember)}
+
+  @media (max-width:820px){
+    .arches-lead .tour{grid-template-columns:1fr}
+    .arches-lead .tour-visual{order:1;padding:24px 18px 0}
+    .arches-lead .tour-detail{order:2;padding:20px 22px 26px}
+    .arches-lead h3.al-title-row{justify-content:flex-start}
+    .arches-lead .profile{width:200px;height:200px}
+    .arches-lead .alt-style-name{font-size:15px}
+    .arches-lead .alt-style-tag{font-size:10px}
+  }
+  @media (max-width:480px){
+    .arches-lead .alt-style-row{padding:10px 14px;flex-wrap:wrap}
+    .arches-lead .alt-style-tag{margin-left:26px;width:100%}
+    .arches-lead .duration-group .dc{font-size:13px;padding:0 16px 0 10px}
+    .arches-lead .bb-title-box{font-size:18px;padding:4px 10px}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Sand &amp; Stars Touring</h1>
-  <p>Redirecting to the current site.</p>
-  <p><a href="/fancy/">Continue to sandandstars.com &rarr;</a></p>
-</div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="./" class="brand"><b>Sand &amp; Stars</b><i>Touring</i></a>
+    <nav aria-label="Primary">
+      <ul id="navmenu">
+        <li><a href="./" class="active">Home</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="bespoke.html">Bespoke</a></li>
+        <li><a href="planning.html">Planning</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="book.html" class="nav-cta">Book a Tour</a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="var m=document.getElementById('navmenu');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'))">&#9776;</button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-label="Hero">
+  <div class="hero-inner">
+    <h1>For the best desert days, <em>and memories to last…</em></h1>
+    <p class="sub">Arches and Canyonlands National Parks, plus fantastic tours throughout Moab's backyard…</p>
+    <div class="hero-ctas">
+      <a href="book.html" class="btn-primary" data-analytics="hero-book">Plan a Day</a>
+      <a href="tours.html" class="btn-ghost" data-analytics="hero-explore">See the 12 Tours</a>
+    </div>
+  </div>
+</section>
+
+<section class="arches-lead" aria-label="Arches National Park lead tour">
+  <div class="lead-inner">
+    <div class="lead-head">
+      <div class="lead-eyebrow">Most Booked · Arches National Park</div>
+      <h2 class="lead-title">First time in Moab? Start here.</h2>
+      <p class="lead-sub">Most of our guests start with Arches. Pick a length below and we'll show you the touring styles that fit — from a half-day on the Windows loop to a full day pairing Arches with Canyonlands. Up to 8 travelers, your group only.</p>
+    </div>
+
+    <article class="tour" data-tour="arches-alt">
+      <div class="tour-visual">
+        <div class="profile">
+          <img class="tour-img" loading="lazy" src="tour_pics/arches.jpg" alt="Delicate Arch silhouette at sunrise in Arches National Park">
+        </div>
+      </div>
+      <div class="tour-detail">
+        <div class="al-sub">Arches National Park</div>
+        <h3 class="al-title-row"><span class="bb-title-box" id="alTitle">Highlights | Half Day Tour</span> <span class="pop-tag">Most Popular!</span></h3>
+        <p class="al-desc" id="alDesc">Select a duration to see available touring styles, then pick the one that suits you best.</p>
+
+        <div class="dur-row">
+          <div class="ctrl-labeled">
+            <span class="ctrl-label">Tour Length</span>
+            <div class="duration-group" id="alDurGroup">
+              <button class="dc on" data-hrs="4" type="button">4 hr</button>
+              <button class="dc" data-hrs="6" type="button">6 hr</button>
+              <button class="dc" data-hrs="8" type="button">8 hr</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="alt-styles" id="alStyles">
+          <!-- Half Day (4hr) -->
+          <div class="alt-dur-group" data-dur="4">
+            <div class="alt-dur-label">Half Day Tour (~4 hrs)</div>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=highlights4" data-analytics="lead-highlights4">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Highlights | Half Day Tour</span>
+              <span class="alt-style-tag rec">Recommended</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=delicate4" data-analytics="lead-delicate4">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Delicate Arch | Half Day Tour</span>
+              <span class="alt-style-tag note">Sunrise / Night Only</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+          <!-- Extended Half Day (6hr) -->
+          <div class="alt-dur-group" data-dur="6" style="display:none">
+            <div class="alt-dur-label">Extended Half Day Tour (~6 hrs)</div>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=devils6" data-analytics="lead-devils6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Devil's Garden | Extended Half Day</span>
+              <span class="alt-style-tag">7+ mi loop</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=combo6" data-analytics="lead-combo6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Custom Combo | Extended Half Day</span>
+              <span class="alt-style-tag">Arches + Rock Art / Dino</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=hike6" data-analytics="lead-hike6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Hike Lovers | Extended Half Day</span>
+              <span class="alt-style-tag">2–3 hikes + highlights</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=deadhorse6" data-analytics="lead-deadhorse6">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Arches + Dead Horse | Extended Half Day</span>
+              <span class="alt-style-tag">Two destinations</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+          <!-- Full Day (8hr) -->
+          <div class="alt-dur-group" data-dur="8" style="display:none">
+            <div class="alt-dur-label">Full Day Tour (~8 hrs)</div>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=combo8" data-analytics="lead-combo8">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Custom Combo | Full Day Tour</span>
+              <span class="alt-style-tag">Arches + Best of Moab</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=mega8" data-analytics="lead-mega8">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">All You Can Arches | Full Day</span>
+              <span class="alt-style-tag">Max energy · rare pick</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="alt-style-row" href="book.html?tour=arches&amp;variant=canyonlands8" data-analytics="lead-canyonlands8">
+              <span class="alt-style-dot"></span>
+              <span class="alt-style-name">Arches + Canyonlands | Full Day</span>
+              <span class="alt-style-tag">Two parks · scenic driving</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="lead-foot">
+      <a href="tours.html" class="all-tours" data-analytics="lead-all-tours">See all 12 tours &rarr;</a>
+      <a href="planning.html" class="plan-trip" data-analytics="lead-plan-trip">Plan your trip &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // V2 Arches lead — duration toggle (single-select for cleaner UX on marketing page)
+  (function(){
+    var grp=document.getElementById('alDurGroup');
+    if(!grp)return;
+    var titles={4:'Highlights | Half Day Tour',6:'Custom Combo | Extended Half Day',8:'Custom Combo | Full Day Tour'};
+    var descs={
+      4:'Half-day touring options. The iconic Windows, Balanced Rock, Delicate Arch — pick a route.',
+      6:'Extended half-day options. More miles, more arches, or pair Arches with a second destination.',
+      8:'Full-day options. Two parks in a day or a deep dive on a single one — your call.'
+    };
+    grp.addEventListener('click',function(e){
+      var b=e.target.closest('.dc');if(!b)return;
+      grp.querySelectorAll('.dc').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      var h=b.getAttribute('data-hrs');
+      document.querySelectorAll('#alStyles .alt-dur-group').forEach(function(g){
+        g.style.display=(g.getAttribute('data-dur')===h)?'':'none';
+      });
+      var t=document.getElementById('alTitle');var d=document.getElementById('alDesc');
+      if(t&&titles[h])t.textContent=titles[h];
+      if(d&&descs[h])d.textContent=descs[h];
+      if(window.dataLayer){window.dataLayer.push({event:'lead_dur_toggle',dur_hours:h})}
+    });
+  })();
+</script>
+
+<section class="features">
+  <div class="container text-center">
+    <div class="eyebrow">What's Included</div>
+    <h2 class="section-title">Everything's in the rate.</h2>
+    <p class="section-sub">No add-ons, no upsell. Standard on every booking.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">i</div>
+        <h3>Just your group</h3>
+        <p>No mixed vans, no strangers. One guide, one vehicle, working for your group alone.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">✦</div>
+        <h3>Local guides</h3>
+        <p>Our guides live here. They know the park calendar, the weather windows, and where the light falls at 7:14 AM in October.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">~</div>
+        <h3>Snacks, drinks, lunch</h3>
+        <p>Cooler in the truck all day. Cold drinks, real snacks, made-to-order sandwiches on full-day tours.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">$</div>
+        <h3>Transport, fees, photos</h3>
+        <p>Round-trip transport from your lodging, every park entry and permit fee, and a digital photo album from your guide's camera. Sent the same week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="container">
+    <h2 class="section-title">What guests are saying.</h2>
+    <p class="section-sub">Real reviews pulled live from Google and TripAdvisor.</p>
+
+    <div class="review-panel review-panel-combined" data-interval="10000" aria-label="Guest reviews from TripAdvisor and Google">
+      <div class="panel-head">
+        <div class="brand-block">
+          <span class="source-bug ta-bug" aria-label="TripAdvisor"></span>
+          <span class="source-bug google-bug" aria-label="Google"></span>
+          <span class="brand-name">Sand &amp; Stars Touring<small>Moab, UT · 44 reviews · 5.0 ★</small></span>
+        </div>
+        <div class="see-all-group">
+          <a class="see-all" href="https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="reviews-see-all-ta">All on TripAdvisor →</a>
+          <a class="see-all" href="https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="reviews-see-all-google">All on Google →</a>
+        </div>
+      </div>
+
+      <div class="review-viewport" aria-live="polite" aria-atomic="true"></div>
+
+      <div class="review-controls">
+        <div class="review-nav">
+          <button type="button" class="prev" aria-label="Previous review">‹</button>
+          <button type="button" class="next" aria-label="Next review">›</button>
+        </div>
+        <div class="review-dots" role="tablist" aria-label="Review selector"></div>
+      </div>
+    </div>
+
+    <div class="write-review-cta">
+      <span class="wr-lead">Had a great trip with us?</span>
+      <a href="https://www.tripadvisor.com/UserReviewEdit-g60724-d23631134-Sand_and_Stars_Touring-Moab_Utah.html" target="_blank" rel="noopener" data-analytics="ta-write-review">Write on TripAdvisor</a>
+      <span class="wr-sep">·</span>
+      <a href="https://search.google.com/local/writereview?placeid=ChIJ7wKY8yKu0msRKL3MvmzxDvY" target="_blank" rel="noopener" data-analytics="google-write-review">Write on Google</a>
+    </div>
+  </div>
+</section>
+
+<script id="reviews-ta-data" type="application/json">
+{
+  "source": "tripadvisor",
+  "listingUri": "https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html",
+  "rating": 5.0,
+  "count": 39,
+  "reviews": [
+    {"author":"Mieneke M","location":"Burlington, Vermont","title":"Mighty and Memorable Moab Tours","rating":5,"relative":"Apr 2025","companion":"Friends","text":"This is the most incredible way to see Moab when you are short on time and not a hiker. We were fortunate to enjoy two days of touring with Sand and Stars. Two very different flavors of Moab's beauty and natural wonders. Our tour guides were articulate and extremely knowledgeable. On the second day, the internal communication was so good that our tour guide Chris arrived with the correct coffee drink for each of us. Our vehicle was comfortable and a variety of drinks/snacks were continuously offered. Within hours of completion of our tour a file of photos were sent to us from Sand and Stars. Thank you so much for making Moab a memorable experience."},
+    {"author":"Mike-Robin H","location":"","title":"Great Company","rating":5,"relative":"Jan 2025","companion":"Friends","text":"Mike from Sand and Stars was great, he set up our whole trip. Mike even recommended other providers for excursions their company did not offer. Could not ask for more."},
+    {"author":"Luis S","location":"","title":"Unforgettable experience","rating":5,"relative":"Nov 2024","companion":"Friends","text":"My nephew and I had an awesome experience touring Arches National Park. It was our first visit to Moab, and John made it truly unforgettable. He was not only resourceful and welcoming but also extremely knowledgeable about the park. It's so clear he knows and is passionate about what he's doing! One of the highlights was that John speaks Spanish, which was a huge bonus for my nephew, who was visiting from Mexico and often struggles with English. This made the experience so much more enjoyable and accessible for him. I would wholeheartedly recommend Sand and Stars touring services to anyone looking for an excellent guided tour. Thank you so much, John!"},
+    {"author":"Adventure595541","location":"","title":"The Company to travel with — Sand & Stars","rating":5,"relative":"Aug 2024","companion":"Couples","text":"My wife & I spent 2 enjoyable full days with Dave & Chris, our guides. The arches were spectacular and the additional knowledge gained, time saved, and sheer ease to visit this impressive and massive place. We had fantastic hikes, and visited spots that were frequented by very few! We visited a wonderful dinosaur area, as well as petroglyphs. Dead Horse State park was a fantastic finish to our trip! I highly recommend this company — they took care of everything. They earned it!"},
+    {"author":"COGDI","location":"Denver, Colorado","title":"Highlight of our trip — could not have done without","rating":5,"relative":"Jul 2024","companion":"","text":"We had a family reunion of 10, wildly different in physical abilities. We went stargazing, to Arches and to Canyonlands. Everyone got to see great things and the guides (John and David) were well informed and very accommodating. What they didn't provide they could make knowledgeable recommendations on, including restaurants and retail. The photo album is priceless!"},
+    {"author":"jody r","location":"","title":"Exceeded our expectations!","rating":5,"relative":"Jul 2024","companion":"","text":"Just back from 2 full days organized by John and we were beyond thrilled. John was super responsive by phone, text and email so it was very easy to plan and coordinate. Ed, our guide for the 2 days, was outstanding! He is an expert on all the trails and roads as well as an expert rock climber. He saw our skill level and was able to adapt what we did each day based on the heat, and how challenged we wanted to be. We had two very fit 17-year-old boys and they were extremely happy. Perhaps one of our favorite trips and destinations ever!"},
+    {"author":"Jo","location":"Florida","title":"Outstanding tour of Moab!","rating":5,"relative":"May 2024","companion":"Friends","text":"Amanda was an outstanding tour guide! We had never been to Moab before and Amanda introduced us to the magic that is Moab. Our safety was always her primary concern. Amanda is fun, friendly, full of useful information and also ridiculous fun facts! Great experience!"},
+    {"author":"Lau0529","location":"Houston, Texas","title":"Moab and the surroundings in one perfect package","rating":5,"relative":"May 2024","companion":"Couples","text":"Our first trip to Moab and we had decided to navigate on our own. However after reading about the National Parks, we started researching companies and came across this one and so glad we did. We booked two half days and one full day and saw everything and more. We had Amanda all three days and she was beyond amazing — interesting and so knowledgeable. She was patient and helpful through some hiking trails and really assessed our level of confidence."},
+    {"author":"Louise S","location":"","title":"Five Stars All The Way!","rating":5,"relative":"May 2024","companion":"Couples","text":"Sand & Stars Touring totally customized 3 days of tours for us. Canyonlands (with catered lunch), Arches, Locals' Secrets and a dinner under the stars. It was magical! Amanda was our guide all 3 days and we hiked, laughed, learned much, and laughed some more. Owners Mike & John were so communicative and made great suggestions. We will be back in Moab again and will ONLY work with S&S Touring!"},
+    {"author":"Susan J","location":"","title":"Arches National Park — Amazing time!","rating":5,"relative":"Oct 2023","companion":"","text":"A big thank you to John and Sand & Stars Touring for an amazing tour of Arches National Park! John knows Arches so well and we learned so much on our tour. He sized us up (as we are both in our sixties) and figured out the best places for us to take some short hikes and explore the arches. A little bit of scooting and scrambling too of which I was so proud of myself at the end. With John's knowledge of Arches, he was able to take us to areas of the park that were not overrun with many other tourists. In addition, John put together a beautiful photo album of our experience from that day, so we did not have to worry about taking pictures ourselves. Highly recommend!"}
+  ]
+}
+</script>
+
+<script id="reviews-google-data" type="application/json">
+{
+  "source": "google",
+  "business": "Sand and Stars Touring",
+  "listingUri": "https://www.google.com/maps/place/?q=place_id:ChIJ7wKY8yKu0msRKL3MvmzxDvY",
+  "writeReviewUri": "https://search.google.com/local/writereview?placeid=ChIJ7wKY8yKu0msRKL3MvmzxDvY",
+  "rating": 5.0,
+  "count": 5,
+  "fetchedAt": "2026-04-14",
+  "reviews": [
+    {"author":"Xoshil Morales","location":"Local Guide · 12 reviews · 6 photos","title":"","rating":5,"relative":"3 years ago","companion":"","text":"The best tour company in Moab. Mike works hard at ensuring all aspects of the trip get covered and offers great options and insights. He knows the area well and provided us everything we needed to make our trip special. Will use this company again. Thank you so much for the great memories."},
+    {"author":"Yvonne Wong","location":"7 reviews · 8 photos","title":"","rating":5,"relative":"a year ago","companion":"","text":"I recently had the most incredible adventure tour with Sands & Stars and I can't recommend them enough! From the moment I was picked up at the airport, I felt like a VIP. John and his team went above and beyond to ensure that my experience was not only enjoyable but also tailored to my desires. Every aspect of the trip was meticulously planned. I was impressed by how they catered the itinerary to match my skill level, making it both exciting and accessible. Moab is truly a Mecca for extreme sports, and thanks to Sands & Stars, I got to experience it all without feeling overwhelmed. The guides were not only knowledgeable but also incredibly friendly, making every moment fun and engaging. They took the time to understand my preferences and interests, ensuring that each activity was perfectly suited to me. Whether it was hiking, climbing, star gazing or exploring the stunning landscapes, I felt completely cared for throughout. The attention to detail was astounding — from the delicious snacks/lunch provided during our adventures to the cold towels sprayed with peppermint (they even knew I only drink water or Gatorade in the trip). It was clear that Sands & Stars genuinely cares about their clients and wants everyone to have the best experience possible. If anyone is looking for an unforgettable adventure in Moab, look no further. This was my first time in the area, and it certainly won't be my last, all thanks to the amazing team that made it such a memorable experience!"},
+    {"author":"James Stein","location":"Local Guide · 159 reviews · 293 photos","title":"","rating":5,"relative":"3 years ago","companion":"","text":"This is the touring company you want to work with if you are travelling to the Moab area. I cannot rave enough about them. My wife and I spent 3 full days visiting and chose their \"bespoke\" service which allowed us to customize our trip and be accompanied and helped by one of their expert guides, in this case, John, who was outstanding: friendly, helpful, flexible, enthusiastic, and a great teacher. Yes, we went to Arches and Canyonlands like everyone does, but the real joy came from (i) the local secrets — the extra places/sidebar sites that John took us to for lunch breaks and/or for quick extra evening or morning hikes, and (ii) a special day where we took a sunrise flight in the morning to Hanksville, then hiked in Little Wild Horse Canyon (a gorgeous slot canyon), after which we made a nice stop in Goblin Valley. We also appreciated the guided ride to Durango, CO, to continue our trip afterwards. All of this was made possible by great pre-trip communication from Mike who offered wonderful ideas for what to do after getting to know us, our interests, priorities, and budget. I'd add that John used his skills to coax me, gently, into challenging myself — crossing wet streams, scrambling over rocks, and climbing to moderate heights — by teaching me how to use my poles more effectively and how to trust my feet. We always felt well-taken care of and safe. We plan to use them again to plan and lead us on our next trip across the rest of Utah."},
+    {"author":"Jessica Belfry","location":"Local Guide · 66 reviews · 8 photos","title":"","rating":5,"relative":"3 years ago","companion":"","text":"Such an amazing way to experience Arches! Hannah is an amazing guide that we instantly connected with."},
+    {"author":"Kraig Kaufman","location":"1 review","title":"","rating":5,"relative":"2 years ago","companion":"","text":"The adventures with Sand and Stars Touring were amazing!!! The staff were friendly and made the experience great. Mike was very knowledgeable of the area and all of its history! Definitely a 10 out of 10."}
+  ]
+}
+</script>
+
+<section class="cta-band">
+  <h2>Want help building the day?</h2>
+  <p>Send a note or a quick text — usually a reply within a few hours. We can sort the route, the timing, and the dinner reservation if you want one.</p>
+  <a href="contact.html" class="btn-primary" data-analytics="ctaband-contact">Send a Note</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div class="brand-col">
+      <a href="./" class="brand"><b>Sand &amp; Stars</b><i>Touring</i></a>
+      <p class="foot-brand-desc">Bespoke private touring in Moab's canyon country. Owner-led, locally guided, built around your group.</p>
+      <p><a href="mailto:tours@sandandstars.com">tours@sandandstars.com</a></p>
+      <p><a href="tel:+14352608260">(435) 260-8260</a></p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="./">Home</a>
+      <a href="tours.html">Tours</a>
+      <a href="bespoke.html">Bespoke</a>
+      <a href="gallery.html">Gallery</a>
+      
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <a href="planning.html">Trip Planning</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="book.html">Book a Tour</a>
+    </div>
+    <div>
+      <h4>Based In</h4>
+      <p style="color:var(--muted)">Moab, Utah<br>Gateway to Arches &amp;<br>Canyonlands</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; <span id="year">2026</span> Sand &amp; Stars Touring. All rights reserved.</span>
+    <span>Operating under permits from the National Park Service &amp; BLM.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  // Lightweight analytics event bridge (no-op until GTM configured)
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-analytics]');
+    if(!el)return;
+    var name=el.getAttribute('data-analytics');
+    if(window.dataLayer){window.dataLayer.push({event:'cta_click',cta_name:name,page:location.pathname})}
+  });
+
+  // Reviews carousel — unified feed: merges TripAdvisor + Google, interleaves proportionally,
+  // tags each card with its source bug. Prev/next + dots + auto-rotate, pause on hover/focus.
+  (function(){
+    function escHTML(s){return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+    function renderCard(r){
+      var stars='★★★★★'.slice(0,r.rating)+'☆☆☆☆☆'.slice(0,5-r.rating);
+      var byline='<span>'+escHTML(r.author)+'</span>';
+      if(r.location){byline+='<span class="sep">·</span><span class="ctx">'+escHTML(r.location)+'</span>'}
+      if(r.companion){byline+='<span class="sep">·</span><span class="ctx">'+escHTML(r.companion)+'</span>'}
+      var srcKey=r.__source==='google'?'google':'ta';
+      var srcLabel=srcKey==='google'?'Google':'TripAdvisor';
+      var srcBadge='<span class="rc-source rc-source-'+srcKey+'" aria-label="Review from '+srcLabel+'">'
+        +'<span class="rc-source-dot" aria-hidden="true"></span>'+srcLabel+'</span>';
+      return '<article class="review-card" role="group" data-source="'+srcKey+'">'
+        +'<div class="rc-head"><span class="rc-stars" aria-label="'+r.rating+' out of 5 stars">'+stars+'</span>'
+        +srcBadge
+        +'<span class="rc-date">'+escHTML(r.relative||'')+'</span></div>'
+        +(r.title?'<h3 class="rc-title">'+escHTML(r.title)+'</h3>':'')
+        +'<p class="rc-text">'+escHTML(r.text)+'</p>'
+        +'<div class="rc-byline">'+byline+'</div>'
+        +'</article>';
+    }
+    function filterReviews(data){
+      var r=(data&&data.reviews)||[];
+      return r.filter(function(rv){return !(rv.location && /^1 review(\s|$|·)/i.test(rv.location.trim()))});
+    }
+    function tag(list,key){return list.map(function(rv){var c={};for(var k in rv){c[k]=rv[k]}c.__source=key;return c})}
+    // Proportional interleave: preserves within-source order, spaces reviews so the
+    // smaller source is distributed evenly across the larger one.
+    function interleave(a,b){
+      var out=[],i=0,j=0,la=a.length,lb=b.length,total=la+lb;
+      if(!total)return out;
+      for(var n=0;n<total;n++){
+        // target fraction of a's consumed so far
+        var targetA=(n+1)*la/total;
+        if(i<la && (j>=lb || (i+1)<=targetA)){out.push(a[i++])}
+        else if(j<lb){out.push(b[j++])}
+        else if(i<la){out.push(a[i++])}
+      }
+      return out;
+    }
+    function mountCombined(panel){
+      var taEl=document.getElementById('reviews-ta-data');
+      var gEl=document.getElementById('reviews-google-data');
+      if(!taEl||!gEl)return;
+      var ta,google;
+      try{ta=JSON.parse(taEl.textContent)}catch(e){return}
+      try{google=JSON.parse(gEl.textContent)}catch(e){return}
+      var viewport=panel.querySelector('.review-viewport');
+      var dotsWrap=panel.querySelector('.review-dots');
+      var prev=panel.querySelector('.prev');
+      var next=panel.querySelector('.next');
+      var idx=0,paused=false,timer=null;
+      var interval=parseInt(panel.getAttribute('data-interval')||'10000',10);
+      var cards,dots,reviews;
+      function show(n){
+        if(!reviews||!reviews.length)return;
+        idx=(n+reviews.length)%reviews.length;
+        cards.forEach(function(c,i){c.classList.toggle('is-active',i===idx)});
+        dots.forEach(function(d,i){d.classList.toggle('is-active',i===idx);d.setAttribute('aria-selected',i===idx?'true':'false')});
+      }
+      function advance(){if(!paused)show(idx+1)}
+      function start(){stop();timer=setInterval(advance,interval)}
+      function stop(){if(timer){clearInterval(timer);timer=null}}
+      var taList=tag(filterReviews(ta),'ta');
+      var gList=tag(filterReviews(google),'google');
+      // Larger source first so fractional distribution keeps pairs spaced evenly.
+      reviews=taList.length>=gList.length?interleave(taList,gList):interleave(gList,taList);
+      if(!reviews.length){viewport.innerHTML='<p style="text-align:center;padding:40px 20px;color:var(--muted)">No reviews to display.</p>';return}
+      viewport.innerHTML=reviews.map(renderCard).join('');
+      dotsWrap.innerHTML=reviews.map(function(r,i){return '<button type="button" role="tab" aria-label="Review '+(i+1)+' of '+reviews.length+' ('+(r.__source==='google'?'Google':'TripAdvisor')+')" data-idx="'+i+'"></button>'}).join('');
+      cards=viewport.querySelectorAll('.review-card');
+      dots=dotsWrap.querySelectorAll('button');
+      prev.addEventListener('click',function(){show(idx-1);start()});
+      next.addEventListener('click',function(){show(idx+1);start()});
+      dotsWrap.addEventListener('click',function(e){var b=e.target.closest('button[data-idx]');if(!b)return;show(parseInt(b.getAttribute('data-idx'),10));start()});
+      panel.addEventListener('mouseenter',function(){paused=true});
+      panel.addEventListener('mouseleave',function(){paused=false});
+      panel.addEventListener('focusin',function(){paused=true});
+      panel.addEventListener('focusout',function(){paused=false});
+      show(0);
+      setTimeout(start,0);
+    }
+    document.querySelectorAll('.review-panel-combined').forEach(mountCombined);
+  })();
+</script>
 </body>
 </html>
