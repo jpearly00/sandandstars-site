@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book a Tour — Sand &amp; Stars Touring</title>
+<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and date and pay securely via Square.">
+<meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) — GA4 sandandstars.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
+<style>
+  :root{--slate:#1e293b;--slate-deep:#0f1a22;--ember:#e89866;--canyon:#c2703e;--ink:#1a1510;--paper:#f5f0eb;--sand:#efe6d9;--muted:rgba(245,240,235,0.72);--line:rgba(245,240,235,0.14);--pill:24px;--radius-sm:8px;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden}
+  body{background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);font-family:'Inter',sans-serif;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1100px;margin:0 auto;width:100%}
+  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;text-decoration:none}
+  .brand span{color:var(--ember)}
+  .back{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:var(--pill)}
+  main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px 24px 56px}
+  .card{max-width:560px;width:100%}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:14px}
+  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.12;margin-bottom:10px}
+  h1 em{color:var(--ember);font-style:italic}
+  .lead{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:28px}
+  form{background:rgba(245,240,235,0.04);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .field{margin-bottom:16px}
+  label{display:block;font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:6px}
+  label .req{color:var(--ember)}
+  input,select,textarea{width:100%;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;font-family:inherit;background:rgba(15,26,34,0.5);color:var(--paper)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
+  select option{color:#1a1510}
+  textarea{min-height:84px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.row{grid-template-columns:1fr}}
+  .submit{width:100%;background:var(--ember);color:var(--ink);border:0;padding:15px 26px;border-radius:var(--pill);font:700 16px Inter,sans-serif;cursor:pointer;margin-top:6px}
+  .submit:hover{background:#f0a877}
+  .note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5;text-align:center}
+  .fallback{margin-top:18px;font-size:13.5px;color:var(--muted);text-align:center}
+  .fallback b{color:var(--paper)}
+  footer{padding:22px 24px;text-align:center;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);max-width:1100px;margin:0 auto;width:100%}
+</style>
+</head>
+<body>
+  <header>
+    <a href="./" class="brand">Sand &amp; <span>Stars</span></a>
+    <a href="./" class="back">&larr; Back to site</a>
+  </header>
+
+  <main>
+    <div class="card">
+      <span class="kicker">Book a tour</span>
+      <h1>Reserve your <em>day in Moab</em></h1>
+      <p class="lead">Pick your tour and date below. We'll send you a secure Square payment link to confirm — your price is set by group size, no card details entered here.</p>
+
+      <!-- Posts directly to the Tour Hub public booking endpoint, which creates a
+           Square invoice (server-priced) and redirects to the secure payment link.
+           Direct form POST (full navigation) avoids cross-origin/CORS issues. -->
+      <form id="bookForm" method="POST"
+            action="https://script.google.com/macros/s/AKfycbxYtQTxhwCo19nPyXoY4kVg0-PZfveRaocKS7WaSP6M2AkDwEocqUkdpNzt8O9lH0OCsg/exec">
+        <input type="hidden" name="action" value="public_book">
+        <input type="hidden" name="source" value="website">
+
+        <div class="field">
+          <label for="tour">Tour <span class="req">*</span></label>
+          <select id="tour" name="tour" required>
+            <option value="" disabled selected>Choose a tour…</option>
+            <option value="arches">Arches National Park</option>
+            <option value="archescombo">Arches + Canyonlands (Full Day)</option>
+            <option value="isky">Canyonlands — Island in the Sky</option>
+            <option value="needles">Canyonlands — The Needles</option>
+            <option value="deadhorse">Dead Horse Point</option>
+            <option value="castle">Castle Valley</option>
+            <option value="mill">Mill Creek</option>
+            <option value="rockart">Rock Art &amp; Petroglyphs</option>
+            <option value="dino">Dinosaur Tracks</option>
+            <option value="localgems">Local Gems</option>
+            <option value="night">Night Sky</option>
+            <option value="bespoke">Bespoke / Custom day</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="date">Preferred date <span class="req">*</span></label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="field">
+            <label for="group">Group size <span class="req">*</span></label>
+            <select id="group" name="group_size" required>
+              <option value="" disabled selected>How many?</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="first">First name <span class="req">*</span></label>
+            <input type="text" id="first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="last">Last name <span class="req">*</span></label>
+            <input type="text" id="last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything we should know?</label>
+          <textarea id="notes" name="notes" placeholder="Pickup spot, must-sees, mobility needs, celebrating something…"></textarea>
+        </div>
+
+        <button type="submit" class="submit">Continue to secure payment →</button>
+        <p class="note">You'll land on a Square-hosted page to pay. We never see or store your card details.</p>
+      </form>
+
+      <p class="fallback">Prefer a human? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b>.</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year">2026</span> Sand &amp; Stars Touring. Operating under permits from the National Park Service &amp; BLM.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+    // prefill tour from ?tour=
+    (function(){var t=new URLSearchParams(location.search).get('tour');if(t){var s=document.getElementById('tour');if([...s.options].some(o=>o.value===t))s.value=t;}})();
+    // min date = today
+    document.getElementById('date').min=new Date().toISOString().split('T')[0];
+    document.getElementById('bookForm').addEventListener('submit',function(){
+      if(window.dataLayer)dataLayer.push({event:'begin_booking',tour:document.getElementById('tour').value,group_size:document.getElementById('group').value});
+    });
+  </script>
+</body>
+</html>
