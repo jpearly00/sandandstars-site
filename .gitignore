@@ -10,3 +10,7 @@ node_modules/
 .env.local
 .fuse_hidden*
 _tour_pics_ss_legacy/
+edit-homepage.html
+
+edit-*.html
+preview-edit-*.html
