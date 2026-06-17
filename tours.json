@@ -1,0 +1,311 @@
+{
+  "_meta": {
+    "site": "https://sandandstars.com",
+    "operator": "Sand & Stars Touring",
+    "generated_note": "Source of truth for per-tour pages. Edit here, then run generate_tours.py.",
+    "price_bands": {
+      "4": {"label": "4 Hour · Half Day", "low": 165, "high": 475},
+      "6": {"label": "6 Hour · Extended", "low": 205, "high": 595},
+      "8": {"label": "8 Hour · Full Day", "low": 265, "high": 795}
+    },
+    "included": [
+      "Private tour for your group only",
+      "Expert local guide",
+      "All park and area entry fees",
+      "Water and snacks",
+      "Hotel or campground pickup in Moab",
+      "All logistics and route planning"
+    ]
+  },
+  "tours": [
+    {
+      "slug": "arches",
+      "name": "Arches National Park Tour",
+      "h1": "Arches National Park",
+      "eyebrow": "Up close to fantastic sandstone wonders",
+      "parks": ["Arches National Park"],
+      "hours": [4, 6, 8],
+      "recommended": 4,
+      "difficulty": "Easy to moderate; short walks with optional longer hikes",
+      "season": "Year-round; sunrise departures best in summer",
+      "img": "arches.jpg",
+      "alt": "Delicate Arch glowing at sunrise, Arches National Park",
+      "tldr": "A private half- or full-day tour of Arches National Park from Moab, covering iconic sites like The Windows, Balanced Rock, and Delicate Arch with an expert local guide. Our most-booked half day, and a perfect first taste of canyon country.",
+      "body": [
+        "Arches rewards a half day. Four hours covers the classic highlights and a bonus gem or two most visitors miss, with a handful of short stops and two or three focused excursions where it's worth lingering.",
+        "We time departures to beat the crowds and the heat, usually at sunrise, when the arches glow and the park is quiet. Your guide handles the entry reservation, the route, and the timing so you just enjoy the day.",
+        "Want more? Extend to six or eight hours to add Delicate Arch's trailhead, the Fiery Furnace viewpoint, and a slower pace through Devils Garden."
+      ],
+      "highlights": ["The Windows and Turret Arch", "Balanced Rock", "Delicate Arch viewpoint or trailhead", "Fiery Furnace overlook", "Park Avenue and Courthouse Towers"],
+      "faqs": [
+        ["How long is the Arches tour?", "Choose 4 hours (half day, recommended), 6 hours (extended), or 8 hours (full day). Four hours covers the classic highlights; longer options add Delicate Arch and Devils Garden at a slower pace."],
+        ["Do you handle the Arches timed-entry reservation?", "Yes. When a timed-entry reservation is in effect, your guide arranges park access as part of the tour so you don't have to."],
+        ["Can we hike to Delicate Arch?", "Yes, on the 6- or 8-hour options. The half day visits the Delicate Arch viewpoint; the longer tours have time for the full trailhead hike when conditions allow."]
+      ]
+    },
+    {
+      "slug": "deadhorse",
+      "name": "Best of Moab to Dead Horse Point Tour",
+      "h1": "Best of Moab to Dead Horse Point",
+      "eyebrow": "Rock art, dino tracks, 4x4, remote views, and a famous overlook",
+      "parks": ["Dead Horse Point State Park", "BLM canyon country near Moab"],
+      "hours": [4, 6],
+      "recommended": 6,
+      "difficulty": "Easy to moderate; light walking with optional short hikes",
+      "season": "Year-round",
+      "img": "deadhorse.jpg",
+      "alt": "Dead Horse Point overlook above the Colorado River bend",
+      "tldr": "A private half-day tour that packs ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 roads, and the famous Dead Horse Point overlook into one varied day, more than most full-day tours elsewhere.",
+      "body": [
+        "A half day that packs in more variety than most full-day tours elsewhere: ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 dirt roads, secluded overlooks, and Dead Horse Point itself, the view that convinced Hollywood.",
+        "Stand above a perfect oxbow in the Colorado River, then keep walking for solitude most visitors never find. Choose six hours for more time at each stop and a slower pace through the canyon rim country."
+      ],
+      "highlights": ["Dead Horse Point overlook", "Ancestral rock art panels", "Dinosaur tracks", "Remote 4x4 dirt roads", "Secluded canyon-rim overlooks"],
+      "faqs": [
+        ["What makes this different from the Canyonlands tour?", "This half day samples the widest variety near Moab, rock art, dino tracks, 4x4, and Dead Horse Point, while the Canyonlands tour focuses on the big mesa-top vistas of Island in the Sky."],
+        ["Is this good for families?", "Yes. The walking is light and optional, and the mix of dinosaurs, rock art, and 4x4 driving keeps all ages engaged."],
+        ["Is Dead Horse Point open year-round?", "Yes, this tour runs year-round. Winter brings quiet trails and crisp, clear overlooks."]
+      ]
+    },
+    {
+      "slug": "isky",
+      "name": "Canyonlands Island in the Sky Tour",
+      "h1": "Canyonlands National Park: Island in the Sky",
+      "eyebrow": "Zoom out and up high to stunning cliff vistas",
+      "parks": ["Canyonlands National Park (Island in the Sky)", "Dead Horse Point State Park"],
+      "hours": [6, 8],
+      "recommended": 8,
+      "difficulty": "Easy to moderate; mostly viewpoints with optional short walks",
+      "season": "Year-round",
+      "img": "isky.jpg",
+      "alt": "Island in the Sky mesa vista, Canyonlands National Park",
+      "tldr": "A private full- or extended-day tour of Canyonlands' Island in the Sky district plus Dead Horse Point, a thousand feet above the confluence of two great rivers, with named viewpoints like Mesa Arch and Grand View Point.",
+      "body": [
+        "Canyonlands rewards a full day. The drive is a little further from town, and the views rival the Grand Canyon. Eight hours gives room for named viewpoints like Mesa Arch and Grand View Point, a picnic lunch at a remote overlook, and spots most visitors miss entirely.",
+        "Your guide adds Dead Horse Point State Park and, on the drive in, options for remote cliff vistas and Native American rock art. Choose six hours to keep the pace brisker, same caliber of views, less wandering time."
+      ],
+      "highlights": ["Mesa Arch", "Grand View Point", "Upheaval Dome", "Dead Horse Point", "Remote cliff-edge overlooks and a picnic lunch"],
+      "faqs": [
+        ["Should we do the 6-hour or 8-hour option?", "Eight hours is recommended: Canyonlands is further from town and rewards the extra time. Six hours covers the same headline viewpoints at a brisker pace."],
+        ["Is Mesa Arch included?", "Yes. Mesa Arch, famous for its sunrise glow, is one of the named viewpoints on this tour."],
+        ["Does this include Dead Horse Point too?", "Yes, the tour pairs Island in the Sky with Dead Horse Point State Park for two of the best overlooks in the region in one day."]
+      ]
+    },
+    {
+      "slug": "mill",
+      "name": "Lush Canyon Hike + Local Gems Tour",
+      "h1": "Lush Canyon Hike + Local Gems",
+      "eyebrow": "Beat the heat along an epic canyon creek",
+      "parks": ["Mill Creek and local BLM canyons near Moab"],
+      "hours": [4, 6],
+      "recommended": 4,
+      "difficulty": "Moderate; walking on uneven creek-side trail, some water crossings",
+      "season": "Spring through fall; coolest tour in summer heat",
+      "img": "mill.jpg",
+      "alt": "Shaded creek and waterfall in Mill Creek canyon, Moab",
+      "tldr": "A private half-day hike along a shaded creek canyon near Moab with cottonwood groves, running water, and waterfalls cut into red rock, the coolest tour to book in summer.",
+      "body": [
+        "A slot canyon in miniature: cottonwood groves, a running stream, and waterfalls cut into red rock. The coolest tour in summer, perfect as a morning or late-afternoon outing.",
+        "Choose six hours to explore the upper canyon and its swimming holes at a relaxed pace. Bring shoes that can get wet."
+      ],
+      "highlights": ["Creek-side cottonwood shade", "Red-rock waterfalls", "Swimming holes (6-hour option)", "Hidden local viewpoints"],
+      "faqs": [
+        ["Why is this the best summer tour?", "It follows a shaded creek with running water and waterfalls, so it stays cool when the open desert is hot. It's our go-to when summer temperatures climb."],
+        ["Will we get wet?", "Likely your feet, yes. The trail crosses the creek; wear shoes or sandals you don't mind getting wet, especially on the 6-hour option with swimming holes."],
+        ["How hard is the hike?", "Moderate. The footing is uneven creek-side trail, but the pace is yours and the distance is flexible."]
+      ]
+    },
+    {
+      "slug": "archescombo",
+      "name": "Arches + Best of Moab Custom Combo Tour",
+      "h1": "Arches + Best of Moab Custom Combo",
+      "eyebrow": "Two iconic experiences in one epic day",
+      "parks": ["Arches National Park", "Dead Horse Point State Park", "BLM canyon country near Moab"],
+      "hours": [8],
+      "recommended": 8,
+      "difficulty": "Moderate; a full active day with short hikes",
+      "season": "Year-round",
+      "img": "archescombo.jpg",
+      "alt": "Sandstone arch framing canyon country near Moab",
+      "tldr": "A private full-day combo: Arches National Park highlights and a hike in the morning, then rock art, dinosaur tracks, 4x4 roads, and Dead Horse Point in the afternoon. The most variety we fit into a single day.",
+      "body": [
+        "The best of both worlds in a single full day. Arches National Park and a hike in the morning, a picnic lunch in transition, then ancient rock art, dinosaur tracks, remote 4x4 roads, secluded overlooks, and Dead Horse Point in the afternoon.",
+        "Eight hours, a lot of ground covered, and a photo album to prove it. Built for guests who want the full variety in one push."
+      ],
+      "highlights": ["Arches highlights and a morning hike", "Picnic lunch in transition", "Rock art and dinosaur tracks", "Remote 4x4 roads", "Dead Horse Point"],
+      "faqs": [
+        ["Is one day too much to combine Arches and Best of Moab?", "It's a full, active day by design. If you'd rather go deeper on one area, book the standalone Arches or Best of Moab half day instead."],
+        ["What's included in the day?", "Park fees, water and snacks, a picnic lunch in transition, your private vehicle, and an expert local guide, all in the rate."],
+        ["Can we customize the stops?", "Yes. The combo is built to flex around what your group most wants to see. Tell us your priorities when you inquire."]
+      ]
+    },
+    {
+      "slug": "castle",
+      "name": "Castle Valley Tour",
+      "h1": "Castle Valley",
+      "eyebrow": "Desert towers and solitude",
+      "parks": ["Castle Valley", "Fisher Towers", "Professor Valley (BLM)"],
+      "hours": [4, 6],
+      "recommended": 4,
+      "difficulty": "Easy to moderate; overlooks with an optional tower hike",
+      "season": "Year-round; best in golden-hour light",
+      "img": "castle.jpg",
+      "alt": "Castleton Tower rising over Castle Valley at golden hour",
+      "tldr": "A private half-day tour of Castle Valley and Fisher Towers, Castleton Tower, the Priest and Nuns, and red-rock spires best seen glowing at golden hour, with far fewer crowds than the parks.",
+      "body": [
+        "Castleton Tower, the Priest and Nuns, and Fisher Towers in the round, iconic desert spires best at golden hour when they glow.",
+        "A half day is ideal for photography, overlook stops, and the quiet of Fisher Towers and Professor Valley country. Choose six hours to slow the pace and add a hike among the towers."
+      ],
+      "highlights": ["Castleton Tower", "The Priest and Nuns", "Fisher Towers", "Professor Valley and the Colorado River corridor"],
+      "faqs": [
+        ["When is the best time of day for Castle Valley?", "Golden hour, early morning or late afternoon, when low light sets the spires glowing. We time the tour for the best light."],
+        ["Is this a hiking tour?", "It's primarily scenic overlooks and photography. The 6-hour option adds a hike among the towers for those who want it."],
+        ["Is it less crowded than the national parks?", "Much. Castle Valley and Fisher Towers see a fraction of the park crowds, so it's a quieter, more private experience."]
+      ]
+    },
+    {
+      "slug": "rockart",
+      "name": "Rock Art Tour",
+      "h1": "Rock Art",
+      "eyebrow": "Ancestral Puebloan rock art",
+      "parks": ["BLM rock-art sites near Moab"],
+      "hours": [4, 6],
+      "recommended": 4,
+      "difficulty": "Easy; light walking",
+      "season": "Year-round",
+      "img": "rockart.jpg",
+      "alt": "Ancient petroglyph panel on red rock near Moab",
+      "tldr": "A private, quiet half-day tour of ancient petroglyph and pictograph panels near Moab, with a guide who knows the stories behind the symbols. A reverent day for those drawn to deep time.",
+      "body": [
+        "Rock art that has watched the desert for a thousand years. A quiet, reverent half day visiting ancient petroglyph and pictograph panels, with a guide who knows the stories behind the symbols.",
+        "Choose six hours to add remote panels that require more driving and short hiking, places most visitors never reach."
+      ],
+      "highlights": ["Ancestral Puebloan petroglyphs and pictographs", "The stories and context behind the panels", "Remote panels on the 6-hour option"],
+      "faqs": [
+        ["How much walking is involved?", "Light. Most panels are a short walk from the vehicle; the 6-hour option adds a little more hiking to reach remote sites."],
+        ["Is this appropriate for kids?", "Yes, and it's a memorable way to connect them with deep history. The pace is gentle and the stories bring the panels to life."],
+        ["Will you teach the meaning of the symbols?", "Your guide shares the known context and stories while respecting that these are sacred ancestral sites we visit with care."]
+      ]
+    },
+    {
+      "slug": "dino",
+      "name": "Dino Tracks & Bones Tour",
+      "h1": "Dino Tracks & Bones",
+      "eyebrow": "Dinosaur tracks and bone beds, half day",
+      "parks": ["BLM dinosaur track and fossil sites near Moab"],
+      "hours": [4],
+      "recommended": 4,
+      "difficulty": "Easy; light walking, family-friendly",
+      "season": "Year-round",
+      "img": "dino.jpg",
+      "alt": "Fossilized dinosaur track pressed into stone near Moab",
+      "tldr": "A private half-day tour of dinosaur trackways and bone beds around Moab, where you can put your hand in a three-toed theropod track pressed into stone 150 million years ago. Great for families.",
+      "body": [
+        "Put your hand in a three-toed theropod track pressed into stone 150 million years ago. Trackways, bone beds, and a guide who knows the story each fossil tells.",
+        "A focused half day visiting multiple dig sites and track locations around Moab. Perfect for families and anyone fascinated by deep time."
+      ],
+      "highlights": ["Three-toed theropod trackways", "Fossil bone beds", "Multiple dig sites in one day", "Family-friendly, light walking"],
+      "faqs": [
+        ["Is this a good tour for kids?", "It's one of our best for families. Real dinosaur tracks you can touch, easy walking, and a guide who makes the science come alive."],
+        ["Are the tracks real?", "Yes, genuine fossilized trackways and bone beds in the rock around Moab, not replicas."],
+        ["How far do we walk?", "Short, easy walks from the vehicle to each site. Suitable for most ages and abilities."]
+      ]
+    },
+    {
+      "slug": "localgems",
+      "name": "Local Gems Tour",
+      "h1": "Local Gems",
+      "eyebrow": "The spots your guide would take a visiting friend",
+      "parks": ["Local BLM viewpoints and canyons near Moab"],
+      "hours": [4, 6],
+      "recommended": 4,
+      "difficulty": "Easy to moderate; flexible walking",
+      "season": "Year-round",
+      "img": "localgems.jpg",
+      "alt": "Hidden overlook with no crowds on a local gems tour near Moab",
+      "tldr": "A private half-day tour of the hidden overlooks, wildflower meadows, and unmarked viewpoints your guide would take a visiting friend to, the Moab the crowds never see.",
+      "body": [
+        "The spots your guide would take a visiting friend: hidden overlooks, wildflower meadows, and viewpoints with no signs. A half day of local secrets.",
+        "Choose six hours to add a hidden canyon detour and a more leisurely pace. Every route is the guide's pick, shaped by season and light."
+      ],
+      "highlights": ["Unmarked overlooks", "Seasonal wildflower meadows", "Guide's-pick routing", "Hidden canyon detour (6-hour option)"],
+      "faqs": [
+        ["What will we actually see?", "It varies by season, light, and your group, that's the point. Your guide chooses the best hidden spots for the day, the places locals love."],
+        ["Is this better than a national-park tour?", "It's different. Choose Local Gems for solitude and surprise; choose a park tour for the famous icons. Many guests do both across a trip."],
+        ["Can we tailor it to our interests?", "Absolutely. Tell us whether you want photography, easy strolls, or a bit more hiking, and the guide builds the route around it."]
+      ]
+    },
+    {
+      "slug": "needles",
+      "name": "Canyonlands Needles District Tour",
+      "h1": "Canyonlands: The Needles District",
+      "eyebrow": "Candy-striped sandstone spires, full day",
+      "parks": ["Canyonlands National Park (The Needles)"],
+      "hours": [8],
+      "recommended": 8,
+      "difficulty": "Moderate; a long day with optional hiking",
+      "season": "Spring and fall best; year-round by arrangement",
+      "img": "needles.jpg",
+      "alt": "Candy-striped sandstone spires, Needles District, Canyonlands",
+      "tldr": "A private full-day tour of the remote Needles District of Canyonlands, sandstone spires in impossible candy stripes, a long drive and a longer day, worth every mile for the solitude and scenery.",
+      "body": [
+        "The Needles District is remote. The drive alone takes time, but what you find is sandstone spires in impossible candy stripes and a less-visited side of Canyonlands.",
+        "A full day is the only way to do it justice. Pack your energy: there's room for a hike among the spires and overlooks few travelers ever reach."
+      ],
+      "highlights": ["Candy-striped sandstone spires", "Remote, less-visited district", "Optional hiking among the Needles", "Big-sky overlooks and solitude"],
+      "faqs": [
+        ["Why does the Needles take a full day?", "It's a remote district with a long drive each way. The full day makes the distance worth it and leaves time to hike and explore once you arrive."],
+        ["How much hiking is there?", "As much or as little as you want. The day can be scenic-overlook focused or include a real hike among the spires."],
+        ["Is it crowded?", "No. The Needles sees far fewer visitors than Island in the Sky or Arches, so you'll often have viewpoints to yourselves."]
+      ]
+    },
+    {
+      "slug": "maze",
+      "name": "Canyonlands Maze District Tour",
+      "h1": "Canyonlands: The Maze",
+      "eyebrow": "The least-visited district, deep backcountry",
+      "parks": ["Canyonlands National Park (The Maze)"],
+      "hours": [8],
+      "recommended": 8,
+      "difficulty": "Strenuous; remote 4x4 backcountry, full commitment",
+      "season": "Spring and fall; by arrangement only",
+      "img": "maze.jpg",
+      "alt": "Remote canyons of the Maze District, Canyonlands",
+      "tldr": "A private full-day or overnight expedition into the Maze, the least-visited district of Canyonlands, reached by fewer than a thousand people a year. A long 4x4 approach, petroglyphs, and absolute solitude.",
+      "body": [
+        "The least-visited district of Canyonlands, fewer than a thousand people reach it in a year. It requires a long 4x4 approach and a full-day, often overnight, commitment.",
+        "Petroglyphs, ancient stone walls, and absolute solitude. This is a true backcountry expedition; we plan it carefully with you and the required permits."
+      ],
+      "highlights": ["Deep backcountry solitude", "Ancient petroglyphs and stone walls", "Remote 4x4 approach", "Overnight option"],
+      "faqs": [
+        ["Is the Maze a day trip?", "It can be a very long day, but most guests do it as an overnight expedition given the remote 4x4 approach. We'll advise based on your group and the season."],
+        ["Do we need a permit?", "Yes. The Maze requires backcountry permits, which we arrange as part of planning your trip."],
+        ["Who is this tour for?", "Experienced, adventurous travelers who want true solitude and don't mind a long, rugged approach. It's our most remote offering."]
+      ]
+    },
+    {
+      "slug": "night",
+      "name": "Nighthike (Moonlight Walk)",
+      "h1": "Nighthike",
+      "eyebrow": "Moonlight walk and dark-sky stargazing",
+      "parks": ["Local trails near Moab"],
+      "hours": [4],
+      "recommended": 4,
+      "difficulty": "Easy to moderate; evening walk on familiar trail",
+      "season": "Full-moon weeks and dark-sky nights, seasonal",
+      "img": "night.jpg",
+      "alt": "Star-filled night sky over the Moab desert",
+      "tldr": "A private evening moonlight walk (about 3 hours) near Moab. On full-moon weeks the desert lights itself; on dark-sky nights the Milky Way is the main event.",
+      "body": [
+        "On full-moon weeks, the desert lights itself. Walk a familiar trail by moonlight, cooler, quieter, and transformed beyond recognition.",
+        "On dark-sky nights, the Milky Way is the main event. About three hours in the evening, timed to the moon and the season."
+      ],
+      "highlights": ["Moonlit desert trail", "Dark-sky stargazing", "Cooler evening temperatures", "A familiar landscape transformed"],
+      "faqs": [
+        ["When can we do a nighthike?", "It's timed to the moon and season, full-moon weeks for moonlight walks, dark-sky nights for stargazing. Tell us your dates and we'll find the best window."],
+        ["How long is it?", "About three hours in the evening, at an easy pace on a familiar trail."],
+        ["Do we need special gear?", "Just comfortable shoes and a layer for the cooler evening. Your guide brings the rest."]
+      ]
+    }
+  ]
+}
