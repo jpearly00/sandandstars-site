@@ -36,7 +36,12 @@
   "address":{"@type":"PostalAddress","addressLocality":"Moab","addressRegion":"UT","addressCountry":"US"},
   "geo":{"@type":"GeoCoordinates","latitude":38.5733,"longitude":-109.5498},
   "areaServed":[{"@type":"Place","name":"Arches National Park"},{"@type":"Place","name":"Canyonlands National Park"},{"@type":"Place","name":"Dead Horse Point State Park"}],
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"39","bestRating":"5","worstRating":"1"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"44","bestRating":"5","worstRating":"1"},
+  "review":[
+    {"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Mieneke M"},"reviewBody":"The most incredible way to see Moab when you are short on time and not a hiker. Two days of touring, two very different flavors of Moab's beauty. Our guides were articulate and extremely knowledgeable."},
+    {"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"James Stein"},"reviewBody":"The touring company you want to work with in Moab. We chose their bespoke service and John was outstanding: friendly, helpful, flexible, and a great teacher. The real joy came from the local secrets."},
+    {"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Xoshil Morales"},"reviewBody":"The best tour company in Moab. Mike works hard at ensuring all aspects of the trip get covered and offers great options and insights. He knows the area well. Will use this company again."}
+  ],
   "sameAs":["https://www.sandandstars.com/","https://www.tripadvisor.com/Attraction_Review-g60724-d23631134-Reviews-Sand_and_Stars_Touring-Moab_Utah.html"]
 }
 </script>
@@ -190,6 +195,17 @@
     .write-review-cta{flex-direction:column;gap:10px}
     .write-review-cta .wr-lead{margin-right:0}
     .write-review-cta .wr-sep{display:none}
+  }
+
+  /* Desktop: show real reviews 3-up (grid) instead of one-at-a-time carousel.
+     Mobile (<=820px) keeps the carousel above, untouched. */
+  @media (min-width:821px){
+    .review-panel.review-panel-combined{max-width:1140px}
+    .review-viewport{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;min-height:0;margin:20px 0 4px}
+    .review-card{position:static;opacity:1;transform:none;pointer-events:auto;background:var(--paper);border:1px solid rgba(26,21,16,0.08);border-radius:var(--radius);padding:20px 20px}
+    .review-card:nth-child(n+4){display:none}
+    .review-card .rc-text{display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
+    .review-controls{display:none}
   }
 
   /* Feature strip */
