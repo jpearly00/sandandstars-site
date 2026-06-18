@@ -1,4 +1,26 @@
+# sandandstars.com — all crawlers welcome, including AI assistants.
 User-agent: *
 Allow: /
 
+# Explicitly welcome AI / answer-engine crawlers (GEO: we WANT to be cited).
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://sandandstars.com/sitemap.xml
+# AI overview: https://sandandstars.com/llms.txt
