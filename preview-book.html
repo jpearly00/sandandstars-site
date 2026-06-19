@@ -91,7 +91,7 @@
         <div class="row">
           <div class="field">
             <label for="date">Preferred date <span class="req">*</span></label>
-            <input type="date" id="date" name="date" required>
+            <input type="date" id="date" name="date" required style="cursor:pointer" onclick="try{this.showPicker()}catch(e){}" onfocus="try{this.showPicker()}catch(e){}">
           </div>
           <div class="field">
             <label for="group">Group size <span class="req">*</span></label>
