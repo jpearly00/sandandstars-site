@@ -166,7 +166,7 @@
   .review-card.is-active{opacity:1;transform:translateY(0);position:relative;pointer-events:auto}
   .review-card .rc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
   .review-card .rc-stars{color:var(--ember);letter-spacing:0.08em;font-size:14px}
-  .review-card .rc-date{font-size:12px;color:rgba(26,21,16,0.55);letter-spacing:0.04em;text-transform:uppercase}
+  .review-card .rc-date{display:none}
   .review-card .rc-title{font-family:'Fraunces',serif;font-size:20px;line-height:1.25;color:var(--ink);margin:6px 0 10px}
   .review-card .rc-text{font-size:15px;line-height:1.6;color:rgba(26,21,16,0.82);margin-bottom:14px}
   .review-card .rc-byline{font-size:13px;color:var(--canyon);font-weight:600;letter-spacing:0.02em}
@@ -204,7 +204,7 @@
     .review-panel.review-panel-combined{max-width:1140px}
     .review-viewport{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;min-height:0;margin:20px 0 4px}
     .review-card{position:static;opacity:1;transform:none;pointer-events:auto;background:var(--paper);border:1px solid rgba(26,21,16,0.08);border-radius:var(--radius);padding:20px 20px}
-    .review-card:nth-child(n+4){display:none}
+    .review-card:nth-child(n+7){display:none}
     .review-card .rc-text{display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
     .review-controls{display:none}
   }
@@ -518,7 +518,7 @@
 
 <section class="testimonials" id="reviews">
   <div class="container">
-    <h2 class="section-title">What guests are saying.</h2>
+    <h2 class="section-title">100% 5-Star Reviews.</h2>
     <p class="section-sub">Real reviews pulled live from Google and TripAdvisor.</p>
 
     <div class="review-panel review-panel-combined" data-interval="10000" aria-label="Guest reviews from TripAdvisor and Google">
