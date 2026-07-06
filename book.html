@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Book a Tour. Sand &amp; Stars Touring</title>
-<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Email, text, or call us for a quick customized suggestion or to reserve your day.">
+<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and date and pay securely via Square.">
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://sandandstars.com/book.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,42 +17,37 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
 <style>
-  :root{
-    --slate:#1e293b; --slate-deep:#0f1a22; --ember:#e89866; --canyon:#c2703e;
-    --ink:#1a1510; --paper:#f5f0eb; --sand:#efe6d9;
-    --muted:rgba(245,240,235,0.72); --line:rgba(245,240,235,0.14);
-    --pill:24px; --radius-sm:8px; --radius:12px;
-  }
+  :root{--slate:#1e293b;--slate-deep:#0f1a22;--ember:#e89866;--canyon:#c2703e;--ink:#1a1510;--paper:#f5f0eb;--sand:#efe6d9;--muted:rgba(245,240,235,0.72);--line:rgba(245,240,235,0.14);--pill:24px;--radius-sm:8px;--radius:12px}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{overflow-x:hidden}
   body{background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);font-family:'Inter',sans-serif;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
   a{color:inherit}
   header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1100px;margin:0 auto;width:100%}
-  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;letter-spacing:0.01em;text-decoration:none}
+  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;text-decoration:none}
   .brand span{color:var(--ember)}
-  .back{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:var(--pill);transition:border-color .15s,color .15s}
-  .back:hover{border-color:var(--ember);color:var(--paper)}
-  main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 24px}
-  .card{max-width:620px;width:100%;text-align:center}
-  .kicker{display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:18px}
-  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,5vw,42px);line-height:1.12;margin-bottom:8px}
+  .back{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:var(--pill)}
+  main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px 24px 56px}
+  .card{max-width:560px;width:100%}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:14px}
+  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.12;margin-bottom:10px}
   h1 em{color:var(--ember);font-style:italic}
-  .tour-line{font-size:15px;color:var(--muted);margin-bottom:22px;min-height:20px}
-  .tour-line strong{color:var(--paper);font-weight:600}
-  .lead{font-size:17px;line-height:1.6;color:var(--paper);margin:0 auto 32px;max-width:520px}
-  .lead .soft{color:var(--muted)}
-  .actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-  .act{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:var(--pill);font-weight:600;font-size:16px;text-decoration:none;transition:background .15s,transform .1s,border-color .15s}
-  .act:active{transform:translateY(1px)}
-  .act-primary{background:var(--ember);color:var(--ink)}
-  .act-primary:hover{background:#f0a877}
-  .act-ghost{border:1.5px solid rgba(245,240,235,0.4);color:var(--paper)}
-  .act-ghost:hover{border-color:var(--ember)}
-  .ico{font-size:18px;line-height:1}
-  .response{margin-top:26px;font-size:13.5px;color:var(--muted)}
-  .response b{color:var(--paper);font-weight:600}
+  .lead{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:28px}
+  form{background:rgba(245,240,235,0.04);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .field{margin-bottom:16px}
+  label{display:block;font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:6px}
+  label .req{color:var(--ember)}
+  input,select,textarea{width:100%;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;font-family:inherit;background:rgba(15,26,34,0.5);color:var(--paper)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
+  select option{color:#1a1510}
+  textarea{min-height:84px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.row{grid-template-columns:1fr}}
+  .submit{width:100%;background:var(--ember);color:var(--ink);border:0;padding:15px 26px;border-radius:var(--pill);font:700 16px Inter,sans-serif;cursor:pointer;margin-top:6px}
+  .submit:hover{background:#f0a877}
+  .note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5;text-align:center}
+  .fallback{margin-top:18px;font-size:13.5px;color:var(--muted);text-align:center}
+  .fallback b{color:var(--paper)}
   footer{padding:22px 24px;text-align:center;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);max-width:1100px;margin:0 auto;width:100%}
-  @media (max-width:520px){.actions{flex-direction:column}.act{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -63,19 +58,84 @@
 
   <main>
     <div class="card">
-      <span class="kicker">Booking</span>
-      <h1>Let's plan your day <em>the personal way</em></h1>
-      <p class="tour-line" id="tourLine"></p>
-      <p class="lead">
-        Every Sand &amp; Stars day starts with a quick conversation.
-        <span class="soft">Tell us the day you have in mind.</span> Email, text, or call and we'll send a quick customized suggestion or lock in your booking, usually same day.
-      </p>
-      <div class="actions">
-        <a class="act act-primary" id="emailBtn" href="mailto:tours@sandandstars.com"><span class="ico">&#9993;</span> Email us</a>
-        <a class="act act-ghost" href="sms:+14352608260"><span class="ico">&#128241;</span> Text us</a>
-        <a class="act act-ghost" href="tel:+14352608260"><span class="ico">&#9742;</span> Call us</a>
-      </div>
-      <p class="response"><b>tours@sandandstars.com</b> &nbsp;·&nbsp; <b>(435) 260-8260</b> &nbsp;·&nbsp; Moab, Utah</p>
+      <span class="kicker">Book a tour</span>
+      <h1>Reserve your <em>day in Moab</em></h1>
+      <p class="lead">Pick your tour and date below. We'll send you a secure Square payment link to confirm. Your price is set by group size, no card details entered here.</p>
+
+      <!-- Posts directly to the Tour Hub public booking endpoint, which creates a
+           Square invoice (server-priced) and redirects to the secure payment link.
+           Direct form POST (full navigation) avoids cross-origin/CORS issues. -->
+      <form id="bookForm" method="POST"
+            action="https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec">
+        <input type="hidden" name="action" value="public_book">
+        <input type="hidden" name="source" value="website">
+
+        <div class="field">
+          <label for="tour">Tour <span class="req">*</span></label>
+          <select id="tour" name="tour" required>
+            <option value="" disabled selected>Choose a tour…</option>
+            <option value="arches">Arches National Park</option>
+            <option value="archescombo">Arches + Canyonlands (Full Day)</option>
+            <option value="isky">Canyonlands: Island in the Sky</option>
+            <option value="needles">Canyonlands: The Needles</option>
+            <option value="deadhorse">Dead Horse Point</option>
+            <option value="castle">Castle Valley</option>
+            <option value="mill">Mill Creek</option>
+            <option value="rockart">Rock Art &amp; Petroglyphs</option>
+            <option value="dino">Dinosaur Tracks</option>
+            <option value="localgems">Local Gems</option>
+            <option value="night">Night Sky</option>
+            <option value="bespoke">Bespoke / Custom day</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="date">Preferred date <span class="req">*</span></label>
+            <input type="date" id="date" name="date" required style="cursor:pointer" onclick="try{this.showPicker()}catch(e){}" onfocus="try{this.showPicker()}catch(e){}">
+          </div>
+          <div class="field">
+            <label for="group">Group size <span class="req">*</span></label>
+            <select id="group" name="group_size" required>
+              <option value="" disabled selected>How many?</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="first">First name <span class="req">*</span></label>
+            <input type="text" id="first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="last">Last name <span class="req">*</span></label>
+            <input type="text" id="last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything we should know?</label>
+          <textarea id="notes" name="notes" placeholder="Pickup spot, must-sees, mobility needs, celebrating something…"></textarea>
+        </div>
+
+        <button type="submit" class="submit">Continue to secure payment →</button>
+        <p class="note">You'll land on a Square-hosted page to pay. We never see or store your card details.</p>
+      </form>
+
+      <p class="fallback">Prefer a human? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b>.</p>
     </div>
   </main>
 
@@ -85,20 +145,13 @@
 
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
-    (function(){
-      var TOURS={arches:"Arches National Park",archescombo:"Arches + Canyonlands",canyonlands:"Canyonlands",isky:"Island in the Sky",needles:"The Needles",maze:"The Maze",deadhorse:"Dead Horse Point",castle:"Castle Valley",mill:"Mill Creek",rockart:"Rock Art & Petroglyphs",dino:"Dinosaur Tracks",localgems:"Local Gems",night:"Night Sky",highlights4:"Arches Highlights",delicate4:"Delicate Arch",devils6:"Devil's Garden",combo6:"Custom Combo",hike6:"Hike Lovers",deadhorse6:"Arches + Dead Horse",combo8:"Custom Combo (Full Day)",mega8:"All You Can Arches",canyonlands8:"Arches + Canyonlands (Full Day)"};
-      function qp(k){return new URLSearchParams(location.search).get(k);}
-      var t=qp('variant')||qp('tour');
-      var label=t&&TOURS[t]?TOURS[t]:null;
-      if(label){
-        document.getElementById('tourLine').innerHTML='You were looking at the <strong>'+label+'</strong> tour.';
-        var subj=encodeURIComponent('Booking inquiry: '+label);
-        var body=encodeURIComponent("Hi Sand & Stars,\n\nI'm interested in the "+label+" tour.\n\nDates:\nGroup size:\nAnything else:\n\nThanks!");
-        document.getElementById('emailBtn').href='mailto:tours@sandandstars.com?subject='+subj+'&body='+body;
-      } else {
-        document.getElementById('tourLine').textContent='Tell us what you have in mind and we’ll tailor the day.';
-      }
-    })();
+    // prefill tour from ?tour=
+    (function(){var t=new URLSearchParams(location.search).get('tour');if(t){var s=document.getElementById('tour');if([...s.options].some(o=>o.value===t))s.value=t;}})();
+    // min date = today
+    document.getElementById('date').min=new Date().toISOString().split('T')[0];
+    document.getElementById('bookForm').addEventListener('submit',function(){
+      if(window.dataLayer)dataLayer.push({event:'begin_booking',tour:document.getElementById('tour').value,group_size:document.getElementById('group').value});
+    });
   </script>
 </body>
 </html>
