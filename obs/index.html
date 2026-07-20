@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Opening Obsidian…</title>
+<style>
+  body{font-family:-apple-system,system-ui,sans-serif;background:#1e1e2e;color:#eee;
+       display:flex;flex-direction:column;align-items:center;justify-content:center;
+       min-height:90vh;gap:18px;text-align:center;padding:24px}
+  a.btn{background:#7c5cff;color:#fff;text-decoration:none;padding:14px 26px;
+        border-radius:10px;font-size:18px;font-weight:600}
+  code{background:#333;padding:4px 8px;border-radius:6px;font-size:12px;word-break:break-all}
+  p{color:#aaa;max-width:420px}
+</style>
+</head>
+<body>
+<h2>📊 Opening Obsidian…</h2>
+<a id="go" class="btn" href="#">Tap if it didn't open</a>
+<p id="hint">If nothing happens, tap the button. First time, your device will ask to open Obsidian — allow it.</p>
+<code id="uri"></code>
+<script>
+  // BB utility (private, unlinked): https://sandandstars.com/obs/?v=VAULT&f=PATH
+  // Builds obsidian://open?vault=..&file=.. and hands off. 260719 #C013 follow-on.
+  var q = new URLSearchParams(location.search);
+  var v = q.get("v") || "CMSF";
+  var f = q.get("f") || "EpicSplit/DASH";
+  var uri = "obsidian://open?vault=" + encodeURIComponent(v) + "&file=" + encodeURIComponent(f);
+  document.getElementById("go").href = uri;
+  document.getElementById("uri").textContent = uri;
+  setTimeout(function(){ location.href = uri; }, 250);
+</script>
+</body>
+</html>
