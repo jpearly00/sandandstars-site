@@ -93,7 +93,7 @@
     <div class="card">
       <span class="kicker">Book a tour</span>
       <h1>Reserve your <em>day in Moab</em></h1>
-      <p class="lead">Private guiding, your group only — up to 8 travelers. Pick a tour and an <b style="color:var(--paper)">open date</b> (the calendar only lets you choose days we can actually run), and we'll send a secure Square link to lock it in. Pricing is per person and drops as your group grows.</p>
+      <p class="lead">Private guiding, your group only — up to 8 travelers. Pick a tour and an <b style="color:var(--paper)">open date</b> (the calendar only lets you choose days we can actually run), and we'll send a secure Square link to lock it in. One group price covers your whole party — no per-person math.</p>
 
       <form id="bookForm" method="POST"
             action="https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec">
@@ -217,6 +217,7 @@
       maze:'The remote Maze overlook — a true full-day adventure.'
     };
     var LABELS = {4:'Half Day · ~4 hrs',6:'Extended · ~6 hrs',8:'Full Day · ~8 hrs'};
+    var GROUP_BASE = {4:{b12:575,b34:675,ex:100},6:{b12:850,b34:975,ex:125},8:{b12:1125,b34:1275,ex:150}}; // per-GROUP tiers — pricing.html canon
     var GROUP_TITLE = {4:'Half day (~4 hours)',6:'Extended half day (~6 hours)',8:'Full day (~8 hours)'};
 
     var CATALOG = {};
@@ -245,7 +246,7 @@
         var og=document.createElement('optgroup');og.label=GROUP_TITLE[h];
         items.forEach(function(t){
           var o=document.createElement('option');o.value=t.key;
-          o.textContent=t.title+(t.fromPerPerson?'  —  from '+money(t.fromPerPerson)+'/person':'');
+          o.textContent=t.title;
           og.appendChild(o);
         });
         sel.appendChild(og);
@@ -356,7 +357,8 @@
         var t=CATALOG[key];
         if(!t){info.hidden=true;dateField.hidden=true;return;}
         info.hidden=false;
-        document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[t.hours]||('~'+t.hours+' hrs'))+'</span>'+(t.fromPerPerson?'<span>from '+money(t.fromPerPerson)+' / person</span>':'')+'<span>Private · up to 8</span>';
+        var gb=GROUP_BASE[t.hours];
+      document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[t.hours]||('~'+t.hours+' hrs'))+'</span>'+(gb?'<span>'+money(gb.b12)+' total · 1–2 guests</span>':'')+'<span>Private · up to 8</span>';
         document.getElementById('tiDesc').textContent=DESC[key]||'Private guiding, your group only.';
       }
       dateField.hidden=false;
