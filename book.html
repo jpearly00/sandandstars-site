@@ -6,12 +6,13 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Book a Tour. Sand &amp; Stars Touring</title>
-<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and date and pay securely via Square.">
+<title>Book a Tour · Sand &amp; Stars Touring</title>
+<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and an open date — pay securely via Square. Private guiding, your group only.">
 <meta name="robots" content="noindex,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 <!-- Google tag (gtag.js) — GA4 sandandstars.com -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
@@ -26,7 +27,7 @@
   .brand span{color:var(--ember)}
   .back{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:var(--pill)}
   main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px 24px 56px}
-  .card{max-width:560px;width:100%}
+  .card{max-width:580px;width:100%}
   .kicker{display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:14px}
   h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.12;margin-bottom:10px}
   h1 em{color:var(--ember);font-style:italic}
@@ -37,16 +38,44 @@
   label .req{color:var(--ember)}
   input,select,textarea{width:100%;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;font-family:inherit;background:rgba(15,26,34,0.5);color:var(--paper)}
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
-  select option{color:#1a1510}
+  select option,select optgroup{color:#1a1510}
   textarea{min-height:84px;resize:vertical}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:480px){.row{grid-template-columns:1fr}}
   .submit{width:100%;background:var(--ember);color:var(--ink);border:0;padding:15px 26px;border-radius:var(--pill);font:700 16px Inter,sans-serif;cursor:pointer;margin-top:6px}
   .submit:hover{background:#f0a877}
+  .submit:disabled{opacity:.55;cursor:not-allowed}
   .note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5;text-align:center}
   .fallback{margin-top:18px;font-size:13.5px;color:var(--muted);text-align:center}
   .fallback b{color:var(--paper)}
   footer{padding:22px 24px;text-align:center;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);max-width:1100px;margin:0 auto;width:100%}
+  /* tour info panel */
+  .tour-info{background:rgba(232,152,102,0.08);border:1px solid rgba(232,152,102,0.28);border-radius:var(--radius-sm);padding:13px 15px;margin:-4px 0 16px;font-size:13.5px;line-height:1.55;color:var(--paper)}
+  .tour-info .ti-row{display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:600;margin-bottom:4px}
+  .tour-info .ti-row span{color:var(--ember)}
+  .tour-info .ti-desc{color:var(--muted);font-weight:400}
+  /* slot picker */
+  .slots{display:flex;flex-wrap:wrap;gap:10px}
+  .slot{flex:1 1 140px}
+  .slot input{position:absolute;opacity:0;width:0;height:0}
+  .slot label{display:block;margin:0;cursor:pointer;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:11px 12px;font-size:14px;font-weight:600;text-align:center;transition:all .15s}
+  .slot label small{display:block;font-weight:400;font-size:11.5px;color:var(--muted);margin-top:2px}
+  .slot input:checked + label{border-color:var(--ember);background:rgba(232,152,102,0.14);color:var(--ember)}
+  .slot input:checked + label small{color:var(--ember)}
+  .helper{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+  .helper.warn{color:var(--ember)}
+  /* flatpickr dark theme */
+  .flatpickr-calendar{background:var(--slate-deep);border:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+  .flatpickr-calendar.arrowTop:before,.flatpickr-calendar.arrowTop:after{border-bottom-color:var(--slate-deep)}
+  .flatpickr-calendar.arrowBottom:before,.flatpickr-calendar.arrowBottom:after{border-top-color:var(--slate-deep)}
+  .flatpickr-months .flatpickr-month,.flatpickr-current-month,.flatpickr-monthDropdown-months,.flatpickr-weekday{color:var(--paper);fill:var(--paper)}
+  .flatpickr-months .flatpickr-prev-month svg,.flatpickr-months .flatpickr-next-month svg{fill:var(--paper)}
+  .flatpickr-day{color:var(--paper)}
+  .flatpickr-day.today{border-color:var(--canyon)}
+  .flatpickr-day:hover{background:rgba(232,152,102,0.18);border-color:transparent}
+  .flatpickr-day.selected{background:var(--ember);border-color:var(--ember);color:var(--ink)}
+  .flatpickr-day.flatpickr-disabled,.flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{color:rgba(245,240,235,0.22)!important;text-decoration:line-through;cursor:not-allowed}
+  .flatpickr-day.flatpickr-disabled:hover{background:transparent}
 </style>
 </head>
 <body>
@@ -59,39 +88,31 @@
     <div class="card">
       <span class="kicker">Book a tour</span>
       <h1>Reserve your <em>day in Moab</em></h1>
-      <p class="lead">Pick your tour and date below. We'll send you a secure Square payment link to confirm. Your price is set by group size, no card details entered here.</p>
+      <p class="lead">Private guiding, your group only — up to 8 travelers. Pick a tour and an <b style="color:var(--paper)">open date</b> (we only show dates we can actually run), and we'll send a secure Square link to lock it in. Pricing is per person and drops as your group grows.</p>
 
-      <!-- Posts directly to the Tour Hub public booking endpoint, which creates a
-           Square invoice (server-priced) and redirects to the secure payment link.
-           Direct form POST (full navigation) avoids cross-origin/CORS issues. -->
       <form id="bookForm" method="POST"
             action="https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec">
         <input type="hidden" name="action" value="public_book">
         <input type="hidden" name="source" value="website">
+        <input type="hidden" id="preferredSlot" name="preferred_slot" value="">
 
         <div class="field">
           <label for="tour">Tour <span class="req">*</span></label>
           <select id="tour" name="tour" required>
             <option value="" disabled selected>Choose a tour…</option>
-            <option value="arches">Arches National Park</option>
-            <option value="archescombo">Arches + Canyonlands (Full Day)</option>
-            <option value="isky">Canyonlands: Island in the Sky</option>
-            <option value="needles">Canyonlands: The Needles</option>
-            <option value="deadhorse">Dead Horse Point</option>
-            <option value="castle">Castle Valley</option>
-            <option value="mill">Mill Creek</option>
-            <option value="rockart">Rock Art &amp; Petroglyphs</option>
-            <option value="dino">Dinosaur Tracks</option>
-            <option value="localgems">Local Gems</option>
-            <option value="night">Night Sky</option>
-            <option value="bespoke">Bespoke / Custom day</option>
           </select>
+        </div>
+
+        <div id="tourInfo" class="tour-info" hidden>
+          <div class="ti-row" id="tiMeta"></div>
+          <div class="ti-desc" id="tiDesc"></div>
         </div>
 
         <div class="row">
           <div class="field">
             <label for="date">Preferred date <span class="req">*</span></label>
-            <input type="date" id="date" name="date" required style="cursor:pointer" onclick="try{this.showPicker()}catch(e){}" onfocus="try{this.showPicker()}catch(e){}">
+            <input type="text" id="date" name="date" placeholder="Pick a tour first…" required readonly>
+            <div class="helper" id="dateHelper">Choose your tour above and the calendar will show only open dates.</div>
           </div>
           <div class="field">
             <label for="group">Group size <span class="req">*</span></label>
@@ -101,6 +122,12 @@
               <option>5</option><option>6</option><option>7</option><option>8+</option>
             </select>
           </div>
+        </div>
+
+        <div class="field" id="slotWrap" hidden>
+          <label>Start <span class="req">*</span></label>
+          <div class="slots" id="slots"></div>
+          <div class="helper" id="slotHelper">Exact start time is confirmed with your guide after booking.</div>
         </div>
 
         <div class="row">
@@ -127,14 +154,14 @@
 
         <div class="field">
           <label for="notes">Anything we should know?</label>
-          <textarea id="notes" name="notes" placeholder="Pickup spot, must-sees, mobility needs, celebrating something…"></textarea>
+          <textarea id="notes" name="notes" placeholder="Pickup spot / lodging, must-sees, mobility needs, celebrating something…"></textarea>
         </div>
 
-        <button type="submit" class="submit">Continue to secure payment →</button>
-        <p class="note">You'll land on a Square-hosted page to pay. We never see or store your card details.</p>
+        <button type="submit" class="submit" id="submitBtn">Continue to secure payment →</button>
+        <p class="note">Your price is set by group size — no card details are entered here. You'll finish on a secure Square page. We never see or store your card.</p>
       </form>
 
-      <p class="fallback">Prefer a human? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b>.</p>
+      <p class="fallback">Prefer a human, planning a bespoke day, or want multiple tours across a trip? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b> and we'll build it with you.</p>
     </div>
   </main>
 
@@ -142,15 +169,216 @@
     &copy; <span id="year">2026</span> Sand &amp; Stars Touring. Operating under permits from the National Park Service &amp; BLM.
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-    // prefill tour from ?tour=
-    (function(){var t=new URLSearchParams(location.search).get('tour');if(t){var s=document.getElementById('tour');if([...s.options].some(o=>o.value===t))s.value=t;}})();
-    // min date = today
-    document.getElementById('date').min=new Date().toISOString().split('T')[0];
-    document.getElementById('bookForm').addEventListener('submit',function(){
-      if(window.dataLayer)dataLayer.push({event:'begin_booking',tour:document.getElementById('tour').value,group_size:document.getElementById('group').value});
+  (function(){
+    var EXEC = "https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec";
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- Fallback catalog (truth source is the live tour_catalog fetch below) ----
+    var FALLBACK = [
+      {key:'arches',title:'Arches National Park — Private Tour',hours:4,fromPerPerson:475},
+      {key:'rockart',title:'Rock Art & Petroglyphs',hours:4,fromPerPerson:475},
+      {key:'dino',title:'Dinosaur Tracks',hours:4,fromPerPerson:475},
+      {key:'localgems',title:'Local Gems',hours:4,fromPerPerson:475},
+      {key:'night',title:'Night Sky Tour',hours:4,fromPerPerson:475},
+      {key:'deadhorse',title:'Best of Moab to Dead Horse Point',hours:6,fromPerPerson:595},
+      {key:'castle',title:'Castle Valley',hours:6,fromPerPerson:595},
+      {key:'mill',title:'Lush Canyon Hike + Local Gems (Mill Creek)',hours:6,fromPerPerson:595},
+      {key:'archescombo',title:'Arches + Best of Moab Combo — Full Day',hours:8,fromPerPerson:795},
+      {key:'isky',title:'Canyonlands: Island in the Sky + Dead Horse',hours:8,fromPerPerson:795},
+      {key:'needles',title:'Canyonlands: The Needles — Full Day',hours:8,fromPerPerson:795},
+      {key:'maze',title:'Canyonlands: The Maze — Full Day',hours:8,fromPerPerson:795}
+    ];
+    var DESC = {
+      arches:'The park’s icons — Delicate Arch country, the Windows, Balanced Rock — at your pace.',
+      rockart:'Ancient petroglyph panels and the stories behind them, close to town.',
+      dino:'Real dinosaur trackways and Jurassic geology, great for families.',
+      localgems:'Off-the-list Moab spots the crowds miss.',
+      night:'Dark-sky stargazing with a guide; start time follows the moon.',
+      deadhorse:'Sweeping Colorado River overlooks plus the best of Moab en route.',
+      castle:'Red-rock spires and the Castleton valley — cinematic and quiet.',
+      mill:'A slot canyon in miniature — cottonwood shade, running creek, waterfalls and swimming holes. The coolest tour in summer.',
+      archescombo:'Two parks in one big day — Arches plus the best of Moab.',
+      isky:'Island in the Sky’s canyon-rim grandeur paired with Dead Horse Point.',
+      needles:'The Needles district — spires, meadows and backcountry feel.',
+      maze:'The remote Maze overlook — a true full-day adventure.'
+    };
+    var LABELS = {4:'Half Day · ~4 hrs',6:'Extended · ~6 hrs',8:'Full Day · ~8 hrs'};
+    var GROUP_TITLE = {4:'Half day (~4 hours)',6:'Extended half day (~6 hours)',8:'Full day (~8 hours)'};
+
+    var CATALOG = {};          // key -> {title,hours,fromPerPerson}
+    var availByDate = {};      // 'YYYY-MM-DD' -> status string
+    var loadedMonths = {};     // 'YYYY-MM' -> true
+    var fp = null;
+
+    function fmtMoney(n){ return '$' + Number(n).toLocaleString('en-US'); }
+    function ymOf(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
+    function ymd(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+
+    // ---- Build the tour dropdown ----
+    function buildDropdown(list){
+      var sel = document.getElementById('tour');
+      // keep placeholder, clear rest
+      sel.querySelectorAll('optgroup,option:not([value=""])').forEach(function(n){n.remove();});
+      [4,6,8].forEach(function(h){
+        var items = list.filter(function(t){return t.hours===h;});
+        if(!items.length) return;
+        var og = document.createElement('optgroup');
+        og.label = GROUP_TITLE[h];
+        items.forEach(function(t){
+          var o = document.createElement('option');
+          o.value = t.key;
+          o.textContent = t.title + (t.fromPerPerson ? '  —  from ' + fmtMoney(t.fromPerPerson) + '/person' : '');
+          og.appendChild(o);
+        });
+        sel.appendChild(og);
+      });
+      var ob = document.createElement('option');
+      ob.value = 'bespoke';
+      ob.textContent = 'Bespoke / custom day — request a quote';
+      sel.appendChild(ob);
+    }
+
+    // ---- Load live catalog (truth source), fall back gracefully ----
+    function loadCatalog(){
+      var list = FALLBACK.slice();
+      buildDropdown(list);
+      list.forEach(function(t){CATALOG[t.key]={title:t.title,hours:t.hours,fromPerPerson:t.fromPerPerson};});
+      fetch(EXEC + '?action=tour_catalog', {method:'GET'})
+        .then(function(r){return r.json();})
+        .then(function(d){
+          if(!d || !d.catalog || !d.catalog.length) return;
+          var live = d.catalog.filter(function(t){return t.hours && !t.hidden && !t.bespoke;});
+          if(!live.length) return;
+          CATALOG = {};
+          live.forEach(function(t){CATALOG[t.key]={title:t.title,hours:t.hours,fromPerPerson:t.fromPerPerson};});
+          buildDropdown(live);
+        })
+        .catch(function(){ /* keep fallback */ });
+    }
+
+    // ---- Availability: fetch a month, cache, redraw picker ----
+    function loadMonth(ym){
+      if(loadedMonths[ym]) return Promise.resolve();
+      loadedMonths[ym] = true;
+      return fetch(EXEC + '?action=availability&month=' + ym, {method:'GET'})
+        .then(function(r){return r.json();})
+        .then(function(d){
+          if(d && d.dates){ d.dates.forEach(function(x){ availByDate[x.date] = x.status; if(x.slots) availByDate[x.date+'__slots']=x.slots; }); }
+          if(fp) fp.redraw();
+        })
+        .catch(function(){ loadedMonths[ym] = false; /* allow retry; server still gates */ });
+    }
+
+    // A date is blocked only if we KNOW it is not available. Unknown -> allowed (server gates).
+    function isBlocked(dateObj){
+      var k = ymd(dateObj);
+      var st = availByDate[k];
+      if(st === undefined) return false;            // not loaded yet -> optimistic
+      return !(st === 'available' || st === 'limited');
+    }
+
+    function initPicker(){
+      var min = new Date(); min.setHours(0,0,0,0); min.setDate(min.getDate()+2);   // 2-day lead
+      var max = new Date(); max.setDate(max.getDate()+180);                          // 180-day window
+      fp = flatpickr('#date', {
+        dateFormat:'Y-m-d', minDate:min, maxDate:max, disableMobile:true,
+        disable:[ function(d){ return isBlocked(d); } ],
+        onReady:function(){ loadMonth(ymOf(min)); var n=new Date(min); n.setMonth(n.getMonth()+1); loadMonth(ymOf(n)); },
+        onMonthChange:function(sel,str,inst){ loadMonth(inst.currentYear + '-' + String(inst.currentMonth+1).padStart(2,'0')); },
+        onChange:function(sel){ if(sel.length) onDatePicked(sel[0]); }
+      });
+    }
+
+    // ---- Tour selection -> info panel + reset date/slot ----
+    document.getElementById('tour').addEventListener('change', function(){
+      var key = this.value;
+      var info = document.getElementById('tourInfo');
+      var slotWrap = document.getElementById('slotWrap');
+      slotWrap.hidden = true; document.getElementById('preferredSlot').value='';
+      if(key === 'bespoke'){
+        info.hidden = false;
+        document.getElementById('tiMeta').innerHTML = '<span>Bespoke</span> Custom, multi-stop or multi-day';
+        document.getElementById('tiDesc').textContent = 'Tell us your dates and what you’re dreaming of — we’ll design it and send a quote. Use the form below or email us directly.';
+        document.getElementById('dateHelper').textContent = 'Pick a rough start date; we’ll confirm details by email.';
+        return;
+      }
+      var t = CATALOG[key];
+      if(!t){ info.hidden = true; return; }
+      info.hidden = false;
+      document.getElementById('tiMeta').innerHTML =
+        '<span>' + (LABELS[t.hours]||('~'+t.hours+' hrs')) + '</span>' +
+        (t.fromPerPerson ? '<span>from ' + fmtMoney(t.fromPerPerson) + ' / person</span>' : '') +
+        '<span>Private · up to 8</span>';
+      document.getElementById('tiDesc').textContent = DESC[key] || 'Private guiding, your group only.';
+      document.getElementById('dateHelper').textContent = 'Open dates only — greyed-out days are already full or closed.';
+      var d = document.getElementById('date');
+      d.value=''; d.placeholder='Tap to choose an open date';
     });
+
+    // ---- Date picked -> show start-slot options for that date + tour ----
+    function onDatePicked(dateObj){
+      var key = document.getElementById('tour').value;
+      var t = CATALOG[key];
+      var wrap = document.getElementById('slotWrap');
+      var box = document.getElementById('slots');
+      document.getElementById('preferredSlot').value='';
+      box.innerHTML='';
+      if(!t){ wrap.hidden=true; return; }
+      var slots = availByDate[ymd(dateObj)+'__slots'] || null;
+      var opts = [];
+      if(t.hours >= 8){
+        if(!slots || slots.fullDay==='available' || slots.fullDay==='limited' || slots.fullDay===undefined)
+          opts.push({v:'Full day', t:'Full day', s:'Early start, out most of the day'});
+      } else if(key === 'night'){
+        opts.push({v:'Night', t:'After dark', s:'Start follows the moon; confirmed with your guide'});
+      } else {
+        var amOk = !slots || slots.am==='available' || slots.am==='limited' || slots.am===undefined;
+        var pmOk = !slots || slots.pm==='available' || slots.pm==='limited' || slots.pm===undefined;
+        if(amOk) opts.push({v:'Morning', t:'Morning', s:'Cooler light, earlier start'});
+        if(pmOk) opts.push({v:'Afternoon', t:'Afternoon', s:'Later start, golden-hour finish'});
+      }
+      if(!opts.length){
+        // shouldn't happen for an open date, but be safe
+        opts.push({v:'Flexible', t:'Flexible', s:'We’ll confirm the best window with you'});
+      }
+      opts.forEach(function(o,i){
+        var id='slot_'+i;
+        var d=document.createElement('div'); d.className='slot';
+        d.innerHTML='<input type="radio" name="_slotpick" id="'+id+'" value="'+o.v+'"'+(opts.length===1?' checked':'')+'>'+
+                    '<label for="'+id+'">'+o.t+'<small>'+o.s+'</small></label>';
+        box.appendChild(d);
+      });
+      if(opts.length===1) document.getElementById('preferredSlot').value=opts[0].v;
+      box.addEventListener('change', function(e){
+        if(e.target && e.target.name==='_slotpick') document.getElementById('preferredSlot').value=e.target.value;
+      });
+      wrap.hidden=false;
+    }
+
+    // ---- Submit: fold the chosen start into notes so staff see it ----
+    document.getElementById('bookForm').addEventListener('submit', function(e){
+      var slot = document.getElementById('preferredSlot').value;
+      if(slot){
+        var n = document.getElementById('notes');
+        var tag = '[Preferred start: ' + slot + ']';
+        if(n.value.indexOf(tag)===-1) n.value = (tag + (n.value ? '  ' + n.value : ''));
+      }
+      var btn=document.getElementById('submitBtn');
+      btn.disabled=true; btn.textContent='Building your secure checkout…';
+      if(window.dataLayer) dataLayer.push({event:'begin_booking',tour:document.getElementById('tour').value,group_size:document.getElementById('group').value});
+      // allow the native POST to proceed
+    });
+
+    // ---- Prefill tour from ?tour= and boot ----
+    loadCatalog();
+    initPicker();
+    setTimeout(function(){
+      var t = new URLSearchParams(location.search).get('tour');
+      if(t){ var s=document.getElementById('tour'); if([].slice.call(s.options).some(function(o){return o.value===t;})){ s.value=t; s.dispatchEvent(new Event('change')); } }
+    }, 400);
+  })();
   </script>
 </body>
 </html>
