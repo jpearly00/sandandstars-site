@@ -627,6 +627,8 @@
       return '<a href="#" class="tg-var-link" data-len="'+L+'" style="color:var(--ember);text-decoration:underline">('+L+' hr variation also available)</a>';
     }).join(' · ');
     g.innerHTML='<div class="tg-rec">'+v.label+'</div>'+v.text+(links?'<div class="tg-links" style="margin-top:9px;font-size:13px">'+links+'</div>':'');
+    var bb=card.querySelector('.book-btn');
+    if(bb)bb.setAttribute('href','book.html?tour='+key+'&len='+len);
   }
 
   function applyFilter(f){

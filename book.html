@@ -101,6 +101,7 @@
         <input type="hidden" name="source" value="website">
         <input type="hidden" name="date" id="date">
         <input type="hidden" name="preferred_slot" id="preferredSlot" value="">
+        <input type="hidden" name="length" id="lengthSel" value="">
 
         <div class="field">
           <label for="tour">Tour <span class="req">*</span></label>
@@ -112,6 +113,12 @@
         <div id="tourInfo" class="tour-info" hidden>
           <div class="ti-row" id="tiMeta"></div>
           <div class="ti-desc" id="tiDesc"></div>
+        </div>
+
+        <div class="field" id="lenWrap" hidden>
+          <label>Tour length <span class="req">*</span></label>
+          <div class="slots" id="lenPills"></div>
+          <div class="helper">★ = our recommended length for this tour. Price shown is the group total for 1–2 guests.</div>
         </div>
 
         <div class="field">
@@ -218,6 +225,34 @@
     };
     var LABELS = {4:'Half Day · ~4 hrs',6:'Extended · ~6 hrs',8:'Full Day · ~8 hrs'};
     var GROUP_BASE = {4:{b12:575,b34:675,ex:100},6:{b12:850,b34:975,ex:125},8:{b12:1125,b34:1275,ex:150}}; // per-GROUP tiers — pricing.html canon
+    var TOUR_LENGTHS = {arches:[4,6,8],deadhorse:[4,6],isky:[6,8],mill:[4,6],castle:[4,6],rockart:[4,6],localgems:[4,6],dino:[4],archescombo:[8],needles:[8],maze:[8],night:[4]};
+    var REC_LEN = {arches:4,deadhorse:4,isky:8,mill:4,castle:4,rockart:4,localgems:4,dino:4,archescombo:8,needles:8,maze:8,night:4};
+
+    function setLen(key,len){
+      document.getElementById('lengthSel').value=len;
+      var gb=GROUP_BASE[len];
+      document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[len]||('~'+len+' hrs'))+'</span>'+(gb?'<span>'+money(gb.b12)+' total · 1–2 guests</span>':'')+'<span>Private · up to 8</span>';
+      var pills=document.querySelectorAll('#lenPills input');
+      for(var i=0;i<pills.length;i++){pills[i].checked=(+pills[i].value===+len);}
+      if(selYMD)showSlots(selYMD);
+    }
+    function renderLenPills(key,t){
+      var wrap=document.getElementById('lenWrap'),box=document.getElementById('lenPills');
+      var lens=TOUR_LENGTHS[key]||[t.hours];var rec=REC_LEN[key]||t.hours;
+      var urlLen=parseInt(new URLSearchParams(location.search).get('len'),10);
+      var sel=(lens.indexOf(urlLen)!==-1)?urlLen:rec;
+      box.innerHTML='';
+      lens.forEach(function(L){
+        var gb=GROUP_BASE[L];var id='len_'+L;
+        var d=document.createElement('div');d.className='slot';
+        d.innerHTML='<input type="radio" name="_lenpick" id="'+id+'" value="'+L+'"'+(L===sel?' checked':'')+'>'+
+          '<label for="'+id+'">'+(LABELS[L]||L+' hrs')+(L===rec?' ★':'')+'<small>'+(gb?money(gb.b12)+' · 1–2 guests':'')+'</small></label>';
+        box.appendChild(d);
+      });
+      box.onchange=function(e){if(e.target&&e.target.name==='_lenpick')setLen(key,+e.target.value);};
+      wrap.hidden=(lens.length<2);
+      setLen(key,sel);
+    }
     var GROUP_TITLE = {4:'Half day (~4 hours)',6:'Extended half day (~6 hours)',8:'Full day (~8 hours)'};
 
     var CATALOG = {};
@@ -325,9 +360,10 @@
       document.getElementById('preferredSlot').value='';box.innerHTML='';
       if(!t){wrap.hidden=true;return;}
       var slots=slotByDate[key]||null,opts=[];
+      var lenNow=parseInt(document.getElementById('lengthSel').value,10)||t.hours;
       function open(s){return !slots||slots[s]===undefined||slots[s]==='available'||slots[s]==='limited';}
       if(document.getElementById('tour').value==='night'){opts.push({v:'Night',t:'After dark',s:'Start follows the moon; confirmed with your guide'});}
-      else if(t.hours>=8){opts.push({v:'Full day',t:'Full day',s:'Early start, out most of the day'});}
+      else if(lenNow>=8){opts.push({v:'Full day',t:'Full day',s:'Early start, out most of the day'});}
       else{
         if(open('am'))opts.push({v:'Morning',t:'Morning',s:'Cooler light, earlier start'});
         if(open('pm'))opts.push({v:'Afternoon',t:'Afternoon',s:'Later start, golden-hour finish'});
@@ -351,15 +387,15 @@
       selYMD=null;document.getElementById('date').value='';document.getElementById('dateChosen').textContent='';
       if(key==='bespoke'){
         info.hidden=false;
+        document.getElementById('lenWrap').hidden=true;document.getElementById('lengthSel').value='';
         document.getElementById('tiMeta').innerHTML='<span>Bespoke</span> Custom, multi-stop or multi-day';
         document.getElementById('tiDesc').textContent='Tell us your dates and what you’re dreaming of — we’ll design it and send a quote. Pick a rough start date below or email us directly.';
       } else {
         var t=CATALOG[key];
-        if(!t){info.hidden=true;dateField.hidden=true;return;}
+        if(!t){info.hidden=true;dateField.hidden=true;document.getElementById('lenWrap').hidden=true;return;}
         info.hidden=false;
-        var gb=GROUP_BASE[t.hours];
-      document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[t.hours]||('~'+t.hours+' hrs'))+'</span>'+(gb?'<span>'+money(gb.b12)+' total · 1–2 guests</span>':'')+'<span>Private · up to 8</span>';
         document.getElementById('tiDesc').textContent=DESC[key]||'Private guiding, your group only.';
+        renderLenPills(key,t);
       }
       dateField.hidden=false;
       viewY=MIN.getFullYear();viewM=MIN.getMonth();
