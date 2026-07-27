@@ -228,10 +228,15 @@
     var TOUR_LENGTHS = {arches:[4,6,8],deadhorse:[4,6],isky:[6,8],mill:[4,6],castle:[4,6],rockart:[4,6],localgems:[4,6],dino:[4],archescombo:[8],needles:[8],maze:[8],night:[4]};
     var REC_LEN = {arches:4,deadhorse:4,isky:8,mill:4,castle:4,rockart:4,localgems:4,dino:4,archescombo:8,needles:8,maze:8,night:4};
 
+    // Party size for pricing display (default 2 until chosen). '8+' -> 8. PRE-TAX ALWAYS —
+    // taxes are never previewed; they appear only at checkout finalization (John's rule).
+    function partyN(){var v=(document.getElementById('group')||{}).value||'';var n=parseInt(String(v).replace('+',''),10);return n>0?n:2;}
+    function tierPrice(len,n){var gb=GROUP_BASE[len];if(!gb)return null;if(n<=2)return gb.b12;if(n<=4)return gb.b34;return gb.b34+(n-4)*gb.ex;}
+    function partyLabel(){var v=(document.getElementById('group')||{}).value;return v?('your group of '+v):'1–2 guests';}
     function setLen(key,len){
       document.getElementById('lengthSel').value=len;
-      var gb=GROUP_BASE[len];
-      document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[len]||('~'+len+' hrs'))+'</span>'+(gb?'<span>'+money(gb.b12)+' total · 1–2 guests</span>':'')+'<span>Private · up to 8</span>';
+      var n=partyN(),tp=tierPrice(len,n);
+      document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[len]||('~'+len+' hrs'))+'</span>'+(tp?'<span>'+money(tp)+' total · '+partyLabel()+'</span>':'')+'<span>Private · up to 8</span>';
       var pills=document.querySelectorAll('#lenPills input');
       for(var i=0;i<pills.length;i++){pills[i].checked=(+pills[i].value===+len);}
       if(selYMD)showSlots(selYMD);
@@ -240,19 +245,26 @@
       var wrap=document.getElementById('lenWrap'),box=document.getElementById('lenPills');
       var lens=TOUR_LENGTHS[key]||[t.hours];var rec=REC_LEN[key]||t.hours;
       var urlLen=parseInt(new URLSearchParams(location.search).get('len'),10);
-      var sel=(lens.indexOf(urlLen)!==-1)?urlLen:rec;
+      var cur=parseInt(document.getElementById('lengthSel').value,10);
+      var sel=(lens.indexOf(cur)!==-1)?cur:((lens.indexOf(urlLen)!==-1)?urlLen:rec);
+      var n=partyN();
       box.innerHTML='';
       lens.forEach(function(L){
-        var gb=GROUP_BASE[L];var id='len_'+L;
+        var tp=tierPrice(L,n);var id='len_'+L;
         var d=document.createElement('div');d.className='slot';
         d.innerHTML='<input type="radio" name="_lenpick" id="'+id+'" value="'+L+'"'+(L===sel?' checked':'')+'>'+
-          '<label for="'+id+'">'+(LABELS[L]||L+' hrs')+(L===rec?' ★':'')+'<small>'+(gb?money(gb.b12)+' · 1–2 guests':'')+'</small></label>';
+          '<label for="'+id+'">'+(LABELS[L]||L+' hrs')+(L===rec?' ★':'')+'<small>'+(tp?money(tp)+' · '+partyLabel():'')+'</small></label>';
         box.appendChild(d);
       });
       box.onchange=function(e){if(e.target&&e.target.name==='_lenpick')setLen(key,+e.target.value);};
       wrap.hidden=(lens.length<2);
       setLen(key,sel);
     }
+    // Group size changes -> refresh every displayed price for the selected length (pre-tax)
+    document.getElementById('group').addEventListener('change',function(){
+      var key=document.getElementById('tour').value;
+      if(key&&key!=='bespoke'&&CATALOG[key])renderLenPills(key,CATALOG[key]);
+    });
     var GROUP_TITLE = {4:'Half day (~4 hours)',6:'Extended half day (~6 hours)',8:'Full day (~8 hours)'};
 
     var CATALOG = {};
