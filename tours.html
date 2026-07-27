@@ -271,7 +271,7 @@
     <div class="tour-detail">
       <div class="sub">Rock Art, Dino Tracks, Arches, 4x4, Remote Views, Famous Park Highlight</div>
       <h3>Best of Moab to Dead Horse Point</h3>
-      <p class="desc">The view that convinced Hollywood. Stand above a perfect oxbow in the Colorado. And keep walking for solitude. <span class="desc-link">(more)</span></p>
+      <p class="desc">The view that convinced Hollywood. Stand above a perfect oxbow in the Colorado River. Solitude Abound. <span class="desc-link">(more)</span></p>
       <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
         A half day that packs in more variety than most full-day tours elsewhere. Ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 dirt roads, secluded overlooks, and Dead Horse Point itself. <strong>Choose 6 hrs</strong> for more time at each stop and a slower pace through the canyon rim country.</div>
       <div class="specs"><div class="s"><strong>Half Day</strong>Options</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Year-round</strong>Available</div></div>
@@ -583,17 +583,89 @@
 
 <script>
   document.getElementById('year').textContent=new Date().getFullYear();
-  // Filter chips. Band style
+
+  // ── Per-tour length variants ─────────────────────────────────────────────
+  // Copy sourced from the cards' own text (the former "Choose X hrs" upsell lines
+  // become that length's variant text) + this page's ItemList schema variant names.
+  var TOUR_VARIANTS={
+   arches:{def:4,v:{
+    4:{label:'Recommended: Half Day Tour',text:'Arches rewards a half day. Four hours covers the classic highlights and a bonus gem or two most visitors miss, with a handful of short stops and two or three focused excursions where it’s worth lingering. It’s our most-booked half-day for a reason. Perfect for a first taste of canyon country.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours adds Devil’s Garden and a longer hike at an easier pace. Extended variants: Devil’s Garden, Custom Combo, Hike Lovers, and Arches + Dead Horse.'},
+    8:{label:'Full Day · 8 hrs',text:'The big Arches day. Full-day variants: Custom Combo, Arches + Canyonlands, and All You Can Arches.'}}},
+   deadhorse:{def:4,v:{
+    4:{label:'Recommended: Half Day Tour',text:'A half day that packs in more variety than most full-day tours elsewhere. Ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 dirt roads, secluded overlooks, and Dead Horse Point itself.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours gives more time at each stop and a slower pace through the canyon rim country. Same route, more room to breathe.'}}},
+   isky:{def:8,v:{
+    8:{label:'Recommended: Full Day Tour',text:'Canyonlands rewards a full day. The drive is a little further from town, and the views are as good as the Grand Canyon or anywhere else. Eight hours gives room for named viewpoints like Mesa Arch and Grand View Point, a picnic lunch at a remote overlook, and spots most visitors miss entirely.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours keeps the pace brisker. Same caliber of views, less wandering time.'}}},
+   mill:{def:4,v:{
+    4:{label:'Recommended: Half Day Tour',text:'A half day along a creek canyon with cottonwood shade, running water, and waterfalls. The coolest tour in summer. Perfect as a morning or late-afternoon outing.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours to explore the upper canyon and swimming holes at a relaxed pace.'}}},
+   castle:{def:4,v:{
+    4:{label:'Recommended: Half Day Tour',text:'Desert towers and solitude. Best in golden hour light when the spires glow. A half day is ideal for photography, overlook stops, and the quiet of Fisher Towers and Professor Valley country.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours slows the pace further and gives time for a hike among the towers.'}}},
+   rockart:{def:4,v:{
+    4:{label:'Recommended: Half Day Tour',text:'A quiet, reverent half day visiting ancient petroglyph and pictograph panels. Your guide knows the stories behind the symbols.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours adds remote panels that require more driving and short hiking.'}}},
+   localgems:{def:4,v:{
+    4:{label:'Recommended: Half Day Tour',text:'The spots your guide would take a visiting friend. Hidden overlooks, wildflower meadows, viewpoints with no signs. A half day of local secrets.'},
+    6:{label:'Extended · 6 hrs',text:'Six hours adds a hidden canyon detour and a more leisurely pace.'}}},
+   dino:{def:4,v:{4:{label:'Recommended: Half Day Tour',text:'Trackways, bone beds, and the stories each fossil tells. A focused half day visiting multiple dig sites and track locations around Moab. Perfect for families and anyone fascinated by deep time.'}}},
+   archescombo:{def:8,v:{8:{label:'Full Day Tour',text:'A big-day combo built for guests who want the full variety in one push. Arches highlights and a hike, a picnic lunch in transition, ancient rock art and dinosaur tracks, remote 4x4 roads, secluded overlooks, and Dead Horse Point. Eight hours, a lot of ground covered, a photo album to prove it.'}}},
+   needles:{def:8,v:{8:{label:'Recommended: Full Day',text:'The Needles District is remote. The drive alone takes time, but what you find is sandstone spires in impossible candy stripes. A full day is the only way to do it justice. Pack your energy.'}}},
+   maze:{def:8,v:{8:{label:'Recommended: Full Day',text:'The least-visited district of Canyonlands. Fewer than a thousand people reach it in a year. Requires a long 4x4 approach and a full day commitment. Petroglyphs, stone walls, and absolute solitude.'}}},
+   night:{def:4,v:{4:{label:'Recommended: Nighthike',text:'On full-moon weeks, the desert lights itself. Walk a familiar trail by moonlight. Cooler, quieter, and transformed. On dark-sky nights, the Milky Way is the main event.'}}}
+  };
+
+  function setVariant(card,len){
+    var key=card.getAttribute('data-tour'),cfg=TOUR_VARIANTS[key];if(!cfg)return;
+    if(!cfg.v[len])len=cfg.def;
+    card.setAttribute('data-active-len',len);
+    var g=card.querySelector('.tour-guide');if(!g)return;
+    var v=cfg.v[len];
+    var links=Object.keys(cfg.v).filter(function(L){return +L!==+len;}).map(function(L){
+      return '<a href="#" class="tg-var-link" data-len="'+L+'" style="color:var(--ember);text-decoration:underline">('+L+' hr variation also available)</a>';
+    }).join(' · ');
+    g.innerHTML='<div class="tg-rec">'+v.label+'</div>'+v.text+(links?'<div class="tg-links" style="margin-top:9px;font-size:13px">'+links+'</div>':'');
+  }
+
+  function applyFilter(f){
+    document.querySelectorAll('#toursGrid .tour').forEach(function(card){
+      var cfg=TOUR_VARIANTS[card.getAttribute('data-tour')];
+      var lengths=cfg?Object.keys(cfg.v):[card.getAttribute('data-hours')];
+      var show=(f==='all')||lengths.indexOf(f)!==-1;
+      card.style.display=show?'':'none';
+      if(cfg){ setVariant(card, f==='all'?cfg.def:+f); }
+    });
+  }
+
   document.getElementById('chipGroup').addEventListener('click',function(e){
     var b=e.target.closest('.band-chip');if(!b)return;
     this.querySelectorAll('.band-chip').forEach(function(c){c.classList.remove('active')});
     b.classList.add('active');
-    var f=b.getAttribute('data-filter');
-    document.querySelectorAll('#toursGrid .tour').forEach(function(card){
-      card.style.display=(f==='all'||card.getAttribute('data-hours')===f)?'':'none';
-    });
-    if(window.dataLayer){window.dataLayer.push({event:'filter_tours',filter_value:f})}
+    applyFilter(b.getAttribute('data-filter'));
+    if(window.dataLayer){window.dataLayer.push({event:'filter_tours',filter_value:b.getAttribute('data-filter')})}
   });
+
+  // In-card variation links -> switch that card to the other length variant
+  document.getElementById('toursGrid').addEventListener('click',function(e){
+    var a=e.target.closest('.tg-var-link');if(!a)return;
+    e.preventDefault();
+    var card=a.closest('.tour');
+    setVariant(card,+a.getAttribute('data-len'));
+    if(window.dataLayer){window.dataLayer.push({event:'variant_switch',tour:card.getAttribute('data-tour'),length:a.getAttribute('data-len')})}
+  });
+
+  // Init: default variants, ?len= deep link, #tour anchor
+  (function(){
+    document.querySelectorAll('#toursGrid .tour').forEach(function(card){
+      if(!card.id)card.id=card.getAttribute('data-tour');
+      setVariant(card,(TOUR_VARIANTS[card.getAttribute('data-tour')]||{}).def);
+    });
+    var len=new URLSearchParams(location.search).get('len');
+    if(len){var chip=document.querySelector('.band-chip[data-filter="'+len+'"]');if(chip)chip.click();}
+    if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)setTimeout(function(){t.scrollIntoView({behavior:'smooth',block:'center'});},150);}
+  })();
 </script>
 </body>
 </html>
