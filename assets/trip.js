@@ -29,7 +29,7 @@
   /* PRICING — canon. Estimates are ALWAYS pre-tax.                     */
   /* ------------------------------------------------------------------ */
   var SST_TIERS = { 4: { b12: 575, b34: 675, ex: 100 }, 6: { b12: 850, b34: 975, ex: 125 }, 8: { b12: 1125, b34: 1275, ex: 150 } };
-  // n = adults + kids 3 and older (the "Kids <3" stepper does NOT count toward n)
+  // n = adults + kids, CUMULATIVE (John 260729: "kids and adults are cumulative to the total")
   function priceFor(len, n) {
     var t = SST_TIERS[len] || SST_TIERS[4];
     if (n <= 2) return t.b12;
@@ -314,7 +314,7 @@
   var itinerary = []; // [{tour,variant,name,len,date(iso),time,adults,kids}]
   var roverSlots = []; // [{type:'tour',item}|{type:'placeholder',date}]
 
-  function itemPrice(it) { return priceFor(it.len, it.adults); } // pre-tax, adults = pricing n
+  function itemPrice(it) { return priceFor(it.len, it.adults + (it.kids || 0)); } // pre-tax, n = adults + kids (cumulative)
   function cartTotal() { return itinerary.reduce(function (s, it) { return s + itemPrice(it); }, 0); }
 
   function saveCart() {
@@ -772,7 +772,7 @@
     }
     var sorted = itinerary.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
     var items = sorted.map(function (t) {
-      return { tour: t.tour, length: t.len, date: t.date, group_size: t.adults }; // group_size = pricing n (adults + kids 3+); kids <3 noted below
+      return { tour: t.tour, length: t.len, date: t.date, group_size: (t.adults + (t.kids || 0)) }; // group_size = adults + kids, cumulative (John 260729)
     });
     var kidNotes = sorted.filter(function (t) { return t.kids > 0; }).map(function (t) {
       return t.kids + ' kids under 3 on ' + isoShort(t.date);
@@ -1269,7 +1269,7 @@
     var estEl = root.querySelector('[data-sst-estimate]');
     if (estEl) {
       var guests = st.adults + st.kids;
-      estEl.innerHTML = money(priceFor(st.len, st.adults)) + '<small>estimate</small><span class="sst-est-ctx">' +
+      estEl.innerHTML = money(priceFor(st.len, st.adults + st.kids)) + '<small>estimate</small><span class="sst-est-ctx">' +
         guests + ' guest' + (guests === 1 ? '' : 's') + ' · ' + st.len + ' hrs · pre-tax</span>';
     }
     // date display
