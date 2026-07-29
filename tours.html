@@ -99,18 +99,18 @@
   .band-filter{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:24px auto 44px;padding:14px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(245,240,235,0.10);border-radius:var(--radius);max-width:760px}
   .band-filter-label{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ember)}
   .band-chip-group{display:flex;flex-wrap:wrap;gap:8px}
-  .band-chip{background:transparent;color:var(--muted);border:1.5px solid rgba(245,240,235,0.16);padding:7px 16px;border-radius:var(--pill);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+  .band-chip{background:transparent;color:var(--muted);border:1.5px solid rgba(245,240,235,0.16);padding:7px 16px;border-radius:var(--pill);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;min-height:44px}
   .band-chip:hover{border-color:var(--ember);color:var(--paper)}
   .band-chip.active{background:var(--ember);color:var(--ink);border-color:var(--ember);font-weight:600}
 
   .tour-list{display:flex;flex-direction:column;gap:32px}
 
-  .tour{display:grid;grid-template-columns:280px 1fr;gap:0;align-items:center;position:relative;min-height:160px;background:rgba(15,26,34,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(245,240,235,0.06);border-radius:var(--radius);overflow:visible}
+  .tour{display:grid;grid-template-columns:280px 1fr;gap:0;align-items:center;position:relative;min-height:160px;background:rgba(15,26,34,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(245,240,235,0.06);border-radius:var(--radius);overflow:visible;scroll-margin-top:180px}
   .tour.reverse{grid-template-columns:1fr 280px}
   .tour.reverse .tour-visual{order:2}
   .tour.reverse .tour-detail{order:1}
 
-  .tour-visual{display:flex;justify-content:center;align-items:center;position:relative;align-self:center;padding:18px}
+  .tour-visual{display:flex;justify-content:center;align-items:center;position:relative;align-self:start;padding:18px}
   .profile{width:240px;height:240px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,var(--slate-deep) 0%,var(--ink) 100%);position:relative;box-shadow:inset 0 0 0 1px rgba(245,240,235,0.08),0 8px 32px rgba(0,0,0,0.4);overflow:hidden}
   .profile .tour-img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;filter:saturate(0.95) contrast(1.05)}
   .profile::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at center,transparent 55%,rgba(15,26,34,0.45) 100%);pointer-events:none}
@@ -129,7 +129,7 @@
   .specs .s{display:flex;flex-direction:column;gap:4px;font-size:11px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(245,240,235,0.55)}
   .specs .s strong{font-family:'Fraunces',serif;font-size:18px;color:var(--paper);font-weight:400;text-transform:none;letter-spacing:0;line-height:1.1}
 
-  .tour-cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+  .tour-cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
   .book-btn{display:inline-block;background:var(--ember);color:var(--ink);padding:11px 22px;border-radius:var(--pill);font-weight:600;font-size:14px;letter-spacing:0.02em;transition:background .15s,transform .15s}
   .book-btn:hover{background:var(--canyon);color:var(--paper);transform:translateY(-1px)}
   .learn-btn{display:inline-block;color:var(--ember);padding:11px 18px;border-radius:var(--pill);font-weight:500;font-size:13px;border:1px solid rgba(232,152,102,0.40);transition:all .15s}
@@ -138,15 +138,13 @@
   /* Responsive. Collapse to stacked layout below 820px */
   @media (max-width:820px){
     .tour, .tour.reverse{grid-template-columns:1fr;gap:0}
-    .tour-visual, .tour.reverse .tour-visual{order:1;padding:24px 18px 0}
-    .tour-detail, .tour.reverse .tour-detail{order:2;padding:18px 22px 24px;text-align:center}
+    .tour-visual, .tour.reverse .tour-visual{order:1;padding:24px 18px 0;align-self:center}
+    .tour-detail, .tour.reverse .tour-detail{order:2;padding:18px 22px 24px}
     .tour-detail .sub{font-size:11px}
     .tour-detail h3{font-size:26px}
     .specs{grid-template-columns:repeat(3,1fr);gap:10px}
     .specs .s strong{font-size:16px}
-    .tour-cta-row{justify-content:center}
     .profile{width:200px;height:200px}
-    .tour-guide{text-align:left}
   }
   @media (max-width:480px){
     .specs{grid-template-columns:1fr 1fr;gap:8px}
@@ -195,8 +193,9 @@
   }
   @media (max-width:480px){.foot-grid{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="assets/trip.css">
 </head>
-<body>
+<body data-sst-rover="always">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" role="banner">
@@ -242,7 +241,8 @@
     </div>
 
     <div class="tour-list" id="toursGrid">
-  <article class="tour" data-tour="arches" data-hours="4">
+
+  <article class="tour" data-tour="arches" data-hours="4" data-sst-card="arches" id="arches">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" fetchpriority="high" src="tour_pics/arches.jpg" width="1200" height="729" alt="Delicate Arch glowing at sunrise, Arches National Park">
@@ -250,11 +250,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Up Close to Fantastic Sandstone Wonders</div>
-      <h3>Arches National Park</h3>
+      <h3 class="sst-tourname">Arches National Park</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Highlights | Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag>Most Popular!</span></div>
       <p class="desc">Highlights include iconic sites like The Windows and Balanced Rock. <span class="desc-link">(More Details</span>, plus <span class="desc-link">a note on Delicate Arch</span>)</p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
         Arches rewards a half day. Four hours covers the classic highlights and a bonus gem or two most visitors miss, with a handful of short stops and two or three focused excursions where it's worth lingering. It's our most-booked half-day for a reason. Perfect for a first taste of canyon country.</div>
       <div class="specs"><div class="s"><strong>Sunrise</strong>Departure</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half/Full</strong>Options</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/arches.html" data-analytics="tour-arches-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=arches" data-analytics="tour-arches-book">Book this tour &rarr;</a>
@@ -262,7 +264,7 @@
     </div>
   </article>
 
-  <article class="tour reverse" data-tour="deadhorse" data-hours="6">
+  <article class="tour reverse" data-tour="deadhorse" data-hours="6" data-sst-card="deadhorse" id="deadhorse">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" src="tour_pics/deadhorse.jpg" width="960" height="645" alt="Dead Horse Point overlook above the Colorado River bend">
@@ -270,11 +272,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Rock Art, Dino Tracks, Arches, 4x4, Remote Views, Famous Park Highlight</div>
-      <h3>Best of Moab to Dead Horse Point</h3>
+      <h3 class="sst-tourname">Best of Moab to Dead Horse Point</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">The view that convinced Hollywood. Stand above a perfect oxbow in the Colorado River. Solitude Abound. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
-        A half day that packs in more variety than most full-day tours elsewhere. Ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 dirt roads, secluded overlooks, and Dead Horse Point itself. <strong>Choose 6 hrs</strong> for more time at each stop and a slower pace through the canyon rim country.</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
+        A half day that packs in more variety than most full-day tours elsewhere. Ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 dirt roads, secluded overlooks, and Dead Horse Point itself.</div>
       <div class="specs"><div class="s"><strong>Half Day</strong>Options</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Year-round</strong>Available</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/deadhorse.html" data-analytics="tour-deadhorse-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=deadhorse" data-analytics="tour-deadhorse-book">Book this tour &rarr;</a>
@@ -282,7 +286,7 @@
     </div>
   </article>
 
-  <article class="tour" data-tour="isky" data-hours="8">
+  <article class="tour" data-tour="isky" data-hours="8" data-sst-card="isky" id="isky">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/isky.jpg" width="1140" height="655" alt="Island in the Sky mesa vista, Canyonlands National Park">
@@ -290,11 +294,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Zoom Out and Up High to Stunning Cliff Vistas</div>
-      <h3>Canyonlands National Park. Island in the Sky District + Dead Horse Point State Park</h3>
+      <h3 class="sst-tourname">Canyonlands National Park. Island in the Sky District + Dead Horse Point State Park</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Full Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">A thousand feet above the confluence of two great rivers. Named viewpoints like Mesa Arch, Grand View Point, and Upheaval Dome. Plus options for remote cliff vistas and Native American rock art on the drive in. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Full Day Tour</div>
-        Canyonlands rewards a full day. The drive is a little further from town, and the views are as good as the Grand Canyon or anywhere else. Eight hours gives room for named viewpoints like Mesa Arch and Grand View Point, a picnic lunch at a remote overlook, and spots most visitors miss entirely. <strong>Choose 6 hrs</strong> to keep the pace brisker. Same caliber of views, less wandering time.</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Full Day Tour</div>
+        Canyonlands rewards a full day. The drive is a little further from town, and the views are as good as the Grand Canyon or anywhere else. Eight hours gives room for named viewpoints like Mesa Arch and Grand View Point, a picnic lunch at a remote overlook, and spots most visitors miss entirely.</div>
       <div class="specs"><div class="s"><strong>AM/PM</strong>Flexible</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half/Full</strong>Options</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/isky.html" data-analytics="tour-isky-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=isky" data-analytics="tour-isky-book">Book this tour &rarr;</a>
@@ -302,7 +308,7 @@
     </div>
   </article>
 
-  <article class="tour reverse" data-tour="mill" data-hours="6">
+  <article class="tour reverse" data-tour="mill" data-hours="6" data-sst-card="mill" id="mill">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/mill.jpg" width="1050" height="1400" alt="Shaded creek and waterfall in Mill Creek canyon, Moab">
@@ -310,11 +316,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Beat the Heat along an Epic Canyon Creek</div>
-      <h3>Lush Canyon Hike + Local Gems</h3>
+      <h3 class="sst-tourname">Lush Canyon Hike + Local Gems</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">A slot canyon in miniature with cottonwood groves, running stream, and waterfalls cut into red rock. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
-        A half day along a creek canyon with cottonwood shade, running water, and waterfalls. The coolest tour in summer. Perfect as a morning or late-afternoon outing. <strong>Choose 6 hrs</strong> to explore the upper canyon and swimming holes at a relaxed pace.</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
+        A half day along a creek canyon with cottonwood shade, running water, and waterfalls. The coolest tour in summer. Perfect as a morning or late-afternoon outing.</div>
       <div class="specs"><div class="s"><strong>Shade</strong>Cool in summer</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half Day</strong>Only</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/mill.html" data-analytics="tour-mill-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=mill" data-analytics="tour-mill-book">Book this tour &rarr;</a>
@@ -322,7 +330,7 @@
     </div>
   </article>
 
-  <article class="tour reverse" data-tour="archescombo" data-hours="8">
+  <article class="tour reverse" data-tour="archescombo" data-hours="8" data-sst-card="archescombo" id="archescombo">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/archescombo.jpg" width="1200" height="729" alt="Sandstone arch framing canyon country near Moab">
@@ -330,11 +338,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Two Iconic Experiences in One Epic Day</div>
-      <h3>Arches + Best of Moab Custom Combo</h3>
+      <h3 class="sst-tourname">Arches + Best of Moab Custom Combo</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Full Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">The best of both worlds in a single full day. Arches National Park in the morning, a picnic lunch in transition, then rock art, dino tracks, 4x4 roads, and Dead Horse Point in the afternoon. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Full Day Tour</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Full Day Tour</div>
         A big-day combo built for guests who want the full variety in one push. Arches highlights and a hike, a picnic lunch in transition, ancient rock art and dinosaur tracks, remote 4x4 roads, secluded overlooks, and Dead Horse Point. Eight hours, a lot of ground covered, a photo album to prove it.</div>
       <div class="specs"><div class="s"><strong>Full Day</strong>8 Hours</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Year-round</strong>Available</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/archescombo.html" data-analytics="tour-archescombo-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=archescombo" data-analytics="tour-archescombo-book">Book this tour &rarr;</a>
@@ -342,7 +352,7 @@
     </div>
   </article>
 
-  <article class="tour" data-tour="castle" data-hours="6">
+  <article class="tour" data-tour="castle" data-hours="6" data-sst-card="castle" id="castle">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/castle.jpg" width="1400" height="933" alt="Castleton Tower rising over Castle Valley at golden hour">
@@ -350,11 +360,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Desert Towers and Solitude</div>
-      <h3>Castle Valley</h3>
+      <h3 class="sst-tourname">Castle Valley</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">Castleton Tower, Priest and Nuns, and Fisher Towers in the round. Iconic desert spires best at golden hour. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
-        Desert towers and solitude. Best in golden hour light when the spires glow. A half day is ideal for photography, overlook stops, and the quiet of Fisher Towers and Professor Valley country. <strong>Choose 6 hrs</strong> to slow the pace further and give time for a hike among the towers.</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
+        Desert towers and solitude. Best in golden hour light when the spires glow. A half day is ideal for photography, overlook stops, and the quiet of Fisher Towers and Professor Valley country.</div>
       <div class="specs"><div class="s"><strong>AM/PM</strong>Best at golden hour</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half Day</strong>Only</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/castle.html" data-analytics="tour-castle-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=castle" data-analytics="tour-castle-book">Book this tour &rarr;</a>
@@ -362,7 +374,7 @@
     </div>
   </article>
 
-  <article class="tour reverse" data-tour="rockart" data-hours="4">
+  <article class="tour reverse" data-tour="rockart" data-hours="4" data-sst-card="rockart" id="rockart">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/rockart.jpg" width="800" height="417" alt="Ancient petroglyph panel on red rock near Moab">
@@ -370,11 +382,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Ancestral Puebloan Rock Art · Half Day</div>
-      <h3>Rock Art</h3>
+      <h3 class="sst-tourname">Rock Art</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">Rock art watching the desert for a thousand years. A quiet, reverent day for those drawn to deep time. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
-        A quiet, reverent half day visiting ancient petroglyph and pictograph panels. Your guide knows the stories behind the symbols. <strong>Choose 6 hrs</strong> to add remote panels that require more driving and short hiking.</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
+        A quiet, reverent half day visiting ancient petroglyph and pictograph panels. Your guide knows the stories behind the symbols.</div>
       <div class="specs"><div class="s"><strong>Easy</strong>Light walking</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half Day</strong>Only</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/rockart.html" data-analytics="tour-rockart-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=rockart" data-analytics="tour-rockart-book">Book this tour &rarr;</a>
@@ -382,7 +396,7 @@
     </div>
   </article>
 
-  <article class="tour" data-tour="dino" data-hours="4">
+  <article class="tour" data-tour="dino" data-hours="4" data-sst-card="dino" id="dino">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/dino.jpg" width="730" height="518" alt="Fossilized dinosaur track pressed into stone near Moab">
@@ -390,11 +404,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Dino Tracks &amp; Bones · Half Day</div>
-      <h3>Dino Tracks &amp; Bones</h3>
+      <h3 class="sst-tourname">Dino Tracks &amp; Bones</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">Put your hand in a three-toed theropod track pressed into stone 150 million years ago. Trackways, bone beds, and a guide who knows the story each fossil tells. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
         Trackways, bone beds, and the stories each fossil tells. A focused half day visiting multiple dig sites and track locations around Moab. Perfect for families and anyone fascinated by deep time.</div>
       <div class="specs"><div class="s"><strong>Easy</strong>Light walking</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half Day</strong>Only</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/dino.html" data-analytics="tour-dino-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=dino" data-analytics="tour-dino-book">Book this tour &rarr;</a>
@@ -402,7 +418,7 @@
     </div>
   </article>
 
-  <article class="tour reverse" data-tour="localgems" data-hours="4">
+  <article class="tour reverse" data-tour="localgems" data-hours="4" data-sst-card="localgems" id="localgems">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/localgems.jpg" width="730" height="487" alt="Hidden overlook with no crowds on a local gems tour">
@@ -410,11 +426,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Local Gems · Half Day</div>
-      <h3>Local Gems</h3>
+      <h3 class="sst-tourname">Local Gems</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Half Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">The spots your guide would take a visiting friend. Hidden overlooks, wildflower meadows, and viewpoints with no signs. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Half Day Tour</div>
-        The spots your guide would take a visiting friend. Hidden overlooks, wildflower meadows, viewpoints with no signs. A half day of local secrets. <strong>Choose 6 hrs</strong> to add a hidden canyon detour and a more leisurely pace.</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Half Day Tour</div>
+        The spots your guide would take a visiting friend. Hidden overlooks, wildflower meadows, viewpoints with no signs. A half day of local secrets.</div>
       <div class="specs"><div class="s"><strong>Guide's Pick</strong>Route</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Half Day</strong>Only</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/localgems.html" data-analytics="tour-localgems-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=localgems" data-analytics="tour-localgems-book">Book this tour &rarr;</a>
@@ -422,7 +440,7 @@
     </div>
   </article>
 
-  <article class="tour" data-tour="needles" data-hours="8">
+  <article class="tour" data-tour="needles" data-hours="8" data-sst-card="needles" id="needles">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/needles.jpg" width="1400" height="872" alt="Candy-striped sandstone spires, Needles District, Canyonlands">
@@ -430,11 +448,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Canyonlands · The Needles</div>
-      <h3>Canyonlands Needles District Full Day Tour</h3>
+      <h3 class="sst-tourname">Canyonlands Needles District Full Day Tour</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Full Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">A remote district of Canyonlands with sandstone spires in impossible candy stripes. Long drive, longer day, worth every mile. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Full Day</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Full Day</div>
         The Needles District is remote. The drive alone takes time, but what you find is sandstone spires in impossible candy stripes. A full day is the only way to do it justice. Pack your energy.</div>
       <div class="specs"><div class="s"><strong>Full Day</strong>Early start</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Remote</strong>Less-visited</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/needles.html" data-analytics="tour-needles-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=needles" data-analytics="tour-needles-book">Book this tour &rarr;</a>
@@ -442,7 +462,7 @@
     </div>
   </article>
 
-  <article class="tour reverse" data-tour="maze" data-hours="8">
+  <article class="tour reverse" data-tour="maze" data-hours="8" data-sst-card="maze" id="maze">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/maze.jpg" width="730" height="470" alt="Remote canyons of the Maze District, Canyonlands">
@@ -450,11 +470,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Canyonlands · The Maze</div>
-      <h3>Canyonlands Maze Full Day Tour</h3>
+      <h3 class="sst-tourname">Canyonlands Maze Full Day Tour</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Full Day Tour</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">Backcountry on the far side of the rivers where fewer than a thousand people reach in a year. Petroglyphs, stone walls, and nothing but wind. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Full Day</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Full Day</div>
         The least-visited district of Canyonlands. Fewer than a thousand people reach it in a year. Requires a long 4x4 approach and a full day commitment. Petroglyphs, stone walls, and absolute solitude.</div>
       <div class="specs"><div class="s"><strong>2 days</strong>Overnight</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Permit</strong>Required</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/maze.html" data-analytics="tour-maze-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=maze" data-analytics="tour-maze-book">Book this tour &rarr;</a>
@@ -462,7 +484,7 @@
     </div>
   </article>
 
-  <article class="tour" data-tour="night" data-hours="4">
+  <article class="tour" data-tour="night" data-hours="4" data-sst-card="night" id="night">
     <div class="tour-visual">
       <div class="profile">
         <img class="tour-img" loading="lazy" src="tour_pics/night.jpg" width="1400" height="1029" alt="Star-filled night sky over the Moab desert">
@@ -470,11 +492,13 @@
     </div>
     <div class="tour-detail">
       <div class="sub">Moonlight Walk</div>
-      <h3>Nighthike</h3>
+      <h3 class="sst-tourname">Nighthike</h3>
+      <div class="sst-title-row"><span class="sst-bb-title-box" data-sst-title>Moonlight Walk</span> <span class="sst-pop-tag" data-sst-tag hidden>Most Popular!</span></div>
       <p class="desc">On full-moon weeks, the desert lights itself. Walk a familiar trail by moonlight. Cooler, quieter, and transformed beyond recognition. <span class="desc-link">(more)</span></p>
-      <div class="tour-guide"><div class="tg-rec">Recommended: Nighthike</div>
+      <div class="tour-guide" data-sst-vartext><div class="tg-rec">Recommended: Nighthike</div>
         On full-moon weeks, the desert lights itself. Walk a familiar trail by moonlight. Cooler, quieter, and transformed. On dark-sky nights, the Milky Way is the main event.</div>
       <div class="specs"><div class="s"><strong>~3 hrs</strong>Evening</div><div class="s"><strong>Private</strong>Group</div><div class="s"><strong>Full-moon</strong>Weeks</div></div>
+      <div class="sst-controls" data-sst-controls hidden></div>
       <div class="tour-cta-row">
         <a class="learn-btn" href="tours/night.html" data-analytics="tour-night-details">Tour details &rarr;</a>
         <a class="book-btn" href="book.html?tour=night" data-analytics="tour-night-book">Book this tour &rarr;</a>
@@ -559,7 +583,7 @@
       <a href="tours.html">Tours</a>
       <a href="bespoke.html">Bespoke</a>
       <a href="gallery.html">Gallery</a>
-      
+
       <a href="about.html">About</a>
     </div>
     <div>
@@ -583,91 +607,11 @@
 
 <script>
   document.getElementById('year').textContent=new Date().getFullYear();
-
-  // ── Per-tour length variants ─────────────────────────────────────────────
-  // Copy sourced from the cards' own text (the former "Choose X hrs" upsell lines
-  // become that length's variant text) + this page's ItemList schema variant names.
-  var TOUR_VARIANTS={
-   arches:{def:4,v:{
-    4:{label:'Recommended: Half Day Tour',text:'Arches rewards a half day. Four hours covers the classic highlights and a bonus gem or two most visitors miss, with a handful of short stops and two or three focused excursions where it’s worth lingering. It’s our most-booked half-day for a reason. Perfect for a first taste of canyon country.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours adds Devil’s Garden and a longer hike at an easier pace. Extended variants: Devil’s Garden, Custom Combo, Hike Lovers, and Arches + Dead Horse.'},
-    8:{label:'Full Day · 8 hrs',text:'The big Arches day. Full-day variants: Custom Combo, Arches + Canyonlands, and All You Can Arches.'}}},
-   deadhorse:{def:4,v:{
-    4:{label:'Recommended: Half Day Tour',text:'A half day that packs in more variety than most full-day tours elsewhere. Ancient rock art, dinosaur tracks, a short arch hike, remote 4x4 dirt roads, secluded overlooks, and Dead Horse Point itself.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours gives more time at each stop and a slower pace through the canyon rim country. Same route, more room to breathe.'}}},
-   isky:{def:8,v:{
-    8:{label:'Recommended: Full Day Tour',text:'Canyonlands rewards a full day. The drive is a little further from town, and the views are as good as the Grand Canyon or anywhere else. Eight hours gives room for named viewpoints like Mesa Arch and Grand View Point, a picnic lunch at a remote overlook, and spots most visitors miss entirely.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours keeps the pace brisker. Same caliber of views, less wandering time.'}}},
-   mill:{def:4,v:{
-    4:{label:'Recommended: Half Day Tour',text:'A half day along a creek canyon with cottonwood shade, running water, and waterfalls. The coolest tour in summer. Perfect as a morning or late-afternoon outing.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours to explore the upper canyon and swimming holes at a relaxed pace.'}}},
-   castle:{def:4,v:{
-    4:{label:'Recommended: Half Day Tour',text:'Desert towers and solitude. Best in golden hour light when the spires glow. A half day is ideal for photography, overlook stops, and the quiet of Fisher Towers and Professor Valley country.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours slows the pace further and gives time for a hike among the towers.'}}},
-   rockart:{def:4,v:{
-    4:{label:'Recommended: Half Day Tour',text:'A quiet, reverent half day visiting ancient petroglyph and pictograph panels. Your guide knows the stories behind the symbols.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours adds remote panels that require more driving and short hiking.'}}},
-   localgems:{def:4,v:{
-    4:{label:'Recommended: Half Day Tour',text:'The spots your guide would take a visiting friend. Hidden overlooks, wildflower meadows, viewpoints with no signs. A half day of local secrets.'},
-    6:{label:'Extended · 6 hrs',text:'Six hours adds a hidden canyon detour and a more leisurely pace.'}}},
-   dino:{def:4,v:{4:{label:'Recommended: Half Day Tour',text:'Trackways, bone beds, and the stories each fossil tells. A focused half day visiting multiple dig sites and track locations around Moab. Perfect for families and anyone fascinated by deep time.'}}},
-   archescombo:{def:8,v:{8:{label:'Full Day Tour',text:'A big-day combo built for guests who want the full variety in one push. Arches highlights and a hike, a picnic lunch in transition, ancient rock art and dinosaur tracks, remote 4x4 roads, secluded overlooks, and Dead Horse Point. Eight hours, a lot of ground covered, a photo album to prove it.'}}},
-   needles:{def:8,v:{8:{label:'Recommended: Full Day',text:'The Needles District is remote. The drive alone takes time, but what you find is sandstone spires in impossible candy stripes. A full day is the only way to do it justice. Pack your energy.'}}},
-   maze:{def:8,v:{8:{label:'Recommended: Full Day',text:'The least-visited district of Canyonlands. Fewer than a thousand people reach it in a year. Requires a long 4x4 approach and a full day commitment. Petroglyphs, stone walls, and absolute solitude.'}}},
-   night:{def:4,v:{4:{label:'Recommended: Nighthike',text:'On full-moon weeks, the desert lights itself. Walk a familiar trail by moonlight. Cooler, quieter, and transformed. On dark-sky nights, the Milky Way is the main event.'}}}
-  };
-
-  function setVariant(card,len){
-    var key=card.getAttribute('data-tour'),cfg=TOUR_VARIANTS[key];if(!cfg)return;
-    if(!cfg.v[len])len=cfg.def;
-    card.setAttribute('data-active-len',len);
-    var g=card.querySelector('.tour-guide');if(!g)return;
-    var v=cfg.v[len];
-    var links=Object.keys(cfg.v).filter(function(L){return +L!==+len;}).map(function(L){
-      return '<a href="#" class="tg-var-link" data-len="'+L+'" style="color:var(--ember);text-decoration:underline">('+L+' hr variation also available)</a>';
-    }).join(' · ');
-    g.innerHTML='<div class="tg-rec">'+v.label+'</div>'+v.text+(links?'<div class="tg-links" style="margin-top:9px;font-size:13px">'+links+'</div>':'');
-    var bb=card.querySelector('.book-btn');
-    if(bb)bb.setAttribute('href','book.html?tour='+key+'&len='+len);
-  }
-
-  function applyFilter(f){
-    document.querySelectorAll('#toursGrid .tour').forEach(function(card){
-      var cfg=TOUR_VARIANTS[card.getAttribute('data-tour')];
-      var lengths=cfg?Object.keys(cfg.v):[card.getAttribute('data-hours')];
-      var show=(f==='all')||lengths.indexOf(f)!==-1;
-      card.style.display=show?'':'none';
-      if(cfg){ setVariant(card, f==='all'?cfg.def:+f); }
-    });
-  }
-
-  document.getElementById('chipGroup').addEventListener('click',function(e){
-    var b=e.target.closest('.band-chip');if(!b)return;
-    this.querySelectorAll('.band-chip').forEach(function(c){c.classList.remove('active')});
-    b.classList.add('active');
-    applyFilter(b.getAttribute('data-filter'));
-    if(window.dataLayer){window.dataLayer.push({event:'filter_tours',filter_value:b.getAttribute('data-filter')})}
-  });
-
-  // In-card variation links -> switch that card to the other length variant
-  document.getElementById('toursGrid').addEventListener('click',function(e){
-    var a=e.target.closest('.tg-var-link');if(!a)return;
-    e.preventDefault();
-    var card=a.closest('.tour');
-    setVariant(card,+a.getAttribute('data-len'));
-    if(window.dataLayer){window.dataLayer.push({event:'variant_switch',tour:card.getAttribute('data-tour'),length:a.getAttribute('data-len')})}
-  });
-
-  // Init: default variants, ?len= deep link, #tour anchor
-  (function(){
-    document.querySelectorAll('#toursGrid .tour').forEach(function(card){
-      if(!card.id)card.id=card.getAttribute('data-tour');
-      setVariant(card,(TOUR_VARIANTS[card.getAttribute('data-tour')]||{}).def);
-    });
-    var len=new URLSearchParams(location.search).get('len');
-    if(len){var chip=document.querySelector('.band-chip[data-filter="'+len+'"]');if(chip)chip.click();}
-    if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)setTimeout(function(){t.scrollIntoView({behavior:'smooth',block:'center'});},150);}
-  })();
+  // Per-tour variant data, filtering, steppers, estimates, and the trip cart
+  // now live in the shared trip engine (assets/trip.js). Every tour key,
+  // title, and variant text from the previous inline script survives there.
+  document.addEventListener('click',function(e){var el=e.target.closest('[data-analytics]');if(!el)return;var name=el.getAttribute('data-analytics');if(window.dataLayer){window.dataLayer.push({event:'cta_click',cta_name:name,page:location.pathname})}});
 </script>
+<script src="assets/trip.js" defer></script>
 </body>
 </html>

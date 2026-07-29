@@ -17,7 +17,7 @@
   /* CONFIG                                                             */
   /* ------------------------------------------------------------------ */
   var EXEC = 'https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec';
-  var TG_HANDLE = ''; // Telegram handle — leave '' until John supplies one; button renders only when non-empty
+  // Telegram is INTERNAL-ONLY at SST (staff notifications/automation) — never customer-facing (John 260729).
   var WA_URL = 'https://wa.me/14356331145?text=Hi%20Sand%20%26%20Stars%20%E2%80%94%20planning%20a%20Moab%20trip';
   var CONTACT_EMAIL = 'tours@sandandstars.com'; // contact.html has no wired GAS action — its form composes a prefilled mailto; chat form reuses that exact pattern
   var LS_KEY = 'sst_trip_v1';
@@ -694,6 +694,8 @@
       '<div class="sst-form-row">' +
       '<div class="sst-form-group"><label for="sstEm">Email</label><input id="sstEm" type="email" autocomplete="email"></div>' +
       '<div class="sst-form-group"><label for="sstPh">Phone</label><input id="sstPh" type="tel" autocomplete="tel"></div>' +
+      '<div class="sst-form-group"><label for="sstPu">Pickup location (hotel / lodging) <span style="color:var(--ember)">*</span></label><input id="sstPu" type="text" placeholder="Hotel or lodging name">' +
+      '<label style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:13px;cursor:pointer"><input id="sstPuTbd" type="checkbox" style="width:auto"> TBD — I&rsquo;ll confirm my lodging later</label></div>' +
       '</div>' +
       '<div class="sst-form-group"><label for="sstNo">Notes (lodging, occasions, anything useful)</label><textarea id="sstNo" placeholder="Where are you staying? Celebrating anything?"></textarea></div>' +
       '</div>' +
@@ -760,8 +762,14 @@
     var em = coModal.querySelector('#sstEm').value.trim();
     var ph = coModal.querySelector('#sstPh').value.trim();
     var no = coModal.querySelector('#sstNo').value.trim();
+    var pu = (coModal.querySelector('#sstPu') || {}).value || ''; pu = pu.trim();
+    var puTbd = !!(coModal.querySelector('#sstPuTbd') || {}).checked;
     if (!fn || !ln) { showToast('Please add your first and last name', 'warn'); return; }
     if (!em || em.indexOf('@') < 0 || em.indexOf('.') < 0) { showToast('Please add a valid email address', 'warn'); return; }
+    if (!pu && !puTbd) { showToast('Please add your pickup location — or check TBD', 'warn'); return; }
+    if (puTbd && !pu) {
+      if (!window.confirm('Pickup marked TBD.\n\nYou are responsible to inform us of your lodging before the trip. We’ll also follow up with you. Continue?')) return;
+    }
     var sorted = itinerary.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
     var items = sorted.map(function (t) {
       return { tour: t.tour, length: t.len, date: t.date, group_size: t.adults }; // group_size = pricing n (adults + kids 3+); kids <3 noted below
@@ -778,6 +786,8 @@
       email: em,
       phone: ph,
       notes: notes,
+      pickup: pu,
+      pickup_tbd: puTbd ? '1' : '',
       source: 'website'
     };
     if (TEST_MODE) fields.test = '1';
@@ -1367,11 +1377,7 @@
     chatPanel.className = 'sst-chat-panel';
     chatPanel.setAttribute('role', 'dialog');
     chatPanel.setAttribute('aria-label', 'Chat with Sand & Stars');
-    var tgBtn = TG_HANDLE
-      ? '<a class="sst-chat-link" href="https://t.me/' + encodeURIComponent(TG_HANDLE) + '" target="_blank" rel="noopener">' +
-        '<svg viewBox="0 0 24 24" fill="#54a9eb"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.9 8.16l-1.98 9.34c-.15.66-.54.82-1.09.51l-3.01-2.22-1.45 1.4c-.16.16-.3.3-.61.3l.22-3.05 5.56-5.03c.24-.21-.05-.33-.37-.12l-6.87 4.33-2.96-.93c-.64-.2-.66-.64.14-.95l11.57-4.46c.54-.2 1.01.13.85.88z"/></svg>' +
-        'Telegram<span class="badge">Fast</span></a>'
-      : '';
+    var tgBtn = ''; // Telegram = internal-only; no customer button.
     chatPanel.innerHTML =
       '<div class="sst-chat-head"><div class="t">Chat with Sand &amp; Stars</div><div class="s">Planning a Moab trip? We reply fast.</div></div>' +
       '<div class="sst-chat-body">' +

@@ -315,6 +315,7 @@
     .arches-lead .bb-title-box{font-size:18px;padding:4px 10px}
   }
 </style>
+<link rel="stylesheet" href="assets/trip.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -359,7 +360,7 @@
       <p class="lead-sub">Most of our guests start with Arches. Pick a length below and we'll show you the touring styles that fit, from a half-day on the Windows loop to a full day pairing Arches with Canyonlands. Up to 8 travelers, your group only.</p>
     </div>
 
-    <article class="tour" data-tour="arches-alt">
+    <article class="tour" data-tour="arches-alt" data-sst-card="arches">
       <div class="tour-visual">
         <div class="profile">
           <img class="tour-img" loading="lazy" src="tour_pics/arches.jpg" width="1200" height="729" alt="Delicate Arch silhouette at sunrise in Arches National Park">
@@ -367,9 +368,16 @@
       </div>
       <div class="tour-detail">
         <div class="al-sub">Arches National Park</div>
-        <h3 class="al-title-row"><span class="bb-title-box" id="alTitle">Highlights | Half Day Tour</span> <span class="pop-tag">Most Popular!</span></h3>
-        <p class="al-desc" id="alDesc">Select a duration to see available touring styles, then pick the one that suits you best.</p>
+        <h3 class="al-title-row"><span class="bb-title-box" id="alTitle" data-sst-title>Highlights | Half Day Tour</span> <span class="pop-tag" data-sst-tag>Most Popular!</span></h3>
+        <div class="al-desc" id="alDesc" data-sst-vartext>Select a duration to see available touring styles, then pick the one that suits you best.</div>
 
+        <!-- Live trip engine renders chevrons, variant rows, barbell, steppers,
+             estimate, and Quick Add into this container (assets/trip.js). -->
+        <div class="sst-controls" data-sst-controls hidden></div>
+
+        <!-- No-JS fallback: static chevrons + booking links (removed by the
+             engine at init and replaced with the live controls above). -->
+        <div data-sst-static>
         <div class="dur-row">
           <div class="ctrl-labeled">
             <span class="ctrl-label">Tour Length</span>
@@ -449,6 +457,7 @@
             </a>
           </div>
         </div>
+        </div><!-- /data-sst-static -->
       </div>
     </article>
 
@@ -459,28 +468,24 @@
   </div>
 </section>
 
+<!-- The arches-lead duration toggle now runs through the shared trip engine
+     (assets/trip.js): live variants, barbell connector, guest steppers,
+     availability-backed date stepper, pre-tax estimate, and Quick Add. -->
 <script>
-  // V2 Arches lead — duration toggle (single-select for cleaner UX on marketing page)
+  // No-JS fallback chevrons only need to exist; if the trip engine loads it
+  // replaces the static block. This tiny shim keeps the static chevrons
+  // honest for the brief window before trip.js (deferred) initializes.
   (function(){
     var grp=document.getElementById('alDurGroup');
     if(!grp)return;
-    var titles={4:'Highlights | Half Day Tour',6:'Custom Combo | Extended Half Day',8:'Custom Combo | Full Day Tour'};
-    var descs={
-      4:'Half-day touring options. The iconic Windows, Balanced Rock, Delicate Arch. Pick a route.',
-      6:'Extended half-day options. More miles, more arches, or pair Arches with a second destination.',
-      8:'Full-day options. Two parks in a day or a deep dive on a single one. Your call.'
-    };
     grp.addEventListener('click',function(e){
-      var b=e.target.closest('.dc');if(!b)return;
+      var b=e.target.closest('.dc');if(!b||!grp.isConnected)return;
       grp.querySelectorAll('.dc').forEach(function(x){x.classList.remove('on')});
       b.classList.add('on');
       var h=b.getAttribute('data-hrs');
       document.querySelectorAll('#alStyles .alt-dur-group').forEach(function(g){
         g.style.display=(g.getAttribute('data-dur')===h)?'':'none';
       });
-      var t=document.getElementById('alTitle');var d=document.getElementById('alDesc');
-      if(t&&titles[h])t.textContent=titles[h];
-      if(d&&descs[h])d.textContent=descs[h];
       if(window.dataLayer){window.dataLayer.push({event:'lead_dur_toggle',dur_hours:h})}
     });
   })();
@@ -734,5 +739,6 @@
     document.querySelectorAll('.review-panel-combined').forEach(mountCombined);
   })();
 </script>
+<script src="assets/trip.js" defer></script>
 </body>
 </html>
