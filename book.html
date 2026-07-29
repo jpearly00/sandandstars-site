@@ -126,8 +126,10 @@
           <select id="group" name="group_size" required>
             <option value="" disabled selected>How many travelers?</option>
             <option>1</option><option>2</option><option>3</option><option>4</option>
-            <option>5</option><option>6</option><option>7</option><option>8+</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+            <option value="9+">9+ — contact us</option>
           </select>
+          <div class="helper" id="groupHelper" hidden>Parties of 9+ take more than one vehicle — email <b>tours@sandandstars.com</b> or use the chat bubble and we&rsquo;ll set it up.</div>
         </div>
 
         <div class="field" id="dateField" hidden>
@@ -270,6 +272,9 @@
     }
     // Group size changes -> refresh every displayed price for the selected length (pre-tax)
     document.getElementById('group').addEventListener('change',function(){
+      var nine=(this.value==='9+');
+      document.getElementById('groupHelper').hidden=!nine;
+      document.getElementById('submitBtn').disabled=nine;
       var key=document.getElementById('tour').value;
       if(key&&key!=='bespoke'&&CATALOG[key])renderLenPills(key,CATALOG[key]);
     });

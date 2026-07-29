@@ -54,7 +54,12 @@
   .page-hero .eyebrow{color:var(--ember);font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px}
   .page-hero h1{color:var(--paper);font-size:clamp(30px,5vw,48px)}
   main{max-width:980px;margin:0 auto;padding:40px 24px 72px}
-  .lead{font-size:17px;line-height:1.7;max-width:760px;margin:0 auto 28px}
+  .lead-row{display:flex;gap:28px;align-items:stretch;margin-bottom:28px}
+  .lead{font-size:17px;line-height:1.7;text-align:left;flex:1;margin:0}
+  .map-embed{flex:0 0 380px;display:flex;flex-direction:column;gap:8px}
+  .map-embed iframe{width:100%;flex:1;min-height:230px;border:0;border-radius:var(--radius-sm);box-shadow:0 4px 18px rgba(0,0,0,0.14)}
+  .map-embed a{font-size:13px;text-align:center}
+  @media (max-width:760px){.lead-row{flex-direction:column}.map-embed{flex:1 1 auto}.map-embed iframe{min-height:260px}}
   .map-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.18);border:1px solid rgba(26,21,16,0.08)}
   .map-note{font-size:13.5px;color:rgba(26,21,16,0.6);text-align:center;margin-top:12px}
   footer{background:var(--slate-deep);color:var(--muted);padding:36px 24px;font-size:14px;text-align:center}
@@ -88,7 +93,14 @@
 </section>
 
 <main id="main">
-  <p class="lead">On request we can meetup to start your tour <a href="https://maps.app.goo.gl/rQTxECRMp4CLZWEE6" target="_blank" rel="noopener">at Lion's Park</a> (Heart Icon on the Map). We included some other useful landmarks on the map. You can meet here to either maximize your tour time (instead of round trip transport from lodgings outside of town), or simply to suit your pre/post tour plans better. We are still happy to pick you up by default&mdash; just let us know!</p>
+  <div class="lead-row">
+    <p class="lead">On request we can meetup to start your tour <a href="https://maps.app.goo.gl/rQTxECRMp4CLZWEE6" target="_blank" rel="noopener">at Lion's Park</a> (Heart Icon on the Map). We included some other useful landmarks on the map. You can meet here to either maximize your tour time (instead of round trip transport from lodgings outside of town), or simply to suit your pre/post tour plans better. We are still happy to pick you up by default&mdash; just let us know!</p>
+    <div class="map-embed">
+      <iframe title="Lion's Park meeting place on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+        src="https://maps.google.com/maps?q=Lions%20Park%2C%20Moab%2C%20UT&z=16&output=embed"></iframe>
+      <a href="https://maps.app.goo.gl/rQTxECRMp4CLZWEE6" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+    </div>
+  </div>
 
   <div class="map-wrap">
     <a href="/meet/moab-meeting-place-map.jpg" target="_blank" rel="noopener" aria-label="Open full-size meeting place map">
