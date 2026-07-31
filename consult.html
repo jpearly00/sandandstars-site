@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Reserve Your Date &middot; Sand &amp; Stars Touring</title>
+<meta name="description" content="Not ready to pick a tour? $95 holds your date and time with Sand &amp; Stars Touring — refundable, and we help you choose the perfect day.">
+<meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) — GA4 sandandstars.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
+<style>
+  :root{--slate:#1e293b;--slate-deep:#0f1a22;--ember:#e89866;--canyon:#c2703e;--ink:#1a1510;--paper:#f5f0eb;--sand:#efe6d9;--muted:rgba(245,240,235,0.72);--line:rgba(245,240,235,0.14);--pill:24px;--radius-sm:8px;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden}
+  body{background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);font-family:'Inter',sans-serif;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1100px;margin:0 auto;width:100%}
+  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;text-decoration:none}
+  .brand span{color:var(--ember)}
+  .back{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:var(--pill)}
+  main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px 24px 56px}
+  .card{max-width:580px;width:100%}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:14px}
+  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.12;margin-bottom:10px}
+  h1 em{color:var(--ember);font-style:italic}
+  .lead{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:28px}
+  form{background:rgba(245,240,235,0.04);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .field{margin-bottom:16px}
+  label{display:block;font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:6px}
+  label .req{color:var(--ember)}
+  input,select,textarea{width:100%;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;font-family:inherit;background:rgba(15,26,34,0.5);color:var(--paper)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
+  select option,select optgroup{color:#1a1510}
+  textarea{min-height:84px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.row{grid-template-columns:1fr}}
+  .submit{width:100%;background:var(--ember);color:var(--ink);border:0;padding:15px 26px;border-radius:var(--pill);font:700 16px Inter,sans-serif;cursor:pointer;margin-top:6px}
+  .submit:hover{background:#f0a877}
+  .submit:disabled{opacity:.55;cursor:not-allowed}
+  .note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5;text-align:center}
+  .err{color:#ff9b7a;font-size:12.5px;margin-top:6px;min-height:1px}
+  .fallback{margin-top:18px;font-size:13.5px;color:var(--muted);text-align:center}
+  .fallback b{color:var(--paper)}
+  footer{padding:22px 24px;text-align:center;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);max-width:1100px;margin:0 auto;width:100%}
+  .tour-info{background:rgba(232,152,102,0.08);border:1px solid rgba(232,152,102,0.28);border-radius:var(--radius-sm);padding:13px 15px;margin:-4px 0 16px;font-size:13.5px;line-height:1.55;color:var(--paper)}
+  .tour-info .ti-row{display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:600;margin-bottom:4px}
+  .tour-info .ti-row span{color:var(--ember)}
+  .tour-info .ti-desc{color:var(--muted);font-weight:400}
+  /* self-contained calendar */
+  .cal{border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 12px 10px;background:rgba(15,26,34,0.5)}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .cal-head button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--paper);font-size:18px;line-height:1;cursor:pointer}
+  .cal-head button:hover:not(:disabled){border-color:var(--ember);color:var(--ember)}
+  .cal-head button:disabled{opacity:.28;cursor:not-allowed}
+  .cal-title{font-weight:600;font-size:14.5px}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .cal-wd{text-align:center;font-size:10.5px;color:var(--muted);padding:3px 0;font-weight:600;letter-spacing:.03em}
+  .cal-day{text-align:center;padding:9px 0;border-radius:7px;font-size:13.5px;border:1px solid transparent;user-select:none}
+  .cal-day.empty{visibility:hidden}
+  .cal-day.dis{color:rgba(245,240,235,0.20);text-decoration:line-through;cursor:not-allowed}
+  .cal-day.ok{cursor:pointer}
+  .cal-day.ok:hover{background:rgba(232,152,102,0.18)}
+  .cal-day.sel{background:var(--ember);color:var(--ink);font-weight:700}
+  .cal-legend{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .cal-legend s{opacity:.5}
+  .chosen{font-size:13.5px;color:var(--ember);font-weight:600;margin-top:8px;min-height:1px}
+  .loadingCal{font-size:12px;color:var(--muted);text-align:center;padding:14px 0}
+  /* slot picker */
+  .slots{display:flex;flex-wrap:wrap;gap:10px}
+  .slot{flex:1 1 140px}
+  .slot input{position:absolute;opacity:0;width:0;height:0}
+  .slot label{display:block;margin:0;cursor:pointer;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:11px 12px;font-size:14px;font-weight:600;text-align:center;transition:all .15s}
+  .slot label small{display:block;font-weight:400;font-size:11.5px;color:var(--muted);margin-top:2px}
+  .slot input:checked + label{border-color:var(--ember);background:rgba(232,152,102,0.14);color:var(--ember)}
+  .slot input:checked + label small{color:var(--ember)}
+  .helper{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+</style>
+<style>
+  .ck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 14px;margin-top:6px}
+  .ck{display:flex;align-items:flex-start;gap:8px;font-size:14px;font-weight:400;cursor:pointer;line-height:1.35}
+  .ck input{margin-top:2px;flex:0 0 auto}
+  .ck span{opacity:.9}
+</style>
+</head>
+<body>
+  <header>
+    <a href="./" class="brand">Sand &amp; <span>Stars</span></a>
+    <a href="./" class="back">&larr; Back to site</a>
+  </header>
+
+  <main>
+    <div class="card">
+      <span class="kicker">Reserve your date</span>
+      <h1>Hold your <em>day in Moab</em></h1>
+      <p class="lead">Undecided on self-booking, but would like to reserve a spot now? <b style="color:var(--paper)">$95</b> and the info below secures your date and time &mdash; then we help you make the perfect choice, or return your deposit. Automatically refunded if we don&rsquo;t hear from you.</p>
+
+      <form id="consultForm" method="POST"
+            action="https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec">
+        <input type="hidden" name="action" value="public_consult">
+        <input type="hidden" name="source" value="website-consult">
+
+        <div class="row">
+          <div class="field">
+            <label for="target">Date you have in mind <span class="req">*</span></label>
+            <input type="date" id="target" name="target_date" required>
+          </div>
+          <div class="field">
+            <label for="flex">How firm is it? <span class="req">*</span></label>
+            <select id="flex" name="date_flex" required>
+              <option value="" disabled selected>Choose one&hellip;</option>
+              <option value="exact">That exact day</option>
+              <option value="1">&plusmn; 1 day</option>
+              <option value="2">&plusmn; 2 days</option>
+              <option value="3">&plusmn; 3 days</option>
+              <option value="5">&plusmn; 5 days</option>
+              <option value="7">&plusmn; 7 days</option>
+              <option value="14">&plusmn; 14 days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="days">How many possible touring days? <span class="req">*</span></label>
+            <select id="days" name="touring_days" required>
+              <option value="" disabled selected>Choose&hellip;</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+              <option value="10+">10+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="group">Group size <span class="req">*</span></label>
+            <select id="group" name="group_size" required>
+              <option value="" disabled selected>How many travelers?</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option value="9+">9+ &mdash; contact us</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What are you interested in? <span style="font-weight:400;opacity:.65">check all that apply</span></label>
+          <div class="ck-grid">
+            <label class="ck"><input type="checkbox" name="interests" value="arches"> <span>Arches National Park</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="isky"> <span>Canyonlands — Island in the Sky</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="needles"> <span>Canyonlands — The Needles</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="maze"> <span>Canyonlands — The Maze</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="deadhorse"> <span>Dead Horse Point</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="castle"> <span>Castle Valley &amp; Onion Creek</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="rockart"> <span>Rock art &amp; petroglyphs</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="dino"> <span>Dinosaur tracks</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="fourbyfour"> <span>4x4 &amp; remote dirt roads</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="mill"> <span>Slot canyon / creek hike</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="hiking"> <span>Hiking &amp; scrambling</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="night"> <span>Night sky &amp; stargazing</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="localgems"> <span>Local secrets the crowds miss</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="photo"> <span>Photography &amp; golden hour</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="kids"> <span>Kid-friendly pacing</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="easy"> <span>Easy pace / limited mobility</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="mighty5"> <span>Beyond Moab — Mighty 5 / Grand Circle</span></label>
+            <label class="ck"><input type="checkbox" name="interests" value="unsure"> <span>Honestly not sure yet — help us pick</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="referral">Were you referred by a previous client?</label>
+          <select id="referral" name="referral">
+            <option value="" selected>&mdash;</option>
+            <option value="referral">Yes &mdash; referred by a previous client</option>
+            <optgroup label="OR">
+              <option value="websearch">Web search</option>
+              <option value="tripadvisor">Tripadvisor</option>
+              <option value="social">Social media</option>
+              <option value="other">Other</option>
+            </optgroup>
+          </select>
+          <div class="field" id="refWhoWrap" hidden style="margin-top:10px">
+            <label for="refWho">Who should we thank?</label>
+            <input type="text" id="refWho" name="referral_name" placeholder="Their name, if you remember it">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="first">First name <span class="req">*</span></label>
+            <input type="text" id="first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="last">Last name <span class="req">*</span></label>
+            <input type="text" id="last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything else that helps us plan?</label>
+          <textarea id="notes" name="notes" placeholder="Who&rsquo;s coming, what you&rsquo;ve already seen, celebrating something, mobility or dietary needs&hellip;"></textarea>
+        </div>
+
+        <button type="submit" class="submit" id="submitBtn">Continue to secure $95 deposit &rarr;</button>
+        <p class="note">The $95 holds your date and time. It comes straight off your tour price when you book, and it is refunded if we cannot find you the right day &mdash; or automatically if we never hear back from you. No card details are entered here; you finish on a secure Square page.</p>
+      </form>
+
+      <p class="fallback">Already know what you want? <a href="/book.html" style="color:var(--ember)">Book it outright</a>. Prefer a human? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b>.</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year">2026</span> Sand &amp; Stars Touring. Operating under permits from the National Park Service &amp; BLM.
+  </footer>
+
+  <script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Earliest holdable date = 2 days out, same lead time the booking engine enforces.
+    var d = new Date(); d.setDate(d.getDate() + 2);
+    var t = document.getElementById('target');
+    t.min = d.toISOString().slice(0,10);
+    var max = new Date(); max.setDate(max.getDate() + 400);
+    t.max = max.toISOString().slice(0,10);
+
+    // "Who should we thank?" only appears for an actual referral.
+    var ref = document.getElementById('referral');
+    ref.addEventListener('change', function(){
+      document.getElementById('refWhoWrap').hidden = (ref.value !== 'referral');
+    });
+
+    document.getElementById('consultForm').addEventListener('submit', function(e){
+      var checked = document.querySelectorAll('input[name="interests"]:checked').length;
+      if (!checked) {
+        e.preventDefault();
+        alert('Pick at least one interest — even "Honestly not sure yet" helps us plan.');
+        return;
+      }
+      if (document.getElementById('group').value === '9+') {
+        e.preventDefault();
+        alert('Parties of 9+ need more than one vehicle — email tours@sandandstars.com and we will set it up properly.');
+        return;
+      }
+      var b = document.getElementById('submitBtn');
+      b.disabled = true; b.textContent = 'Taking you to Square…';
+    });
+  })();
+  </script>
+</body>
+</html>

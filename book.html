@@ -205,18 +205,18 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     var FALLBACK = [
-      {key:'arches',title:'Arches National Park — Private Tour',hours:4,fromPerPerson:475},
-      {key:'rockart',title:'Rock Art & Petroglyphs',hours:4,fromPerPerson:475},
-      {key:'dino',title:'Dinosaur Tracks',hours:4,fromPerPerson:475},
-      {key:'localgems',title:'Local Gems',hours:4,fromPerPerson:475},
-      {key:'night',title:'Night Sky Tour',hours:4,fromPerPerson:475},
-      {key:'deadhorse',title:'Best of Moab to Dead Horse Point',hours:6,fromPerPerson:595},
-      {key:'castle',title:'Castle Valley',hours:6,fromPerPerson:595},
-      {key:'mill',title:'Lush Canyon Hike + Local Gems (Mill Creek)',hours:6,fromPerPerson:595},
-      {key:'archescombo',title:'Arches + Best of Moab Combo — Full Day',hours:8,fromPerPerson:795},
-      {key:'isky',title:'Canyonlands: Island in the Sky + Dead Horse',hours:8,fromPerPerson:795},
-      {key:'needles',title:'Canyonlands: The Needles — Full Day',hours:8,fromPerPerson:795},
-      {key:'maze',title:'Canyonlands: The Maze — Full Day',hours:8,fromPerPerson:795}
+      {key:'arches',title:'Arches National Park — Private Tour',hours:4},
+      {key:'rockart',title:'Rock Art & Petroglyphs',hours:4},
+      {key:'dino',title:'Dinosaur Tracks',hours:4},
+      {key:'localgems',title:'Local Gems',hours:4},
+      {key:'night',title:'Night Sky Tour',hours:4},
+      {key:'deadhorse',title:'Best of Moab to Dead Horse Point',hours:6},
+      {key:'castle',title:'Castle Valley',hours:6},
+      {key:'mill',title:'Lush Canyon Hike + Local Gems (Mill Creek)',hours:6},
+      {key:'archescombo',title:'Arches + Best of Moab Combo — Full Day',hours:8},
+      {key:'isky',title:'Canyonlands: Island in the Sky + Dead Horse',hours:8},
+      {key:'needles',title:'Canyonlands: The Needles — Full Day',hours:8},
+      {key:'maze',title:'Canyonlands: The Maze — Full Day',hours:8}
     ];
     var DESC = {
       arches:'The park’s icons — Delicate Arch country, the Windows, Balanced Rock — at your pace.',
@@ -317,7 +317,7 @@
     function loadCatalogThen(done){
       var finished=false;
       function finish(list){ if(finished)return; finished=true;
-        CATALOG={}; list.forEach(function(t){CATALOG[t.key]={title:t.title,hours:t.hours,fromPerPerson:t.fromPerPerson};});
+        CATALOG={}; list.forEach(function(t){CATALOG[t.key]={title:t.title,hours:t.hours};});
         buildDropdown(list); done();
       }
       var to=setTimeout(function(){finish(FALLBACK);},2500);
