@@ -1390,6 +1390,7 @@
       '<input type="text" name="name" placeholder="Your name" autocomplete="name" required>' +
       '<input type="email" name="email" placeholder="Email" autocomplete="email" required>' +
       '<textarea name="message" placeholder="What can we help you plan?" required></textarea>' +
+      '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;opacity:0">' +
       '<button type="submit" class="sst-chat-send">Send Message</button>' +
       '</form>' +
       '<div class="sst-chat-note" id="sstChatNote">We usually reply within a few hours during business times.</div>' +
@@ -1407,13 +1408,30 @@
       var f = e.target;
       var name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
       if (!name || !email || !msg) { showToast('Please fill in name, email, and your message.', 'warn'); return; }
-      // contact.html ships no wired backend action — it composes a prefilled
-      // email to tours@. The chat form reuses that exact interim delivery.
-      var subj = encodeURIComponent('Website chat — ' + name);
-      var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
-      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subj + '&body=' + body;
-      document.getElementById('sstChatNote').textContent = 'Your email app is opening with the message filled in — just hit send.';
-      if (window.dataLayer) window.dataLayer.push({ event: 'chat_message', page: location.pathname });
+      // 260729: live endpoint — posts to the Tour Hub (email to tours@ + staff Telegram).
+      // mailto: survives only as the network-failure fallback.
+      var btn = f.querySelector('.sst-chat-send');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var q = EXEC + '?action=chat_send&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) +
+              '&msg=' + encodeURIComponent(msg) + '&page=' + encodeURIComponent(location.pathname) +
+              '&website=' + encodeURIComponent((f.website && f.website.value) || '');
+      fetch(q).then(function (r) { return r.json(); }).then(function (d) {
+        btn.disabled = false; btn.textContent = 'Send Message';
+        if (d && d.ok) {
+          f.reset();
+          document.getElementById('sstChatNote').textContent = "Message sent — we'll get back to you shortly.";
+          showToast('Message sent!');
+          if (window.dataLayer) window.dataLayer.push({ event: 'chat_message', page: location.pathname });
+        } else {
+          showToast((d && d.err) || 'Could not send — please email tours@sandandstars.com.', 'warn');
+        }
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = 'Send Message';
+        var subj = encodeURIComponent('Website chat — ' + name);
+        var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+        window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subj + '&body=' + body;
+        document.getElementById('sstChatNote').textContent = 'Your email app is opening with the message filled in — just hit send.';
+      });
     });
   }
 
