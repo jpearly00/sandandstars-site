@@ -1403,6 +1403,60 @@
         chatPanel.classList.remove('open');
       }
     });
+    /* --------------------------------------------------------------
+       3-MINUTE FOLLOW-UP (John 260731). If we have not answered in the
+       panel within 3 minutes, stop leaving them hanging: ask for a phone
+       number and any extra notes, promise same-day follow-up, and give
+       them the two faster doors — the contact form and booking.
+       Anything they add posts to the same thread we already opened.
+    -------------------------------------------------------------- */
+    function scheduleChatFollowUp(name, email) {
+      if (window.__sstChatFollowUp) clearTimeout(window.__sstChatFollowUp);
+      window.__sstChatFollowUp = setTimeout(function () {
+        var body = chatPanel.querySelector('.sst-chat-body');
+        if (!body || document.getElementById('sstChatFollow')) return;
+        var wrap = document.createElement('div');
+        wrap.id = 'sstChatFollow';
+        wrap.style.cssText = 'border-top:1px solid rgba(0,0,0,0.08);margin-top:12px;padding-top:12px';
+        wrap.innerHTML =
+          '<div style="font-size:13.5px;line-height:1.55;margin-bottom:9px">' +
+          'Thanks for waiting &mdash; we have not gotten to you yet, and we will follow up <strong>the same day</strong>. ' +
+          'Leave a phone number and anything else you want us to know, and we will reach you either way.' +
+          '</div>' +
+          '<input id="sstFuPhone" type="tel" placeholder="Phone (optional)" autocomplete="tel" ' +
+          'style="width:100%;padding:9px 10px;margin-bottom:6px;border:1px solid #d8cfc2;border-radius:8px;font:inherit">' +
+          '<textarea id="sstFuNotes" rows="3" placeholder="Anything else? Dates, group size, must-sees\u2026" ' +
+          'style="width:100%;padding:9px 10px;margin-bottom:6px;border:1px solid #d8cfc2;border-radius:8px;font:inherit"></textarea>' +
+          '<button type="button" id="sstFuSend" class="sst-chat-send" style="width:100%">Send this too</button>' +
+          '<div style="display:flex;gap:8px;margin-top:9px">' +
+          '<a href="/contact.html" class="sst-chat-link" style="flex:1;justify-content:center;font-size:13px;padding:9px 6px">Contact form</a>' +
+          '<a href="/book.html" class="sst-chat-link" style="flex:1;justify-content:center;font-size:13px;padding:9px 6px;background:#e89866;color:#1a1510;font-weight:600">Book now</a>' +
+          '</div>';
+        body.appendChild(wrap);
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (window.dataLayer) window.dataLayer.push({ event: 'chat_followup_shown', page: location.pathname });
+        document.getElementById('sstFuSend').addEventListener('click', function () {
+          var btn = this;
+          var phone = (document.getElementById('sstFuPhone') || {}).value || '';
+          var notes = (document.getElementById('sstFuNotes') || {}).value || '';
+          if (!phone.trim() && !notes.trim()) { showToast('Add a phone number or a note first.', 'warn'); return; }
+          btn.disabled = true; btn.textContent = 'Sending\u2026';
+          var extra = 'FOLLOW-UP from the chat panel (no reply yet after 3 min)\n' +
+            (phone ? 'Phone: ' + phone + '\n' : '') + (notes ? 'Notes: ' + notes : '');
+          fetch(EXEC + '?action=chat_send&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) +
+                '&msg=' + encodeURIComponent(extra) + '&page=' + encodeURIComponent(location.pathname))
+            .then(function (r) { return r.json(); })
+            .then(function () {
+              wrap.innerHTML = '<div style="font-size:13.5px;line-height:1.55">Got it &mdash; we will follow up today. ' +
+                'If you would rather not wait, ' +
+                '<a href="/book.html" style="font-weight:600">book your date now</a> and we will sort the details together.</div>';
+              showToast('Thanks — we will follow up today.');
+            })
+            .catch(function () { btn.disabled = false; btn.textContent = 'Send this too'; showToast('Could not send — please email tours@sandandstars.com.', 'warn'); });
+        });
+      }, 3 * 60 * 1000);
+    }
+
     chatPanel.querySelector('.sst-chat-form').addEventListener('submit', function (e) {
       e.preventDefault();
       var f = e.target;
@@ -1422,6 +1476,7 @@
           document.getElementById('sstChatNote').textContent = "Message sent — we'll get back to you shortly.";
           showToast('Message sent!');
           if (window.dataLayer) window.dataLayer.push({ event: 'chat_message', page: location.pathname });
+          scheduleChatFollowUp(name, email);
         } else {
           showToast((d && d.err) || 'Could not send — please email tours@sandandstars.com.', 'warn');
         }
