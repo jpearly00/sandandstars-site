@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Book a Tour · Sand &amp; Stars Touring</title>
+<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and an open date — pay securely via Square. Private guiding, your group only.">
+<meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) — GA4 sandandstars.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
+<style>
+  :root{--slate:#1e293b;--slate-deep:#0f1a22;--ember:#e89866;--canyon:#c2703e;--ink:#1a1510;--paper:#f5f0eb;--sand:#efe6d9;--muted:rgba(245,240,235,0.72);--line:rgba(245,240,235,0.14);--pill:24px;--radius-sm:8px;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden}
+  body{background:linear-gradient(160deg,var(--slate) 0%,var(--slate-deep) 100%);color:var(--paper);font-family:'Inter',sans-serif;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1100px;margin:0 auto;width:100%}
+  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;text-decoration:none}
+  .brand span{color:var(--ember)}
+  .back{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:var(--pill)}
+  main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px 24px 56px}
+  .card{max-width:580px;width:100%}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:14px}
+  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.12;margin-bottom:10px}
+  h1 em{color:var(--ember);font-style:italic}
+  .lead{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:28px}
+  form{background:rgba(245,240,235,0.04);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .field{margin-bottom:16px}
+  label{display:block;font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:6px}
+  label .req{color:var(--ember)}
+  input,select,textarea{width:100%;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;font-family:inherit;background:rgba(15,26,34,0.5);color:var(--paper)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
+  select option,select optgroup{color:#1a1510}
+  textarea{min-height:84px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.row{grid-template-columns:1fr}}
+  .submit{width:100%;background:var(--ember);color:var(--ink);border:0;padding:15px 26px;border-radius:var(--pill);font:700 16px Inter,sans-serif;cursor:pointer;margin-top:6px}
+  .submit:hover{background:#f0a877}
+  .submit:disabled{opacity:.55;cursor:not-allowed}
+  .note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5;text-align:center}
+  .err{color:#ff9b7a;font-size:12.5px;margin-top:6px;min-height:1px}
+  .fallback{margin-top:18px;font-size:13.5px;color:var(--muted);text-align:center}
+  .fallback b{color:var(--paper)}
+  footer{padding:22px 24px;text-align:center;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);max-width:1100px;margin:0 auto;width:100%}
+  .tour-info{background:rgba(232,152,102,0.08);border:1px solid rgba(232,152,102,0.28);border-radius:var(--radius-sm);padding:13px 15px;margin:-4px 0 16px;font-size:13.5px;line-height:1.55;color:var(--paper)}
+  .tour-info .ti-row{display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:600;margin-bottom:4px}
+  .tour-info .ti-row span{color:var(--ember)}
+  .tour-info .ti-desc{color:var(--muted);font-weight:400}
+  /* self-contained calendar */
+  .cal{border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:12px 12px 10px;background:rgba(15,26,34,0.5)}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .cal-head button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--paper);font-size:18px;line-height:1;cursor:pointer}
+  .cal-head button:hover:not(:disabled){border-color:var(--ember);color:var(--ember)}
+  .cal-head button:disabled{opacity:.28;cursor:not-allowed}
+  .cal-title{font-weight:600;font-size:14.5px}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .cal-wd{text-align:center;font-size:10.5px;color:var(--muted);padding:3px 0;font-weight:600;letter-spacing:.03em}
+  .cal-day{text-align:center;padding:9px 0;border-radius:7px;font-size:13.5px;border:1px solid transparent;user-select:none}
+  .cal-day.empty{visibility:hidden}
+  .cal-day.dis{color:rgba(245,240,235,0.20);text-decoration:line-through;cursor:not-allowed}
+  .cal-day.ok{cursor:pointer}
+  .cal-day.ok:hover{background:rgba(232,152,102,0.18)}
+  .cal-day.sel{background:var(--ember);color:var(--ink);font-weight:700}
+  .cal-legend{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .cal-legend s{opacity:.5}
+  .chosen{font-size:13.5px;color:var(--ember);font-weight:600;margin-top:8px;min-height:1px}
+  .loadingCal{font-size:12px;color:var(--muted);text-align:center;padding:14px 0}
+  /* slot picker */
+  .slots{display:flex;flex-wrap:wrap;gap:10px}
+  .slot{flex:1 1 140px}
+  .slot input{position:absolute;opacity:0;width:0;height:0}
+  .slot label{display:block;margin:0;cursor:pointer;border:1.5px solid rgba(245,240,235,0.18);border-radius:var(--radius-sm);padding:11px 12px;font-size:14px;font-weight:600;text-align:center;transition:all .15s}
+  .slot label small{display:block;font-weight:400;font-size:11.5px;color:var(--muted);margin-top:2px}
+  .slot input:checked + label{border-color:var(--ember);background:rgba(232,152,102,0.14);color:var(--ember)}
+  .slot input:checked + label small{color:var(--ember)}
+  .helper{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+</style>
+</head>
+<body>
+  <header>
+    <a href="./" class="brand">Sand &amp; <span>Stars</span></a>
+    <a href="./" class="back">&larr; Back to site</a>
+  </header>
+
+  <main>
+    <div class="card">
+      <span class="kicker">Book a tour</span>
+      <h1>Reserve your <em>day in Moab</em></h1>
+      <p class="lead">Private guiding, your group only — up to 8 travelers. Pick a tour and an <b style="color:var(--paper)">open date</b> (the calendar only lets you choose days we can actually run), and we'll send a secure Square link to lock it in. One group price covers your whole party — no per-person math.</p>
+
+      <form id="bookForm" method="POST"
+            action="https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec">
+        <input type="hidden" name="action" value="public_book">
+        <input type="hidden" name="source" value="website">
+        <input type="hidden" name="date" id="date">
+        <input type="hidden" name="preferred_slot" id="preferredSlot" value="">
+        <input type="hidden" name="length" id="lengthSel" value="">
+
+        <div class="field">
+          <label for="tour">Tour <span class="req">*</span></label>
+          <select id="tour" name="tour" required>
+            <option value="" disabled selected>Choose a tour…</option>
+          </select>
+        </div>
+
+        <div id="tourInfo" class="tour-info" hidden>
+          <div class="ti-row" id="tiMeta"></div>
+          <div class="ti-desc" id="tiDesc"></div>
+        </div>
+
+        <div class="field" id="lenWrap" hidden>
+          <label>Tour length <span class="req">*</span></label>
+          <div class="slots" id="lenPills"></div>
+          <div class="helper">★ = our recommended length for this tour. Price shown is the group total for 1–2 guests.</div>
+        </div>
+
+        <div class="field">
+          <label for="group">Group size <span class="req">*</span></label>
+          <select id="group" name="group_size" required>
+            <option value="" disabled selected>How many travelers?</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+            <option value="9+">9+ — contact us</option>
+          </select>
+          <div class="helper" id="groupHelper" hidden>Parties of 9+ take more than one vehicle — email <b>tours@sandandstars.com</b> or use the chat bubble and we&rsquo;ll set it up.</div>
+        </div>
+
+        <div class="field" id="dateField" hidden>
+          <label>Choose an open date <span class="req">*</span></label>
+          <div class="cal">
+            <div class="cal-head">
+              <button type="button" id="calPrev" aria-label="Previous month">&lsaquo;</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button type="button" id="calNext" aria-label="Next month">&rsaquo;</button>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-legend">Tap an open day. <s>Struck-through</s> days are full, closed, or too soon.</div>
+          </div>
+          <div class="chosen" id="dateChosen"></div>
+          <div class="err" id="dateErr"></div>
+        </div>
+
+        <div class="field" id="slotWrap" hidden>
+          <label>Start <span class="req">*</span></label>
+          <div class="slots" id="slots"></div>
+          <div class="helper" id="slotHelper" title="Unlike some services, we don't combine groups or run the same schedule every day. Our start times vary throughout the year for the best blend of light, temperature, and fewer crowds — recommendations built from guests' best experiences and feedback, never our convenience, and we never schedule another tour after yours. Any concerns about start time? Contact us and we'll set the time you want.">It&rsquo;s your private tour — pick any time you like. Our recommended times come from guests&rsquo; best experiences, never our schedule. <span style="color:var(--ember);cursor:help">&#9432; why these times</span></div>
+        </div>
+
+        <div class="field" id="pickupWrap" hidden>
+          <label for="pickup">Pickup location — hotel / lodging <span class="req">*</span></label>
+          <input type="text" id="pickup" name="pickup" placeholder="Hotel or lodging name" autocomplete="off">
+          <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;font-weight:400;cursor:pointer"><input type="checkbox" id="pickupTbd" name="pickup_tbd" value="1" style="width:auto"> TBD — I&rsquo;ll confirm my lodging later</label>
+          <div class="err" id="pickupErr"></div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="first">First name <span class="req">*</span></label>
+            <input type="text" id="first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="last">Last name <span class="req">*</span></label>
+            <input type="text" id="last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything we should know?</label>
+          <textarea id="notes" name="notes" placeholder="Pickup spot / lodging, must-sees, mobility needs, celebrating something…"></textarea>
+        </div>
+
+        <button type="submit" class="submit" id="submitBtn">Continue to secure payment →</button>
+        <p class="note">Your price is set by group size — no card details are entered here. You'll finish on a secure Square page. We never see or store your card.</p>
+      </form>
+
+      <p class="fallback">Prefer a human, planning a bespoke day, or want multiple tours across a trip? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b> and we'll build it with you.</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year">2026</span> Sand &amp; Stars Touring. Operating under permits from the National Park Service &amp; BLM.
+  </footer>
+
+  <script>
+  (function(){
+    var EXEC = "https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec";
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var FALLBACK = [
+      {key:'arches',title:'Arches National Park — Private Tour',hours:4},
+      {key:'rockart',title:'Rock Art & Petroglyphs',hours:4},
+      {key:'dino',title:'Dinosaur Tracks',hours:4},
+      {key:'localgems',title:'Local Gems',hours:4},
+      {key:'night',title:'Night Sky Tour',hours:4},
+      {key:'deadhorse',title:'Best of Moab to Dead Horse Point',hours:6},
+      {key:'castle',title:'Castle Valley',hours:6},
+      {key:'mill',title:'Lush Canyon Hike + Local Gems (Mill Creek)',hours:6},
+      {key:'archescombo',title:'Arches + Best of Moab Combo — Full Day',hours:8},
+      {key:'isky',title:'Canyonlands: Island in the Sky + Dead Horse',hours:8},
+      {key:'needles',title:'Canyonlands: The Needles — Full Day',hours:8},
+      {key:'maze',title:'Canyonlands: The Maze — Full Day',hours:8}
+    ];
+    var DESC = {
+      arches:'The park’s icons — Delicate Arch country, the Windows, Balanced Rock — at your pace.',
+      rockart:'Ancient petroglyph panels and the stories behind them, close to town.',
+      dino:'Real dinosaur trackways and Jurassic geology — great for families.',
+      localgems:'Off-the-list Moab spots the crowds miss.',
+      night:'Dark-sky stargazing with a guide; start time follows the moon.',
+      deadhorse:'Sweeping Colorado River overlooks plus the best of Moab en route.',
+      castle:'Red-rock spires and the Castleton valley — cinematic and quiet.',
+      mill:'A slot canyon in miniature — cottonwood shade, running creek, waterfalls and swimming holes. The coolest tour in summer.',
+      archescombo:'Two parks in one big day — Arches plus the best of Moab.',
+      isky:'Island in the Sky’s canyon-rim grandeur paired with Dead Horse Point.',
+      needles:'The Needles district — spires, meadows and backcountry feel.',
+      maze:'The remote Maze overlook — a true full-day adventure.'
+    };
+    var LABELS = {4:'Half Day · ~4 hrs',6:'Extended · ~6 hrs',8:'Full Day · ~8 hrs'};
+    var GROUP_BASE = {4:{b12:575,b34:675,ex:100},6:{b12:850,b34:975,ex:125},8:{b12:1125,b34:1275,ex:150}}; // per-GROUP tiers — pricing.html canon
+    var TOUR_LENGTHS = {arches:[4,6,8],deadhorse:[4,6],isky:[6,8],mill:[4,6],castle:[4,6],rockart:[4,6],localgems:[4,6],dino:[4],archescombo:[8],needles:[8],maze:[8],night:[4]};
+    var REC_LEN = {arches:4,deadhorse:4,isky:8,mill:4,castle:4,rockart:4,localgems:4,dino:4,archescombo:8,needles:8,maze:8,night:4};
+
+    // Party size for pricing display (default 2 until chosen). '8+' -> 8. PRE-TAX ALWAYS —
+    // taxes are never previewed; they appear only at checkout finalization (John's rule).
+    function partyN(){var v=(document.getElementById('group')||{}).value||'';var n=parseInt(String(v).replace('+',''),10);return n>0?n:2;}
+    function tierPrice(len,n){var gb=GROUP_BASE[len];if(!gb)return null;if(n<=2)return gb.b12;if(n<=4)return gb.b34;return gb.b34+(n-4)*gb.ex;}
+    function partyLabel(){var v=(document.getElementById('group')||{}).value;return v?('your group of '+v):'1–2 guests';}
+    function setLen(key,len){
+      document.getElementById('lengthSel').value=len;
+      var n=partyN(),tp=tierPrice(len,n);
+      var privLbl=(document.getElementById('group').value)?'Private · just your group':'Private · up to 8';
+      document.getElementById('tiMeta').innerHTML='<span>'+(LABELS[len]||('~'+len+' hrs'))+'</span>'+(tp?'<span>'+money(tp)+' total · '+partyLabel()+'</span>':'')+'<span>'+privLbl+'</span>';
+      var pills=document.querySelectorAll('#lenPills input');
+      for(var i=0;i<pills.length;i++){pills[i].checked=(+pills[i].value===+len);}
+      if(selYMD)showSlots(selYMD);
+    }
+    function renderLenPills(key,t){
+      var wrap=document.getElementById('lenWrap'),box=document.getElementById('lenPills');
+      var lens=TOUR_LENGTHS[key]||[t.hours];var rec=REC_LEN[key]||t.hours;
+      var urlLen=parseInt(new URLSearchParams(location.search).get('len'),10);
+      var cur=parseInt(document.getElementById('lengthSel').value,10);
+      var sel=(lens.indexOf(cur)!==-1)?cur:((lens.indexOf(urlLen)!==-1)?urlLen:rec);
+      var n=partyN();
+      box.innerHTML='';
+      lens.forEach(function(L){
+        var tp=tierPrice(L,n);var id='len_'+L;
+        var d=document.createElement('div');d.className='slot';
+        d.innerHTML='<input type="radio" name="_lenpick" id="'+id+'" value="'+L+'"'+(L===sel?' checked':'')+'>'+
+          '<label for="'+id+'">'+(LABELS[L]||L+' hrs')+(L===rec?' ★':'')+'<small>'+(tp?money(tp)+' · '+partyLabel():'')+'</small></label>';
+        box.appendChild(d);
+      });
+      box.onchange=function(e){if(e.target&&e.target.name==='_lenpick')setLen(key,+e.target.value);};
+      wrap.hidden=(lens.length<2);
+      setLen(key,sel);
+    }
+    // Group size changes -> refresh every displayed price for the selected length (pre-tax)
+    document.getElementById('group').addEventListener('change',function(){
+      var nine=(this.value==='9+');
+      document.getElementById('groupHelper').hidden=!nine;
+      document.getElementById('submitBtn').disabled=nine;
+      var key=document.getElementById('tour').value;
+      if(key&&key!=='bespoke'&&CATALOG[key])renderLenPills(key,CATALOG[key]);
+    });
+    var GROUP_TITLE = {4:'Half day (~4 hours)',6:'Extended half day (~6 hours)',8:'Full day (~8 hours)'};
+
+    var CATALOG = {};
+    var availByDate = {};      // 'YYYY-MM-DD' -> status
+    var slotByDate = {};       // 'YYYY-MM-DD' -> {fullDay,am,pm}
+    var loadedMonths = {};
+    var MIN = new Date(); MIN.setHours(0,0,0,0); MIN.setDate(MIN.getDate()+2);   // 2-day lead
+    var MAX = new Date(); MAX.setHours(0,0,0,0); MAX.setDate(MAX.getDate()+180); // 180-day window
+    var viewY = MIN.getFullYear(), viewM = MIN.getMonth();
+    var selYMD = null;
+
+    function pad(n){return (n<10?'0':'')+n;}
+    function ymd(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+    function ym(y,m){return y+'-'+pad(m+1);}
+    function money(n){return '$'+Number(n).toLocaleString('en-US');}
+    function prettyLocal(k){var p=k.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);return d.toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric'});}
+
+    // ---------- dropdown ----------
+    function buildDropdown(list){
+      var sel=document.getElementById('tour');
+      var keep=sel.value;
+      Array.prototype.slice.call(sel.querySelectorAll('optgroup,option:not([value=""])')).forEach(function(n){n.remove();});
+      [4,6,8].forEach(function(h){
+        var items=list.filter(function(t){return t.hours===h;});
+        if(!items.length)return;
+        var og=document.createElement('optgroup');og.label=GROUP_TITLE[h];
+        items.forEach(function(t){
+          var o=document.createElement('option');o.value=t.key;
+          o.textContent=t.title;
+          og.appendChild(o);
+        });
+        sel.appendChild(og);
+      });
+      var ob=document.createElement('option');ob.value='bespoke';ob.textContent='Bespoke / custom day — request a quote';sel.appendChild(ob);
+      if(keep){ sel.value=keep; }
+    }
+    function loadCatalogThen(done){
+      var finished=false;
+      function finish(list){ if(finished)return; finished=true;
+        CATALOG={}; list.forEach(function(t){CATALOG[t.key]={title:t.title,hours:t.hours};});
+        buildDropdown(list); done();
+      }
+      var to=setTimeout(function(){finish(FALLBACK);},2500);
+      fetch(EXEC+'?action=tour_catalog').then(function(r){return r.json();}).then(function(d){
+        clearTimeout(to);
+        var live=(d&&d.catalog)?d.catalog.filter(function(t){return t.hours&&!t.hidden&&!t.bespoke;}):[];
+        finish(live.length?live:FALLBACK);
+      }).catch(function(){clearTimeout(to);finish(FALLBACK);});
+    }
+
+    // ---------- availability ----------
+    function loadMonth(key){
+      if(loadedMonths[key])return Promise.resolve();
+      loadedMonths[key]=true;
+      return fetch(EXEC+'?action=availability&month='+key).then(function(r){return r.json();}).then(function(d){
+        if(d&&d.dates)d.dates.forEach(function(x){availByDate[x.date]=x.status; if(x.slots)slotByDate[x.date]=x.slots; if(x.nightHike)nightByDate[x.date]=x.nightHike;});
+      }).catch(function(){loadedMonths[key]=false;});
+    }
+    // Sun times per date (Open-Meteo — same source the backend uses). Rec starts are
+    // seasonal by construction: sunrise-anchored mornings, sunset-anchored afternoons.
+    var nightByDate={}, sunByDate={};
+    function loadSun(dateKey){
+      if(sunByDate[dateKey])return Promise.resolve(sunByDate[dateKey]);
+      return fetch('https://api.open-meteo.com/v1/forecast?latitude=38.5733&longitude=-109.5498&daily=sunrise,sunset&timezone=America%2FDenver&start_date='+dateKey+'&end_date='+dateKey)
+        .then(function(r){return r.json();})
+        .then(function(d){var o={rise:(d.daily&&d.daily.sunrise&&d.daily.sunrise[0])||null,set:(d.daily&&d.daily.sunset&&d.daily.sunset[0])||null};sunByDate[dateKey]=o;return o;})
+        .catch(function(){return {rise:null,set:null};});
+    }
+    function fmtClock(iso){ if(!iso)return null; var m=iso.match(/T(\d{2}):(\d{2})/); if(!m)return null;
+      var h=+m[1],mi=+m[2]; mi=Math.round(mi/15)*15; if(mi===60){h++;mi=0;}
+      var ap=h>=12?'PM':'AM'; var h12=h%12; if(h12===0)h12=12; return h12+':'+(mi<10?'0':'')+mi+' '+ap; }
+    function addHoursIso(iso,hrs){ if(!iso)return null; var m=iso.match(/T(\d{2}):(\d{2})/); if(!m)return null;
+      var mins=(+m[1])*60+(+m[2])+Math.round(hrs*60); var h=Math.floor(mins/60),mi=mins%60;
+      return iso.slice(0,11)+(h<10?'0':'')+h+':'+(mi<10?'0':'')+mi; }
+    function dayStatus(y,m,d){
+      var dt=new Date(y,m,d);dt.setHours(0,0,0,0);
+      if(dt<MIN||dt>MAX)return 'dis';
+      var st=availByDate[ymd(dt)];
+      if(st===undefined)return 'ok';            // unknown -> allow; server still gates
+      return (st==='available'||st==='limited')?'ok':'dis';
+    }
+
+    // ---------- calendar render ----------
+    function renderCal(){
+      var grid=document.getElementById('calGrid');grid.innerHTML='';
+      ['S','M','T','W','T','F','S'].forEach(function(w){var c=document.createElement('div');c.className='cal-wd';c.textContent=w;grid.appendChild(c);});
+      var first=new Date(viewY,viewM,1).getDay();
+      for(var i=0;i<first;i++){var e=document.createElement('div');e.className='cal-day empty';e.textContent='.';grid.appendChild(e);}
+      var days=new Date(viewY,viewM+1,0).getDate();
+      for(var d=1;d<=days;d++){
+        var st=dayStatus(viewY,viewM,d);
+        var key=ymd(new Date(viewY,viewM,d));
+        var c=document.createElement('div');
+        c.className='cal-day '+(st==='ok'?'ok':'dis')+(selYMD===key?' sel':'');
+        c.textContent=d;
+        if(st==='ok'){(function(kk){c.addEventListener('click',function(){pickDate(kk);});})(key);}
+        grid.appendChild(c);
+      }
+      document.getElementById('calTitle').textContent=new Date(viewY,viewM,1).toLocaleDateString('en-US',{month:'long',year:'numeric'});
+      document.getElementById('calPrev').disabled=(viewY<MIN.getFullYear()||(viewY===MIN.getFullYear()&&viewM<=MIN.getMonth()));
+      document.getElementById('calNext').disabled=(viewY>MAX.getFullYear()||(viewY===MAX.getFullYear()&&viewM>=MAX.getMonth()));
+    }
+    function showMonth(){ loadMonth(ym(viewY,viewM)).then(renderCal); renderCal(); }
+    function gotoMonth(delta){var d=new Date(viewY,viewM+delta,1);viewY=d.getFullYear();viewM=d.getMonth();showMonth();}
+    document.getElementById('calPrev').addEventListener('click',function(){gotoMonth(-1);});
+    document.getElementById('calNext').addEventListener('click',function(){gotoMonth(1);});
+
+    function pickDate(key){
+      selYMD=key;
+      document.getElementById('date').value=key;
+      document.getElementById('dateChosen').textContent='✓ '+prettyLocal(key);
+      document.getElementById('dateErr').textContent='';
+      renderCal();
+      showSlots(key);
+    }
+
+    // ---------- slots ----------
+    function showSlots(key){
+      var t=CATALOG[document.getElementById('tour').value];
+      var wrap=document.getElementById('slotWrap'),box=document.getElementById('slots');
+      document.getElementById('preferredSlot').value='';box.innerHTML='';
+      if(!t){wrap.hidden=true;return;}
+      var slots=slotByDate[key]||null,tourKey=document.getElementById('tour').value;
+      var lenNow=parseInt(document.getElementById('lengthSel').value,10)||t.hours;
+      function open(s){return !slots||slots[s]===undefined||slots[s]==='available'||slots[s]==='limited';}
+      loadSun(key).then(function(sun){
+        var rise=fmtClock(sun.rise);
+        var pmStart=fmtClock(addHoursIso(sun.set,-lenNow));   // finish at golden hour
+        var opts=[];
+        if(tourKey==='night'){
+          var nh=nightByDate[key]||{}; var ns=nh.start?fmtClock('T'+nh.start+':00'):null;
+          opts.push({v:'Night'+(ns?' ~'+ns:''),t:'After dark',s:(ns?'Rec start '+ns+' — follows the moon':'Start follows the moon')+'; confirmed with your guide'});
+        } else if(lenNow>=8){
+          opts.push({v:'Full day'+(rise?' ~'+rise:''),t:'Full day',s:(rise?'Rec start '+rise+' (sunrise)':'Early start')+' — out most of the day'});
+        } else {
+          if(open('am'))opts.push({v:'Morning'+(rise?' ~'+rise:''),t:'Morning',s:(rise?'Rec '+rise+' (sunrise)':'Sunrise start')+' — best light & temps'});
+          if(open('pm'))opts.push({v:'Afternoon'+(pmStart?' ~'+pmStart:''),t:'Afternoon',s:(pmStart?'Rec '+pmStart:'Later start')+' — golden-hour finish'});
+        }
+        if(!opts.length)opts.push({v:'Flexible',t:'Flexible',s:'We’ll confirm the best window with you'});
+        box.innerHTML='';
+        opts.forEach(function(o,i){
+          var id='slot_'+i,div=document.createElement('div');div.className='slot';
+          div.innerHTML='<input type="radio" name="_slotpick" id="'+id+'" value="'+o.v+'"'+(opts.length===1?' checked':'')+'>'+
+            '<label for="'+id+'">'+o.t+'<small>'+o.s+'</small></label>';
+          box.appendChild(div);
+        });
+        if(opts.length===1)document.getElementById('preferredSlot').value=opts[0].v;
+        box.onchange=function(e){if(e.target&&e.target.name==='_slotpick')document.getElementById('preferredSlot').value=e.target.value;};
+        wrap.hidden=false;
+        document.getElementById('pickupWrap').hidden=false;
+      });
+    }
+
+    // ---------- tour change ----------
+    document.getElementById('tour').addEventListener('change',function(){
+      var key=this.value,info=document.getElementById('tourInfo'),dateField=document.getElementById('dateField');
+      document.getElementById('slotWrap').hidden=true;document.getElementById('preferredSlot').value='';
+      selYMD=null;document.getElementById('date').value='';document.getElementById('dateChosen').textContent='';
+      if(key==='bespoke'){
+        info.hidden=false;
+        document.getElementById('lenWrap').hidden=true;document.getElementById('lengthSel').value='';
+        document.getElementById('tiMeta').innerHTML='<span>Bespoke</span> Custom, multi-stop or multi-day';
+        document.getElementById('tiDesc').textContent='Tell us your dates and what you’re dreaming of — we’ll design it and send a quote. Pick a rough start date below or email us directly.';
+      } else {
+        var t=CATALOG[key];
+        if(!t){info.hidden=true;dateField.hidden=true;document.getElementById('lenWrap').hidden=true;return;}
+        info.hidden=false;
+        document.getElementById('tiDesc').textContent=DESC[key]||'Private guiding, your group only.';
+        renderLenPills(key,t);
+      }
+      dateField.hidden=false;
+      viewY=MIN.getFullYear();viewM=MIN.getMonth();
+      showMonth();
+    });
+
+    // ---------- submit validation + slot fold-in ----------
+    document.getElementById('bookForm').addEventListener('submit',function(e){
+      var d=document.getElementById('date').value;
+      if(!d){ e.preventDefault(); document.getElementById('dateErr').textContent='Please choose an open date.'; document.getElementById('dateField').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+      var pu=document.getElementById('pickup').value.trim(), tbd=document.getElementById('pickupTbd').checked;
+      if(!pu && !tbd){ e.preventDefault(); document.getElementById('pickupErr').textContent='Please add your pickup location — or check TBD.'; document.getElementById('pickupWrap').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+      if(tbd && !pu){ if(!window.confirm('Pickup marked TBD.\n\nYou are responsible to inform us of your lodging before the trip. We’ll also follow up with you. Continue?')){ e.preventDefault(); return; } }
+      var slot=document.getElementById('preferredSlot').value;
+      if(slot){var n=document.getElementById('notes');var tag='[Preferred start: '+slot+']';if(n.value.indexOf(tag)===-1)n.value=tag+(n.value?'  '+n.value:'');}
+      var btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Building your secure checkout…';
+      if(window.dataLayer)dataLayer.push({event:'begin_booking',tour:document.getElementById('tour').value,group_size:document.getElementById('group').value});
+    });
+
+    // ---------- boot ----------
+    loadCatalogThen(function(){
+      var t=new URLSearchParams(location.search).get('tour');
+      if(t){var s=document.getElementById('tour');if(Array.prototype.slice.call(s.options).some(function(o){return o.value===t;})){s.value=t;s.dispatchEvent(new Event('change'));}}
+    });
+  })();
+  </script>
+</body>
+</html>
