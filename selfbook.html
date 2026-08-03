@@ -7,12 +7,12 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Book a Tour · Sand &amp; Stars Touring</title>
-<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and an open date — pay securely via Square. Private guiding, your group only.">
+<meta name="description" content="Book a private Moab tour with Sand & Stars Touring. Pick your tour and an open date, then pay securely via Square. Private guiding, your group only.">
 <meta name="robots" content="noindex,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) — GA4 sandandstars.com -->
+<!-- Google tag (gtag.js) - GA4 sandandstars.com -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N54MXKZKM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9N54MXKZKM');</script>
 <style>
@@ -93,7 +93,7 @@
     <div class="card">
       <span class="kicker">Book a tour</span>
       <h1>Reserve your <em>day in Moab</em></h1>
-      <p class="lead">Private guiding, your group only — up to 8 travelers. Pick a tour and an <b style="color:var(--paper)">open date</b> (the calendar only lets you choose days we can actually run), and we'll send a secure Square link to lock it in. One group price covers your whole party — no per-person math.</p>
+      <p class="lead">Private guiding, your group only, up to 8 travelers. Pick a tour and an <b style="color:var(--paper)">open date</b> (the calendar only lets you choose days we can actually run), and we'll send a secure Square link to lock it in. One group price covers your whole party. No per-person math.</p>
 
       <form id="bookForm" method="POST"
             action="https://script.google.com/macros/s/AKfycbzGwl-OunV1Fvl4hO9c2wjqCkfmnOsRx1i8GrgK14F7T7OrxNpy6Gt5RLNmbZuWgBDxqw/exec">
@@ -127,9 +127,9 @@
             <option value="" disabled selected>How many travelers?</option>
             <option>1</option><option>2</option><option>3</option><option>4</option>
             <option>5</option><option>6</option><option>7</option><option>8</option>
-            <option value="9+">9+ — contact us</option>
+            <option value="9+">9+ (contact us)</option>
           </select>
-          <div class="helper" id="groupHelper" hidden>Parties of 9+ take more than one vehicle — email <b>tours@sandandstars.com</b> or use the chat bubble and we&rsquo;ll set it up.</div>
+          <div class="helper" id="groupHelper" hidden>Parties of 9+ take more than one vehicle. Email <b>tours@sandandstars.com</b> or use the chat bubble and we&rsquo;ll set it up.</div>
         </div>
 
         <div class="field" id="dateField" hidden>
@@ -150,13 +150,13 @@
         <div class="field" id="slotWrap" hidden>
           <label>Start <span class="req">*</span></label>
           <div class="slots" id="slots"></div>
-          <div class="helper" id="slotHelper" title="Unlike some services, we don't combine groups or run the same schedule every day. Our start times vary throughout the year for the best blend of light, temperature, and fewer crowds — recommendations built from guests' best experiences and feedback, never our convenience, and we never schedule another tour after yours. Any concerns about start time? Contact us and we'll set the time you want.">It&rsquo;s your private tour — pick any time you like. Our recommended times come from guests&rsquo; best experiences, never our schedule. <span style="color:var(--ember);cursor:help">&#9432; why these times</span></div>
+          <div class="helper" id="slotHelper" title="Unlike some services, we don't combine groups or run the same schedule every day. Our start times vary throughout the year for the best blend of light, temperature, and fewer crowds. Recommendations built from guests' best experiences and feedback, never our convenience, and we never schedule another tour after yours. Any concerns about start time? Contact us and we'll set the time you want.">It&rsquo;s your private tour, pick any time you like. Our recommended times come from guests&rsquo; best experiences, never our schedule. <span style="color:var(--ember);cursor:help">&#9432; why these times</span></div>
         </div>
 
         <div class="field" id="pickupWrap" hidden>
-          <label for="pickup">Pickup location — hotel / lodging <span class="req">*</span></label>
+          <label for="pickup">Pickup location (hotel / lodging) <span class="req">*</span></label>
           <input type="text" id="pickup" name="pickup" placeholder="Hotel or lodging name" autocomplete="off">
-          <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;font-weight:400;cursor:pointer"><input type="checkbox" id="pickupTbd" name="pickup_tbd" value="1" style="width:auto"> TBD — I&rsquo;ll confirm my lodging later</label>
+          <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;font-weight:400;cursor:pointer"><input type="checkbox" id="pickupTbd" name="pickup_tbd" value="1" style="width:auto"> TBD, I&rsquo;ll confirm my lodging later</label>
           <div class="err" id="pickupErr"></div>
         </div>
 
@@ -188,7 +188,7 @@
         </div>
 
         <button type="submit" class="submit" id="submitBtn">Continue to secure payment →</button>
-        <p class="note">Your price is set by group size — no card details are entered here. You'll finish on a secure Square page. We never see or store your card.</p>
+        <p class="note">Your price is set by group size. No card details are entered here. You'll finish on a secure Square page. We never see or store your card.</p>
       </form>
 
       <p class="fallback">Prefer a human, planning a bespoke day, or want multiple tours across a trip? Email <b>tours@sandandstars.com</b> or text/call <b>(435) 260-8260</b> and we'll build it with you.</p>
@@ -205,7 +205,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     var FALLBACK = [
-      {key:'arches',title:'Arches National Park — Private Tour',hours:4},
+      {key:'arches',title:'Arches National Park: Private Tour',hours:4},
       {key:'rockart',title:'Rock Art & Petroglyphs',hours:4},
       {key:'dino',title:'Dinosaur Tracks',hours:4},
       {key:'localgems',title:'Local Gems',hours:4},
@@ -213,31 +213,31 @@
       {key:'deadhorse',title:'Best of Moab to Dead Horse Point',hours:6},
       {key:'castle',title:'Castle Valley',hours:6},
       {key:'mill',title:'Lush Canyon Hike + Local Gems (Mill Creek)',hours:6},
-      {key:'archescombo',title:'Arches + Best of Moab Combo — Full Day',hours:8},
+      {key:'archescombo',title:'Arches + Best of Moab Combo: Full Day',hours:8},
       {key:'isky',title:'Canyonlands: Island in the Sky + Dead Horse',hours:8},
-      {key:'needles',title:'Canyonlands: The Needles — Full Day',hours:8},
-      {key:'maze',title:'Canyonlands: The Maze — Full Day',hours:8}
+      {key:'needles',title:'Canyonlands: The Needles, Full Day',hours:8},
+      {key:'maze',title:'Canyonlands: The Maze, Full Day',hours:8}
     ];
     var DESC = {
-      arches:'The park’s icons — Delicate Arch country, the Windows, Balanced Rock — at your pace.',
+      arches:'The park’s icons: Delicate Arch country, the Windows, Balanced Rock, all at your pace.',
       rockart:'Ancient petroglyph panels and the stories behind them, close to town.',
-      dino:'Real dinosaur trackways and Jurassic geology — great for families.',
+      dino:'Real dinosaur trackways and Jurassic geology. Great for families.',
       localgems:'Off-the-list Moab spots the crowds miss.',
       night:'Dark-sky stargazing with a guide; start time follows the moon.',
       deadhorse:'Sweeping Colorado River overlooks plus the best of Moab en route.',
-      castle:'Red-rock spires and the Castleton valley — cinematic and quiet.',
-      mill:'A slot canyon in miniature — cottonwood shade, running creek, waterfalls and swimming holes. The coolest tour in summer.',
-      archescombo:'Two parks in one big day — Arches plus the best of Moab.',
+      castle:'Red-rock spires and the Castleton valley. Cinematic and quiet.',
+      mill:'A slot canyon in miniature: cottonwood shade, running creek, waterfalls and swimming holes. The coolest tour in summer.',
+      archescombo:'Two parks in one big day. Arches plus the best of Moab.',
       isky:'Island in the Sky’s canyon-rim grandeur paired with Dead Horse Point.',
-      needles:'The Needles district — spires, meadows and backcountry feel.',
-      maze:'The remote Maze overlook — a true full-day adventure.'
+      needles:'The Needles district: spires, meadows and backcountry feel.',
+      maze:'The remote Maze overlook. A true full-day adventure.'
     };
     var LABELS = {4:'Half Day · ~4 hrs',6:'Extended · ~6 hrs',8:'Full Day · ~8 hrs'};
-    var GROUP_BASE = {4:{b12:575,b34:675,ex:100},6:{b12:850,b34:975,ex:125},8:{b12:1125,b34:1275,ex:150}}; // per-GROUP tiers — pricing.html canon
+    var GROUP_BASE = {4:{b12:575,b34:675,ex:100},6:{b12:850,b34:975,ex:125},8:{b12:1125,b34:1275,ex:150}}; // per-GROUP tiers, pricing.html canon
     var TOUR_LENGTHS = {arches:[4,6,8],deadhorse:[4,6],isky:[6,8],mill:[4,6],castle:[4,6],rockart:[4,6],localgems:[4,6],dino:[4],archescombo:[8],needles:[8],maze:[8],night:[4]};
     var REC_LEN = {arches:4,deadhorse:4,isky:8,mill:4,castle:4,rockart:4,localgems:4,dino:4,archescombo:8,needles:8,maze:8,night:4};
 
-    // Party size for pricing display (default 2 until chosen). '8+' -> 8. PRE-TAX ALWAYS —
+    // Party size for pricing display (default 2 until chosen). '8+' -> 8. PRE-TAX ALWAYS.
     // taxes are never previewed; they appear only at checkout finalization (John's rule).
     function partyN(){var v=(document.getElementById('group')||{}).value||'';var n=parseInt(String(v).replace('+',''),10);return n>0?n:2;}
     function tierPrice(len,n){var gb=GROUP_BASE[len];if(!gb)return null;if(n<=2)return gb.b12;if(n<=4)return gb.b34;return gb.b34+(n-4)*gb.ex;}
@@ -311,7 +311,7 @@
         });
         sel.appendChild(og);
       });
-      var ob=document.createElement('option');ob.value='bespoke';ob.textContent='Bespoke / custom day — request a quote';sel.appendChild(ob);
+      var ob=document.createElement('option');ob.value='bespoke';ob.textContent='Bespoke / custom day: request a quote';sel.appendChild(ob);
       if(keep){ sel.value=keep; }
     }
     function loadCatalogThen(done){
@@ -336,7 +336,7 @@
         if(d&&d.dates)d.dates.forEach(function(x){availByDate[x.date]=x.status; if(x.slots)slotByDate[x.date]=x.slots; if(x.nightHike)nightByDate[x.date]=x.nightHike;});
       }).catch(function(){loadedMonths[key]=false;});
     }
-    // Sun times per date (Open-Meteo — same source the backend uses). Rec starts are
+    // Sun times per date (Open-Meteo, same source the backend uses). Rec starts are
     // seasonal by construction: sunrise-anchored mornings, sunset-anchored afternoons.
     var nightByDate={}, sunByDate={};
     function loadSun(dateKey){
@@ -409,12 +409,12 @@
         var opts=[];
         if(tourKey==='night'){
           var nh=nightByDate[key]||{}; var ns=nh.start?fmtClock('T'+nh.start+':00'):null;
-          opts.push({v:'Night'+(ns?' ~'+ns:''),t:'After dark',s:(ns?'Rec start '+ns+' — follows the moon':'Start follows the moon')+'; confirmed with your guide'});
+          opts.push({v:'Night'+(ns?' ~'+ns:''),t:'After dark',s:(ns?'Rec start '+ns+', follows the moon':'Start follows the moon')+'; confirmed with your guide'});
         } else if(lenNow>=8){
-          opts.push({v:'Full day'+(rise?' ~'+rise:''),t:'Full day',s:(rise?'Rec start '+rise+' (sunrise)':'Early start')+' — out most of the day'});
+          opts.push({v:'Full day'+(rise?' ~'+rise:''),t:'Full day',s:(rise?'Rec start '+rise+' (sunrise)':'Early start')+', out most of the day'});
         } else {
-          if(open('am'))opts.push({v:'Morning'+(rise?' ~'+rise:''),t:'Morning',s:(rise?'Rec '+rise+' (sunrise)':'Sunrise start')+' — best light & temps'});
-          if(open('pm'))opts.push({v:'Afternoon'+(pmStart?' ~'+pmStart:''),t:'Afternoon',s:(pmStart?'Rec '+pmStart:'Later start')+' — golden-hour finish'});
+          if(open('am'))opts.push({v:'Morning'+(rise?' ~'+rise:''),t:'Morning',s:(rise?'Rec '+rise+' (sunrise)':'Sunrise start')+', best light & temps'});
+          if(open('pm'))opts.push({v:'Afternoon'+(pmStart?' ~'+pmStart:''),t:'Afternoon',s:(pmStart?'Rec '+pmStart:'Later start')+', golden-hour finish'});
         }
         if(!opts.length)opts.push({v:'Flexible',t:'Flexible',s:'We’ll confirm the best window with you'});
         box.innerHTML='';
@@ -440,7 +440,7 @@
         info.hidden=false;
         document.getElementById('lenWrap').hidden=true;document.getElementById('lengthSel').value='';
         document.getElementById('tiMeta').innerHTML='<span>Bespoke</span> Custom, multi-stop or multi-day';
-        document.getElementById('tiDesc').textContent='Tell us your dates and what you’re dreaming of — we’ll design it and send a quote. Pick a rough start date below or email us directly.';
+        document.getElementById('tiDesc').textContent='Tell us your dates and what you’re dreaming of and we’ll design it and send a quote. Pick a rough start date below or email us directly.';
       } else {
         var t=CATALOG[key];
         if(!t){info.hidden=true;dateField.hidden=true;document.getElementById('lenWrap').hidden=true;return;}
@@ -458,7 +458,7 @@
       var d=document.getElementById('date').value;
       if(!d){ e.preventDefault(); document.getElementById('dateErr').textContent='Please choose an open date.'; document.getElementById('dateField').scrollIntoView({behavior:'smooth',block:'center'}); return; }
       var pu=document.getElementById('pickup').value.trim(), tbd=document.getElementById('pickupTbd').checked;
-      if(!pu && !tbd){ e.preventDefault(); document.getElementById('pickupErr').textContent='Please add your pickup location — or check TBD.'; document.getElementById('pickupWrap').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+      if(!pu && !tbd){ e.preventDefault(); document.getElementById('pickupErr').textContent='Please add your pickup location, or check TBD.'; document.getElementById('pickupWrap').scrollIntoView({behavior:'smooth',block:'center'}); return; }
       if(tbd && !pu){ if(!window.confirm('Pickup marked TBD.\n\nYou are responsible to inform us of your lodging before the trip. We’ll also follow up with you. Continue?')){ e.preventDefault(); return; } }
       var slot=document.getElementById('preferredSlot').value;
       if(slot){var n=document.getElementById('notes');var tag='[Preferred start: '+slot+']';if(n.value.indexOf(tag)===-1)n.value=tag+(n.value?'  '+n.value:'');}
